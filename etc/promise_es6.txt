@@ -1,0 +1,37 @@
+function getData(param, cb){
+	if(param){
+    	cb('callback return true!');
+    }else{	
+    	cb('callback return false!');
+    }
+};
+
+getData(true, (data) => {
+	alert(data)
+});
+
+const promise = new Promise((resolve, reject) =>{
+
+  	let isDone = true;
+  	if(isDone){
+    	resolve('This has been resolved.');
+    }else{
+    	reject('This has been rejected.');
+    }
+});
+
+const promise_1 = new Promise((resolve, reject) =>{
+
+  	let isDone = true;
+  	if(!isDone){
+    	resolve('This promise_1 has been resolved.');
+    }else{
+    	reject('This promise_1 has been rejected.');
+    }
+});
+
+Promise.all([promise, promise_1]).then( data =>{
+	console.log(data);
+}, error => {
+	console.log(error);
+});

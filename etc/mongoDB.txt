@@ -1,0 +1,474 @@
+
+
+Popular NoSQL Databases
+	Let us summarize some popular NoSQL databases that falls in the above categories respectively.
+
+	1. Document Oriented Databases − MongoDB, HBase, Cassandra, Amazon SimpleDB, Hypertable, etc.
+	2. Graph Based Databases − Neo4j, OrientDB, Facebook Open Graph, FlockDB, etc.
+	3. Column Based Databases − CouchDB, OrientDB, etc.
+	4. Key Value Databases − Membase, Redis, MemcacheDB, etc.
+
+========================================================================================================
+
+## Why MongoDB
+
+These are some reasons, of why MongoDB is popular.
+
+	- Aggregation Framework : batch processing of data and also for aggregation operations.
+
+	- BSON Format :  BSON stands for Binary JSON.
+
+	- Sharding : data is being distributed across multiple machines. Horizontal scalability is being provided with the sharding.
+	https://severalnines.com/database-blog/developer-s-guide-mongodb-sharding
+	
+
+	- Ad-hoc Query : MongoDB supports range query, regular expression and many more types of searches. Queries include user-defined Javascript functions and it can also return specific fields from the documents. 
+
+	- Capped Collection : We can create collections in mongoDb on which we can apply size limit. These special type of collections are called Capped Collections. These are a kind of circular queues, in which if allocated size limit is reached, it makes space for new documents by overwriting the oldest documents in the collection
+	
+	db.createCollection("cappedLogCollection",{capped:true,size:10000})
+
+	- Indexing : To improve the performance of searches indexes are being created.
+
+	- File Storage : Grid File System, it is included in drivers which stores files.
+
+	- Replication : This set acts like a master-slave. Here, a master can perform read and write and a slave copies data from a master as a backup only for a read operation.
+
+	- MongoDB Management Service (MMS): MongoDB has a very powerful feature of MMS, due to which we can track our databases or machines and if needed can backup our data. It also tracks hardware metrics for managing the deployment.
+
+
+
+## Advantages of MongoDB
+	- Very easy to install and setup MongoDB.
+	- It is a schema-less database.
+	- Very easy to scale.
+	- As it is a NoSQL database, it is secured from any kind of sql injection.
+	- No need to map application objects to data objects.
+	- It can be used as a file storage system.
+	- It supports search by regex and fields as well.
+	- Deducible documentation is available.
+
+## Disadvantages of MongoDB
+	- It does not support the transaction
+	- MongoDB does not support joins.
+	- RAM limitation.
+
+## MongoDB Vs RDBMS
+
+	- RDBMS is having a relational database 
+	- MongoDB has a non-relational database.
+
+	- In RDBMS we need to design the table then only we can start coding
+	- MongoDB, we can directly start coding.
+
+	- RDBMS supports SQL language
+	- MongoDB supports SQL as well as JSON query language.
+
+	- RDBMS is not that easy to set up but 
+	- MongoDB is comparatively easy to set up.
+
+	- RDBMS is vertically scalable.
+	- MongoDB is horizontally scalable.
+
+	- RDBMS processes the data very slow as compared to the unstructured data of MongoDB.
+
+	- RDBMS accentuates on ACID (Atomicity, Consistency, Isolation, Durability) properties.
+	- MongoDB accentuates on CAP (Consistency, Availability, Partition tolerance) theorem.
+
+========================================================================================================
+
+
+## CPA : https://www.ibm.com/cloud/learn/cap-theorem
+
+MongoDB and the CAP theorem (CP)
+
+MongoDB is a popular NoSQL database management system that stores data as BSON (binary JSON) documents. It"s frequently used for big data and real-time applications running at multiple different locations. Relative to the CAP theorem, MongoDB is a CP data store—it resolves network partitions by maintaining consistency, while compromising on availability.
+
+	-MongoDB is a single-master system—each replica set can have only one primary node that receives all the write operations. 
+	-All other nodes in the same replica set are secondary nodes that replicate the primary node"s operation log and apply it to their own data set. 
+	-By default, clients also read from the primary node, but they can also specify a read preference that allows them to read from secondary nodes.
+
+	-When the primary node becomes unavailable, the secondary node with the most recent operation log will be elected as the new primary node. 
+	-Once all the other secondary nodes catch up with the new master, the cluster becomes available again. 
+	-As clients can"t make any write requests during this interval, the data remains consistent across the entire network.
+
+========================================================================================================
+## ACID : 
+
+- RDBMS - https://media.geeksforgeeks.org/wp-content/cdn-uploads/20191121102921/ACID-Properties.jpg
+- Atomicity : The entire transaction takes place at once or doesn"t happen at all.
+- Consistency : The database must be consistent before and after the transaction.
+- Isolation : Multiple Transactions occur independently without interference. 
+- Durability : The changes of a successful transaction occur even if the system failure occurs. 
+
+https://data-flair.training/blogs/mongodb-tutorial-for-beginners/
+
+========================================================================================================
+
+
+========================================================================================================
+
+db.runCommand({ getLastError : 1}) -> Return Last query information 
+
+========================================================================================================
+
+Cursor is way that fetch data from mongoDB in slot way. 
+For example we have 1L records
+In first time it fetch 10K records only and we can get that data in cursor.each loop
+
+========================================================================================================
+
+	var query = {"category_code": "biotech"};
+	var projection = {"name": 1, "category_code": 1, "_id": 0};
+
+    var cursor = db.collection("companies").find(query);
+    cursor.project(projection);
+
+    cursor.forEach(
+        function(doc) {
+            console.log(doc.name + " is a " + doc.category_code + " company.");
+            console.log(doc);
+        },
+        function(err) {
+            assert.equal(err, null);
+            return db.close();
+        }
+    );
+
+========================================================================================================
+
+mongoimport --drop -d crunchbase -c companies companies.json
+mongorestore dump   
+
+========================================================================================================
+
+##findOne() - if query matches, first document is returned, otherwise null.
+##findOne() returns a document, or nil/null/whatever-it-is-called
+
+
+##find() returns a cursor, which can be empty. But the object returned is always defined.
+##find() - nomatter number of documents matched, a cursor is returned, never null.
+
+
+If we have huge data in collection and we do below query in mongo terminal
+
+db.myCollection.find();
+
+- it will show some data in terminal and at last it show "type it for more data" // This is return cursor
+
+========================================================================================================
+
+##MongoDB - What"s the difference between save() and insert() in MongoDB
+
+For save, if you provide _id, it will update. If you don"t, it will insert.
+
+From this, we can see that save is a wrapper for update and insert. Functionally, save and insert are very similar, especially if no _id value is passed. However, if an _id key is passed, save() will update the document, while insert() will throw a duplicate key error.
+
+========================================================================================================
+
+##MongoDB: Why $literal required ? And where it can be used?
+
+In expression, the dollar sign $ evaluates to a field path
+
+========================================================================================================
+##Assert
+Assert is used to perform a simple test to compare an expected result with an actual result. If the actual result does not match the expected result an exception will be thrown. This feature is meant for development purposes only.
+
+========================================================================================================
+
+##Aggregation in MongoDB
+
+- Aggregation in MongoDB an operation that process the data that returns the computed results.
+
+	// Group the data in gender and get count
+	db.getCollection("person").aggregate([
+	{ $project: { _id: 1, gender: 1}},
+	{ $group: { _id: "$gender", count: { $sum: 1 }}}
+	])
+
+
+	{
+		"_id" : "male",
+		"count" : 2435.0
+	}
+	{
+		"_id" : "female",
+		"count" : 2565.0
+	}
+
+	
+	//Get the field from nested as direct 
+	db.getCollection("person").aggregate([
+	{ $project: { _id: 1, "birthday" : { $toDate: "$dob.date"}}},
+	])
+
+
+	
+	db.sales.aggregate([
+	   {
+		  $project: {
+			 items: {
+				$filter: {
+				   input: "$items",
+				   as: "item",
+				   cond: { $gte: [ "$$item.price", 100 ] }
+				}
+			 }
+		  }
+	   }
+	])
+
+========================================================================================================
+
+## diff bet $group and $project
+
+#$group 
+- n:1
+- Sum, Count, Avarage, Build Array
+
+
+#$project
+- 1: 1
+- Include/Exclude Fields, Transform Fields (Within a single document)
+
+========================================================================================================
+
+## $lookup in MongoDB (join in mongoDB)
+
+-  $lookup to perform left outer join on the two collections.
+
+Data : 
+
+	db.singers.insert(
+	  {
+		_id : 4,
+		artistname : "UVW"
+	   }
+	)
+
+	db.instruments.insert(
+	{
+		_id : 9,
+		singer_name : "GHI",
+		instrument : [ "Accordion", "Jaw Harps", "Keyboards" ],
+		artist_id : 4
+	  }
+	)
+	db.instruments.insert(
+	  {
+		_id : 10,
+		name : "ABC",
+		instrument : [ "Banjo", "Cello" ],
+		artist_id : 4
+	  }
+	)
+
+
+db.singers.aggregate([
+  {
+     $lookup:
+       {
+         from: "instruments",
+         localField: "_id",
+         foreignField: "artist_id",
+         as: "band_members"
+       }
+        },
+        { $match : { artistname : "UVW" } }
+]).pretty()
+
+========================================================================================================
+
+## How to save the file in MongoDB
+
+https://medium.com/@parthkamaria/storing-and-retrieving-files-from-mongodb-using-mean-stack-and-gridfs-aebd8b91cf38
+
+mongoose — connecting to MongoDB
+multer — middleware for handling multipart/form-data
+multer-gridfs-storage — GridFS storage engine for multer to store files directly to MongoDB
+gridfs-stream — used to stream data
+
+
+========================================================================================================
+
+MongoDB closer look: 
+
+Backend(Nodejs) -> driver (mongosee) -> MongoDB Server -> Storage Engine (wireTiger) -> Database 
+
+
+
+========================================================================================================
+
+db.collection.insert()
+
+## ordered	: boolean	
+
+	Optional. If true, perform an ordered insert of the documents in the array, and if an error occurs with one of documents, MongoDB will return without processing the remaining documents in the array.
+
+	If false, perform an unordered insert, and if an error occurs with one of documents, continue processing the remaining documents in the array.
+
+	Defaults to true.
+
+
+	db.hobbies.insertMany([{_id: "sport", name : "sport"}, {_id: "cooking", name : "cooking"}, {_id: "hiking", name : "hiking"}])
+
+	db.hobbies.insertMany([{_id: "yoga", name : "yoga"}, {_id: "cooking", name : "cooking"}, {_id: "paining", name : "paining"}])
+
+	- Error : BulkWriteError: write error at item 1 in bulk operation, duplicate key error 
+	- yoga get inserted, but id issue in cooking, so after that not insert any record
+		
+	// Make ordered option false, it will add remain record in database with error. Record added in database.
+	
+	db.hobbies.insertMany([{_id: "yoga", name : "yoga"}, {_id: "cooking", name : "cooking"}, {_id: "paining", name : "paining"}], {ordered : false})
+
+
+## WriteConcern
+
+	Write concern describes the level of acknowledgment requested from MongoDB for write operations to a standalone mongod or to replica sets or to sharded clusters. In sharded clusters, mongos instances will pass the write concern on to the shards.
+	
+	// If it is true, it will store data in journal so in case of server fail, when server start it will check data in journal and perform operation.
+	
+	
+	db.getCollection("hobbies").insertOne({_id: 1, name : "a"}, { writeConcern: {w: 0}})
+	O/P : { "acknowledged" : false }
+	
+	db.getCollection("hobbies").insertOne({_id: 11, name : "a"}, { writeConcern: {w: 1}})
+	O/P : { "acknowledged" : true, "insertedId" : 11.0 }
+	
+
+========================================================================================================
+
+## Understanding upsert() => update and insert 
+
+	It will check record is available in collection then it will update, if not then add new record
+
+	db.getCollection("hobbies").updateOne({ _id : "code"}, { $set : { name: "code"} }, {upsert: true})
+
+
+========================================================================================================
+
+## Query Diagnosis & How to check Effecient query 
+
+	db.getCollection("users").explain().find({ gender : "Female"})
+
+	db.getCollection("users").explain("executionStats").find({ gender : "Female"})
+
+			"executionStages" : {
+                        "stage" : "COLLSCAN",   // if index is there it will IXSCAN
+                        "filter" : {
+                                "gender" : {
+                                        "$eq" : "Female"
+                                }
+                        },
+                        "nReturned" : 3512,
+						
+
+========================================================================================================
+
+## Index 
+	- Index allow you to retrieve data more efficiently because your queries only have to look at a subset of all documents 
+	- Types
+	1. single field
+	2. compound : it can be used as whole or in left to right (prefix) manner (e.g only consider name of name-age compound index)
+	3. text indexes
+	4. multi key 
+
+	- Disadvantages : This will slow down your write.
+
+https://stackoverflow.com/questions/43798252/what-is-difference-between-partial-indexes-and-sparse-indexes-mongodb
+
+========================================================================================================
+
+## Diff - Text index and index on text field 
+
+https://stackoverflow.com/questions/24316117/mongodb-difference-between-index-on-text-field-and-text-index
+
+
+	- When you create a regular index on a string field it indexes the entire value in the string. Mostly useful for single word strings (like a username for logins) where you can match exactly.
+
+
+	- A text index on the other hand will tokenize and stem the content of the field. So it will break the string into individual words or tokens, and will further reduce them to their stems so that variants of the same word will match ("talk" matching "talks", "talked" and "talking" for example, as "talk" is a stem of all three). Mostly useful for true text (sentences, paragraphs, etc).
+	
+========================================================================================================
+	
+## MongoDB GeoLocation Query Examples
+
+
+https://www.bmc.com/blogs/mongodb-geolocation-query-examples/
+
+= using GeoLocation
+- we can check location is in polygon or not - $geoWithin
+- we can check distance between two place - 
+- we can check location within min and max location in meters - $near 
+
+- Let find the near location
+
+- collection name : locations and have below data 
+
+		{
+			"_id" : ObjectId("5ebe259ab449988d722821d0"),
+			"location" : {
+				"type" : "Point",
+				"coordinates" : [ 
+					-72.7738706, 
+					41.6332836
+				]
+			}
+		}
+
+	
+	- Create the index : db.getCollection("locations").createIndex({ "location": "2dsphere"})
+	
+	- Now find the location with max and min distance 
+	
+		db.getCollection("locations").find({
+		  location: {
+			 $near: {
+			   $geometry: {
+				  type: "Point" ,
+				  coordinates: [ -72.7738706,41.6332836 ]
+			   },
+			   $maxDistance: 1,
+			   $minDistance: 0
+			 }
+		   }
+		})
+		
+	- Above return one record as it same coordinates, but we change it, like below it not return result 
+	
+		db.getCollection("locations").find({
+		  location: {
+			 $near: {
+			   $geometry: {
+				  type: "Point" ,
+				  coordinates: [ -82.7738706,41.6332836 ]
+			   },
+			   $maxDistance: 1,
+			   $minDistance: 0
+			 }
+		   }
+		})
+		
+	  o/p : Fetched 0 record(s) in 1ms
+
+
+========================================================================================================
+
+## stitch in mongodb
+
+MongoDB Stitch is a Backend as a Service (BaaS) that allows you to easily configure authentication, data access rules, and services.
+
+Official Stitch Docs: https://docs.mongodb.com/stitch/
+
+Complete Stitch Username + Password Auth Flow: https://docs.mongodb.com/stitch/authentication/userpass/
+
+Stitch Services (e.g. AWS S3): https://docs.mongodb.com/stitch/reference/partner-services/amazon-service/
+
+
+=================================================================================================
+
+## This plugin brings optimistic concurrency control to Mongoose documents by incrementing document version numbers on each save, and preventing previous versions of a document from being saved over the current version.
+
+https://www.npmjs.com/package/mongoose-update-if-current
+
+=================================================================================================

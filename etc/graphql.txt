@@ -1,0 +1,44 @@
+============================================================================================================
+## GraphQL
+
+- GraphQL is an open-source data query and manipulation language for APIs
+- GraphQL has three primary operations:
+
+1. Query for reading data
+2. Mutation for writing data
+3. Subscription for automatically receiving real-time data over time.
+
+advantages
+
+#- Good fit for complex systems and microservices.
+#- Fetching data with a single API call
+#- No need to manage API version
+#- No over- and under-fetching problems : 
+Over-fetching is fetching too much data, meaning there is data in the response you don't use.
+Under-fetching is not having enough data with a call to an endpoint, forcing you to call a second endpoint. 
+#- Validation and type checking  : schema and type checking
+#- Code-sharing : Fragments
+
+Disadvantages
+
+- Overkill for small applications
+- Performance issues with complex queries : Nested query and to much filed in queries 
+- File uploading : It is not simple , use apollo-upload-client
+ 
+============================================================================================================
+Fragments:
+
+Fragments allow you to reuse parts of GraphQL queries. It also allows you to split up complex queries into smaller, easier to understand components.
+
+
+============================================================================================================
+Scalar :
+
+The GraphQL specification includes the default scalar types: Int, Float, String, Boolean and ID. 
+
+While this covers most of the use cases, often we need to support custom atomic data types (e.g. Date), or we want a version of an existing type that does some validation. To enable this, GraphQL allows you to define custom scalar types. Enumerations are similar to custom scalars, but their values can only be one of a pre-defined list of strings.
+
+scalar MyCustomScalar
+
+============================================================================================================
+

@@ -1,0 +1,39 @@
+##What is Laravel Framework?
+- Laravel is a free, open-source PHP web framework, created by Taylor Otwell and 
+- intended for the development of web applications following the model–view–controller (MVC) architectural pattern.
+
+##What is Laravel Eloquent?
+- The Eloquent ORM included with Laravel provides a beautiful, simple ActiveRecord implementation for working with your database.
+
+##What is Luman?
+-Lumen is a new project from Laravel creator Taylor Otwell. 
+-It's a "micro-framework", meaning it's a smaller, faster, leaner version of a full web application framework. It competes other popular micro-frameworks, Slim and Silex.
+
+##What are Advantages of Laravel?
+- Easy and consistent syntax
+- Set-up process is easy
+- customization process is easy
+- code is always regimented with Laravel
+
+## Laravel Features
+
+1. Method injection 
+2. Route caching
+3. Authentication
+4. Database migration
+
+## Database migration
+ 
+-Database/migration/create_10_10 
+-up and down methods
+
+##env variable access
+
+env('DB_HOST', 'localhost')
+
+## view file -> resource/view
+## controller -> app/http/controller
+## Database migration -> database/migration
+## config -> config 
+
+

@@ -1,0 +1,738 @@
+https://www.tutorialsteacher.com/typescript
+
+What is TypeScript:
+- Open source programming language 
+- Developed by Microsoft
+- superset of javascript
+- compiles down to the javascript
+
+========================================================================================================
+TypeScript Features:
+
+- Cross-Platform: TypeScript runs on any platform that JavaScript runs on. The TypeScript compiler can be installed on any Operating System such as Windows, MacOS and Linux.
+
+- Object Oriented Language: 
+	TypeScript provides powerful features such as Classes, Interfaces, and Modules. You can write pure object-oriented code for client-side as well as server-side development.
+
+- Static type-checking: 
+	TypeScript uses static typing. 
+	This is done using type annotations. 
+	It helps type checking at compile time. 
+	Thus, you can find errors while typing the code without running your script each time. 
+	Additionally, using the type inference mechanism, if a variable is declared without a type, it will be inferred based on its value.
+
+- Optional Static Typing: 
+	TypeScript also allows optional static typing if you would rather use JavaScript"s dynamic typing.
+
+- DOM Manipulation: 
+	Just like JavaScript, TypeScript can be used to manipulate the DOM for adding or removing elements.
+
+- ES 6 Features: 
+	TypeScript includes most features of planned ECMAScript 2015 (ES 6, 7) such as class, interface, Arrow functions etc.
+
+========================================================================================================
+## TypeScript Datatypes
+
+# boolean
+# number
+# string
+# array
+# any
+# null
+	
+	It can be assigned to a variable as a representation of no value
+
+	var TestVar = null;
+	alert(TestVar); //shows null
+	alert(typeof TestVar); //shows object
+
+# undefined
+	
+	undefined means a variable has been declared but has not yet been assigned a value
+	
+	var TestVar;
+	alert(TestVar); //shows undefined
+	alert(typeof TestVar); //shows undefined
+	
+# tupples: Datatype which includes two set of values of different data types.
+
+	let employee: [number, string] = [1, "Steve"]; //
+	employee.push(2, "Bill"); 
+	console.log(employee); //Output: [1, "Steve", 2, "Bill"]
+
+	// We can declare the type as well and assign it to the variable
+	type Drink = [string, sugar];
+	const pepsi: Drink = ["brown", 20];
+
+
+
+# enum: enums allow us to declare a set of named constants
+
+enum PrintMedia {
+    Newspaper = "NEWSPAPER",
+    Newsletter = "NEWSLETTER",
+    Magazine = "MAGAZINE",
+    Book = "BOOK"
+}
+
+// Access String Enum 
+PrintMedia.Newspaper; //returns NEWSPAPER
+PrintMedia["Magazine"];//returns MAGAZINE
+
+
+# Union: allows us to use more than one data type for a variable or a function parameter.
+
+let code: (string | number);
+code = 123;   // OK
+code = "ABC"; // OK
+code = false; // Compiler Error
+
+# Void : return type of functions that do not return any value
+
+function sayHi(): void { 
+    console.log("Hi!")
+} 
+
+let speech: void = sayHi(); 
+console.log(speech); //Output: undefined
+
+# never : The never type is used when you are sure that something is never going to occur
+
+const throwError = (message: string): never => {
+	throw new Error(message);
+}
+
+function keepProcessing(): never { 
+            while (true) { 
+         console.log("I always does something and never ends.")
+     }
+}
+
+==========================================================================================
+##  type guard
+
+	-Returns a type predicate, e.g. variableToCheck is Car
+	
+	const myFunction = (x: number | string): void => {
+	  if (typeof x === "number") {
+		console.log("The variable X it\"s like a number")
+	  }
+
+	  if (typeof x === "string") {
+		console.log("The variable X it\"s like a string")
+	  }
+	}
+
+==========================================================================================
+
+
+## Decorator : https://blog.logrocket.com/a-practical-guide-to-typescript-decorators/
+
+	- decorator is a pattern in programming in which you wrap something to change its behavior.
+	- Types of decorators: 
+	
+	1. Class decorator
+	
+		const classDecorator = (target: Function) => {
+		  // do something with your class
+		}
+
+		@classDecorator
+		class Rocket {}
+		
+	2. Method decorator
+	
+		const myDecorator = (target: Object, propertyKey: string, descriptor: PropertyDescriptor) =>  {
+		  // do something with your method
+		}
+
+		class Rocket {
+		  @myDecorator
+		  launch() {
+			console.log("Launching rocket in 3... 2... 1... 🚀")
+		  }
+		}
+		
+	#usecase
+	- To calculate the method execution time
+	- Apply businees logic
+	- Error handling
+	
+==========================================================================================
+
+## Metadata 
+		- Information that can be attached to method, propertiy, class defination.
+		- Read and write using the reflect-metadata package
+		
+		https://www.npmjs.com/package/reflect-metadata
+	
+==========================================================================================
+##Type Inference
+
+	- Typescript guesses the type
+
+	var a = "some text";  // based on value it make datatype automatic
+	var b = 123;
+	a = b; // Compiler Error: Type "number" is not assignable to type "string"
+
+
+	Here, since we are not explicitly defining a: string with a type annotation, TypeScript infers the type of the variable based on the value assigned to the variable. The value of a is a string and hence the type of a is inferred as string.
+
+==========================================================================================
+
+## Type annotation:
+	- Code we add to tell Typescript what type of value a variable will refer to.
+	- We developer tell typescript the type 
+	
+	- we use annotation when function return the "any" type
+	- when we declare the variable on one line then initializze later
+	
+	const name: string = "Sam";
+==========================================================================================
+
+
+##Type Assertion:
+	- Type assertion allows you to set the type of a value and tell the compiler not to infer it
+
+	let code: any = 123; 
+	let employeeCode = <number> code; 
+	console.log(typeof(employeeCode)); //Output: number
+
+==========================================================================================
+##Generic
+
+- Generics provide a way to make components work with any data type and not restrict to one data type.
+
+	function getData<T>(name:T): void{
+	  console.log(`Param type is ${typeof(name)}` );
+	}
+
+	getData<number>(1);
+	getData<string>("1");
+	
+	
+	const getData = <T extends unknown>(data: T) => {
+	 console.log(data);
+	}
+
+	getData<string>('Hello');
+	getData<number>(123);
+
+========================================================================================================
+
+##Diff bet TypeScript and ES5/ES6
+
+- TypeScript is a script code that is transpiled to JavaScript - either to ES5 or ES6 (and ES3 too).
+- TypeScript 1.5 adds a number of new ES6 features including modules, destructuring, spread, for..of, symbols, let/const, and string templates.
+
+	
+- There is not difference in expressivity of TypeScript and ES6. The difference is that TypeScript compiler helps you with static analysis of your code. Otherwise, whatever you can program in ES6, you can program in TypeScript and the other way around.
+
+
+========================================================================================================
+
+
+##Namespace
+
+- The namespace is used for logical grouping of functionalities. A namespace can include interfaces, classes, functions and variables to support a single or a group of related functionalities.
+
+
+File name: StringUtility.ts
+
+namespace StringUtility {
+
+    export function ToCapital(str: string): string {
+        return str.toUpperCase();
+    }
+
+    export function SubString(str: string, from: number, length: number = 0): string {
+        return str.substr(from, length);
+    }
+}
+
+
+/// <reference path="StringUtility.ts" />    -> Include the namespace
+
+export class Employee {
+    empCode: number;
+    empName: string;
+    constructor(name: string, code: number) {
+        this.empName = StringUtility.ToCapital(name);
+        this.empCode = code;
+    }
+    displayEmployee() {
+        console.log ("Employee Code: " + this.empCode + ", Employee Name: " + this.empName );
+    }
+}
+
+tsc --outFile PATHOFFILE\StringUtility.ts
+
+========================================================================================================
+
+##Mixins 
+
+https://alligator.io/typescript/mixins/
+
+
+In TypeScript, we can’t inherit or extend from more than one class but Mixins helps us to get around that.
+
+Mixins create partial classes which we can combine to form a single class that contains all the methods and properties from the partial classes.
+
+export class Car {
+  drive(name:string) {
+    console.log(`This ${name} can drive very fast`);
+  }
+}
+
+export class Lorry {
+  carry(weight:number) {
+    console.log(`This vehicle can carry ${weight} kg`);
+  }
+}
+
+export class Truck extends Car,Lorry {} // error: Classes can only extend a single class
+
+Solution: 
+
+Due to declaration merging, the Truck class will be merged with the Truck interface. This means that, the Truck class will now contain the function definitions from both Car and Lorry classes. Remember, just the definitions not the implementation because once again, interfaces don’t contain implementations.
+
+export class Truck {}
+export interface Truck extends Car, Lorry {}
+
+
+// the helper function
+function applyMixins(derivedCtor: any, baseCtors: any[]) {
+  baseCtors.forEach(baseCtor => {
+    Object.getOwnPropertyNames(baseCtor.prototype).forEach(name => {
+      Object.defineProperty(derivedCtor.prototype, name, Object.getOwnPropertyDescriptor(baseCtor.prototype, name));
+    });
+  });
+}
+
+applyMixins(Truck, [Car, Lorry]);
+
+const truck = new Truck();
+truck.drive("truck"); // This truck can drive very fast
+truck.carry(10); // This vehicle can carry 10 kg
+
+========================================================================================================
+## Static
+
+- The static members of a class are accessed using the class name and dot notation, without creating an object e.g. <ClassName>.<StaticMember>.
+
+class Circle {
+    static pi: number = 3.14;
+}
+
+console.log(Circle.pi) // 3.14
+
+
+========================================================================================================
+OOP: 
+
+1. Encapsulation
+2. Data Abstraction
+3. Polymorphism
+4. Inhiritance 
+
+##Encapsulation - it is the process of ensuring accurate protection over certain data (properties) passed back and forth between your application.
+
+//bank.ts
+export default class BankMember {
+    
+    public savingsBalance: number;
+
+    constructor(savingsBalance: number) {
+        this.savingsBalance = savingsBalance;
+    }
+
+    public deposit(amount: number): void {
+        this.savingsBalance += amount;
+    }
+
+    public withdraw(amount: number): void {
+
+        if(this.savingsBalance < amount){
+            console.log("Insufficient Funds");
+            return;
+        }
+        this.savingsBalance -= amount;
+    }
+}
+
+
+import BankMember from "./bank";
+
+const chuck = new BankMember(3000);
+
+console.log("\nDepositing Funds");
+chuck.deposit(150);
+console.log(`Chuck"s Savings Balance: $${chuck.savingsBalance} \n`);
+
+console.log("Malicious Account Fraud Happening here.... \n");
+
+// We provided no type of protection over the data present in our class, 
+// therefore anyone with access to an instance of BankMember can freely change the value of that members //savingsBalance.
+
+chuck.savingsBalance = 0;
+
+console.log("Withdrawing Funds");
+chuck.withdraw(1650);
+console.log(`Chuck"s Savings Balance: $${chuck.savingsBalance} \n`);
+
+
+Solution: 
+
+## Private, Protected, Getters and Setters
+## Private: private members can only be accessed within the class it was defined in. Outside clients as well as inheriting classes are unauthorized.
+
+## Protected: protected members can only be accessed within the class it was defined in as well as inheriting the super class. Outside clients are unauthorized.
+
+## Getters: this is a special type of method who’s sole purpose is to give indirect read access to client code to a private or protected member that they are otherwise prohibited from. Read-only properties are made possible when used without it’s setter counterpart.
+
+## Setters: this is a special type of method who’s sole purpose is to give indirect write access to client code to a private or protected member that they are otherwise prohibited from. Write-only properties are made possible when used without it’s getter counterpart.
+
+
+##Abstraction: 
+- It is the process of hiding the internal complexity of a class while only requiring the absolute necessary data to function correctly.
+
+
+##Polymorphism : 
+
+- When multiple classes inherit from a parent and override the same functionality, the result is polymorphism. 
+
+- Each of those child classes now implements a property or method, but they each may have their own way of performing that implementation.
+
+Example #1
+
+	class CheckingAccount {
+		open(initialAmount: number) {
+			// code to open account and save in database
+			console.log('Open from parent called.');
+		  }
+	}
+		
+	class BusinessCheckingAccount extends CheckingAccount {
+		  open(initialAmount: number) {
+			if (initialAmount < 1000) {
+			  throw new Error("Business accounts must have an initial deposit of 1.000 Euros")
+			}
+			super.open(initialAmount);
+		  }
+	}
+		
+	class PersonalCheckingAccount extends CheckingAccount {
+		  open(initialAmount: number) {
+			if (initialAmount <= 0) {
+			  throw new Error("Personal accounts must have an initial deposit of more than zero Euros")
+			}
+			super.open(initialAmount);
+		  }
+	}
+
+  const obj = new BusinessCheckingAccount();
+  obj.open(10000);
+
+
+Example #2
+
+- the ability for specific classes or objects to be referenced in their more general sense, to then preform an action shared amongst multiple sub types.
+
+abstract class Animal {
+
+    private _name: string;
+
+    constructor(name: string){
+        this._name = name;
+    }
+
+    public abstract makeSound(): void;
+}
+
+class Dog extends Animal{
+
+    public makeSound(): void{
+        console.log("Bark!");
+    }
+
+    public dig(): void{
+        console.log("digging");
+    }
+    
+}
+
+class Bird extends Animal{
+
+    public makeSound(): void{
+        console.log("Chirp");
+    }
+
+    public fly(): void{
+        console.log("flying");
+    }
+
+}
+
+const dog: Animal = new Dog("Scooby");
+const bird: Animal = new Bird("Tweetie");
+
+dog.dig(); // Type Error
+bird.fly(); // Type Error
+
+
+one way is to create a general method in Animal called preformAction() and in each sub class they can hold the specific action that the respective animal would preform.
+
+
+==========================================================================================
+
+## interface : it will check only provided data key and value, if exist it not throw error.
+
+interface Name {
+  lastname: string
+}
+
+let name = {lastname : "patel", firstname: "Bhavin"}
+const getName = (name: Name) => {
+console.log(name);
+}
+
+getName(name);
+
+
+==========================================================================================
+
+## What is the difference between interface and abstract class in Typescript?
+
+- An interface is a contract that defines the properties
+- A class is both a contract and the implementation of a factory.
+
+
+==========================================================================================
+
+## dif bet Interface and Type aliases
+
+
+- With type we can have union of multiple other type. 
+	type PetType = IDog | ICat; 
+	
+	interface Ipet extends PetType{ // This give error 
+	
+	}
+
+
+- Interfaces can merge with same name, type give error of duplicate identifier 
+
+		#You can merge interfaces but not types 
+		interface DudeInterface {
+		  name: string;
+		}
+
+		interface DudeInterface {
+		  age: number;
+		}
+
+		const pawel: DudeInterface = {
+		  name: "Pawel Grzybek",
+		  age: 31
+		};
+		
+		#Type aliases can use computed properties
+		type DudeInterface = {
+		  name: string;
+		}
+
+		type DudeInterface = { // Give the error 
+		  age: number;
+		}
+
+
+
+
+		
+		
+=========================================================================================
+
+
+##Diff bet arrow function and regular function
+
+https://www.geeksforgeeks.org/difference-between-regular-functions-and-arrow-functions/
+
+- The syntax allows an implicit return when there is no body block, resulting in shorter and simpler code in some cases
+
+
+- regular function are best for object methods. 
+- Arrow functions are best for callbacks or methods like map, reduce, or forEach.
+
+
+- Regular function are hoisted.
+- arrow function are not hoisted.
+
+console.log(getData()); // it not give the error 
+function getData(){
+  console.log(arguments);
+}
+console.log(getDataArrow()); // Error: getDataArrow is not a function
+const getDataArrow = () => { function getData(){
+  console.log(arguments);
+} }
+
+
+
+- Arguments objects are available in regular functions.
+- Arguments objects are not available in arrow functions, 
+
+
+function getData(){
+  console.log(arguments);
+}
+const getDataArrow = () => { function getData(){
+  console.log(arguments);
+} }
+
+console.log(getData(1,2,3)); // {0: 1, 1: 2, 2: 3}
+console.log(getDataArrow()); // undefined
+
+- the value of "this" inside an arrow function is basically what its value would have been outside the arrow function(parent function)
+
+
+i.e 
+
+    var name = "global";
+	var person = {
+		name: "jason",
+
+		shout: function () {
+			console.log("my name is ", this.name);
+		},
+		shout2: () => {
+			console.log("my name is ", this.name);
+		},
+		// Shorter syntax
+		shout3() {
+			console.log("my name is ", this.name);
+		}
+	};
+
+	person.shout();  // "jason"
+	person.shout2(); // "global"
+	person.shout3(); // "jason"
+
+
+
+
+=========================================================================================
+
+Typescript 3.7 
+
+# Optional Chaining : 
+
+	const people = { mary: { name: "Mary" } };
+	const caty = people.caty.name; // TypeError: Cannot read property "name" of undefined
+
+	const people = { mary: { name: "Mary" } };
+	const caty = people.caty?.name;  // Optional chaining, value of caty is undefined
+	
+# Nullish coalescing : 
+	- The nullish coalescing operator (??) is a logical operator that returns its right-hand side operand when its left-hand side operand is null or undefined, and otherwise returns its left-hand side operand.
+	
+    const foo = null ?? "default string";
+	console.log(foo);
+	// expected output: "default string"
+
+	const baz = 0 ?? 42;
+	console.log(baz);
+	// expected output: 0
+
+# Top-Level Await
+   
+   
+	// Your only solution right now for a script that does something async: 
+	async function doEverything() { 
+	  ... 
+	  const response = await fetch("http://example.com"); 
+	  ... 
+	} 
+	  
+	doEverything(); // <- eugh (could use an IIFE instead, but even more eugh)
+
+
+
+	// With TS 3.7, With top-level await 
+	// Your script: ... 
+	const response = await fetch("http://example.com"); 
+	// ...
+
+=========================================================================================
+
+# Recursive Type Aliases
+
+	type JSONValue = | string | number | boolean | JSONObject | JSONArray; 
+	interface JSONObject { [x: string]: JSONValue; } 
+	interface JSONArray extends Array<JSONValue> { }
+
+	- That works, but the extra interfaces are only there because they"re required to get around the recursion limitation.
+	
+	Fixing this requires no new syntax; it just removes that restriction, so the below compiles:
+
+	// With TS 3.7: 
+	type JSONValue = | string | number | boolean | { [x: string]: JSONValue } | Array<JSONValue>;
+	
+=========================================================================================	
+# Assert Signatures
+
+	- allows you to write functions that act like type guards as a side-effect.
+
+=========================================================================================	
+# What is the difference between interface and abstract class in Typescript?
+	- (abstract) classes are available at runtime
+	- Strongly couples class together
+	
+	- Interfaces are compile time only
+	- Loosely couples class together
+=========================================================================================
+
+## What is difference between Composition vs Inheritance
+
+	#1. IS-A relationship based on Inheritance, which can be of two types Class Inheritance or Interface Inheritance.
+	
+	#2. Has-a relationship is composition relationship which is a productive way of code reuse.
+	
+Class Car <-- IS-A <-- Class Maruti <-- HAS-A <-- Class Engine
+
+class Car {
+	// Methods implementation and class/Instance members
+	private color: string|undefined;
+	private maxSpeed: number| undefined; 
+	public carInfo(){
+		console.log("Car Color= "+this.color + " Max Speed= " + this.maxSpeed);
+	}
+	public setColor(color : string) {
+		this.color = color;
+	}
+	public setMaxSpeed(maxSpeed: number) {
+		this.maxSpeed = maxSpeed;
+	}
+}
+
+class Maruti extends Car{
+	//Maruti extends Car and thus inherits all methods from Car (except final and static)
+	//Maruti can also define all its specific functionality
+	public MarutiStartDemo(){
+		const MarutiEngine = new Engine();
+		MarutiEngine.start();
+	}
+}
+
+ class Engine {
+	public  start(){
+		console.log("Engine Started");
+	}
+	public  stop(){
+		console.log("Engine Stopped");
+	}
+}
+
+const maruti = new Maruti();
+maruti.MarutiStartDemo();  // Engine Started
+	
+	

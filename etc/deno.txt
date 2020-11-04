@@ -1,0 +1,64 @@
+## What is Deno?
+- Deno is a secure runtime for JavaScript and TypeScript.
+- Deno has JavaScript and Typescript in the front and Rusty in the backend.
+
+================================================================================================
+
+
+## Deno Internal 
+
+- On the front, we write JavaScript and Typescript. 
+- Deno automatically compiles Typescript to JavaScript that is feed to the V8 engine.
+
+- V8 engine communicates with Rust backend via the Rusty V8. 
+- Tokio(In Nodejs we have libuv) allows Deno to use a threat pool and workers to do work for us.
+
+================================================================================================
+
+## Diff bet nodejs and deno
+- https://miro.medium.com/max/1400/1*XdT09HAHgY0K7_tsnMP2Ug.png
+
+
+## Deno Feature 
+
+================================================================================================
+
+## Single Executable
+
+- incex.js 	
+	
+	import "https://deno.land/std/examples/welcome.ts"
+	console.log("Hello");
+	
+	O/P: 
+	Welcome to Deno 🦕
+	Hello
+	
+
+## How to update deno upgrade
+
+   cmd - deno upgrade
+         deno upgrade --version 1.0.2
+		 
+================================================================================================   
+
+## How to manage the dependency 
+	
+	deps.ts file where you"ll re-export all your dependencies
+	
+	// deps.ts
+	export * as path from "https://deno.land/std@0.51.0/path/mod.ts";
+	
+	// app.ts 
+	import { Router } from "./deps.ts";
+	
+	
+	- Create/update the lock file "lock.json".
+	deno cache --lock=lock.json --lock-write src/deps.ts
+	
+	# Include it when committing to source control.
+	git add -u lock.json
+	git commit -m "feat: Add support for xyz using xyz-lib"
+	git push
+
+================================================================================================

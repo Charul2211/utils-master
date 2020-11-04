@@ -1,0 +1,154 @@
+## what is spring 
+- It is provide the loosely coupled and simple dependency injection.
+
+==========================================================================================================
+
+## what is bean
+- instance of the class/object is bean.
+
+==========================================================================================================
+
+\\\
+==========================================================================================================
+
+##
+	Constructor injection - If dependency is mandatory then use it 
+	setter injection - If dependency is optional then use it 
+
+==========================================================================================================
+	
+## which differentiate Spring, Spring MVC and Spring Boot :
+
+Spring:
+	Main Difference is "Test-ability".
+	
+	Spring come with the DI and IOC. Through which all hard-work done by system we don't need to do any kind of work(like, normally we define object of class manually but through Di we just annotate with @Service or @Component - matching class manage those).
+	
+	Through @Autowired annotation we easily mock() it at unit testing time.
+	Duplication and Plumbing code. In JDBC we writing same code multiple time to perform any kind of database operation Spring solve that issue through Hibernate and ORM.
+	Good Integration with other frameworks. Like Hibernate, ORM, Junit & Mockito.
+	Spring MVC
+
+Spring MVC:
+	Spring MVC framework is module of spring which provide facility HTTP oriented web application development.
+	
+	Spring MVC have clear code separation on input logic(controller), business logic(model), and UI logic(view).
+	
+	Spring MVC pattern help to develop flexible and loosely coupled web applications.
+	Provide various hard coded way to customise your application based on your need.
+
+Spring Boot :
+	Create of Quick Application so that, instead of manage single big web application we divide them individually into different Microservices which have their own scope & capability.
+	
+	Auto Configuration using Web Jar : In normal Spring there is lot of configuration like DispatcherServlet, Component Scan, View Resolver, Web Jar, XMLs. (For example if I would like to configure datasource, Entity Manager Transaction Manager Factory). Configure automatically when it's not available using class-path.
+	Comes with Default Spring Starters, which come with some default Spring configuration dependency (like Spring Core, Web-MVC, Jackson, Tomcat, Validation, Data Binding, Logging). Don't worry about versioning issue as well.
+
+==========================================================================================================
+
+
+##Spring Boot Actuator
+
+	Spring Boot Actuator is a sub-project of the Spring Boot Framework. It includes a number of additional features that help us to monitor and manage the Spring Boot application.
+
+==========================================================================================================
+
+##Global exception for all controller/resource 
+
+==========================================================================================================
+
+
+##validation on request input
+
+	AddData(@valid @RequestBody User user)
+
+	in Entity add validation 
+
+	@Size(min=2, message="min 2 char required") 
+	private String name
+
+==========================================================================================================
+
+##HATEOAS
+
+	HATEOAS is an extra level upon REST and is used to present information about a REST API to a client, allowing for a better understanding of the API without the need to bring up the specification or documentation
+
+==========================================================================================================
+
+	
+## Filter : Filter the incoming request. 
+
+	@JsonIgnore
+==========================================================================================================
+	
+## versioning  
+
+	1. Request Param versoning
+	2. Header versoning
+	3. Media type versoning (Accept Header )
+
+==========================================================================================================
+
+
+## Authentication 
+	
+	- dependency add in pom - spring boot starter security 
+	- This generate the password that required to pass on each api call. (we can configure username and password in application.properties)
+
+==========================================================================================================
+	
+	
+## Java Persistence API (JPA)
+	- Before JAP used JDBC, Spring JDBC, myBatis
+	
+	- It is provide the mapping. We can map application class to the table using Entity.
+	- JPQL : It is similar to SQL. 
+
+==========================================================================================================
+
+
+## Diff bet JAP and 
+	- JPA is interface specification. 
+	- Hibernate implements JPA like a class.
+
+==========================================================================================================
+
+## The Richardson Maturity Model 
+
+	Level 0: 
+		Single URI
+		Single HTTP methods
+		
+		To get the data: http://localhost:8080/customer
+		To post the data: http://localhost:8080/customer
+
+	Level 1:
+		Many URI
+		Single HTTP methods
+		
+		Resource 'hotel':
+		Resource 'room' (from Hotel):
+
+		services/hotel/1/rooms/all (or services/hotel/1/rooms) = should bring details of all rooms of the hotel with ID #1.
+
+		services/hotel/1/room/1 = should bring details of the hotel room with ID #1 from hotel #01.
+
+		Here the details of a hotel could be its location, how many stars it has, how many rooms, etc.
+		Here details of the room could be the installation details, size, if it's occupied, etc. 
+		
+	Level 2: 
+		Many URL
+		Many HTTP methods
+		
+		We don't use a single POST method for all requests. We use the GET method when we request a resource, and use the DELETE method when we want to delete a resource. Also, use the response codes of the application protocol.
+		
+		
+	Level 3: 
+		Many URL
+		Many HTTP methods
+		Resource describes own capabilities/interations
+		
+		You now can extract the maximum benefit from the HTTP protocol and services resources using Multimedia (HATEOAS).
+
+==========================================================================================================
+
+

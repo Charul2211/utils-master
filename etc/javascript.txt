@@ -1,0 +1,1996 @@
+﻿Array.prototype.myFunction = function(fn,initial) {
+    let arayEl = this;
+    // console.log(arayEl);
+    let total = initial || 0;
+    for(let i=0;i<arayEl.length;i++) {
+        total = fn(total,arayEl[i]);
+    }
+    return total;
+}
+
+console.log([1,2,3].myFunction(function(total,x){return total +x},10));
+console.log([1,2,3].reduce(function(total,x){return total +x},10));
+console.log([1,2,3].myFunction(function(total,x){return total * x},10));
+console.log([1,2,3].reduce(function(total,x){return total * x},10));
+
+========
+
+
+function fact(n){  
+  if(n > 0){
+	  if(n === 0 || n === 1){
+		return 1;
+	  }else{
+		return (n * fact(n-1))
+	  }
+  }else{
+	return "Please provide possitive value"
+  }
+}
+
+console.log(fact('5'));
+
+
+====
+
+function wc(str){
+  var splitStr = str.split(" ");
+  for(var i = 0; i < splitStr.length; i++ ){
+  splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].slice(1);
+  }
+  return splitStr.join(" ");
+}
+
+console.log(wc("hello world"));
+
+=====
+
+var arr = ["1","2","3"];
+
+function reverseArr(arr){
+  var returnArr = [];
+  for(var i = arr.length -1; i >= 0; i--){
+    returnArr.push(arr[i]);
+  }
+  return returnArr;
+}
+
+reverseArr(arr);
+
+==
+
+var str = "123";
+
+function reverseArr(arr){
+  var returnArr = [];
+  for(var i = arr.length -1; i >= 0; i--){
+    returnArr += arr[i];
+  }
+  return returnArr;
+}
+
+reverseArr(arr);
+
+==
+var str = "123";
+
+function palindrome (str){
+  console.log(str === (str.split("").reverse().join("")));
+}
+
+palindrome (str);
+==
+isNaN("123") //false
+isNaN("aba") //true
+isNaN(123) //false
+==
+<a href="javascript: void(0)">I am a useless link</a> === Void(0) is used to call another method without refreshing the page.
+
+==
+The ‘Navigator’ is used to find the name of the operating system in the client machine.
+==
+
+arr[arr.length] = value;
+
+===========================================================
+
+event.stopPropagation()
+
+Stops the bubbling of an event to parent elements, preventing any parent handlers from being notified of the event.
+
+===========================================================
+
+event.preventDefault()
+
+- e.preventDefault() will prevent the default event from occuring. 
+
+===========================================================
+
+typeof NaN
+"number"
+
+typeof undefined
+"undefined"
+
+typeof null
+"object"
+typeof Object
+"function"
+typeof Boolean
+"function"
+typeof String
+"function"
+typeof Number
+"function"
+
+===
+function sum(x) { 
+console.log("sum2");
+}
+function sum(x, y) { 
+console.log("sum1");
+}
+
+sum(2);  // Sum1
+
+====
+## What is javascript
+
+- JavaScript is a very powerful client-side scripting language. 
+- JavaScript is used mainly for enhancing the interaction of a user with the webpage.
+
+
+## JavaScript is always synchronous
+## JavaScript is only asynchronous in the sense that it can make, for example, Ajax calls, timers
+
+=========================================================================================================
+
+## scripting language 
+
+A script or scripting language is a computer language with a series of commands within a file that is capable of being executed without being compiled
+
+=========================================================================================================
+
+## data types supported by JavaScript
+
+- Undefined
+- Null
+- Boolean
+- String
+- Number
+- Object
+
+
+## advantages of JavaScript?
+
+- Less server interaction − You can validate user input before sending the page off to the server. This saves server traffic, which means less load on your server.
+
+- Immediate feedback to the visitors − They don’t have to wait for a page reload to see if they have forgotten to enter something.
+
+- Increased interactivity − You can create interfaces that react when the user hovers over them with a mouse or activates them via the keyboard.
+
+-Richer interfaces − You can use JavaScript to include such items as drag-and-drop components and sliders to give a Rich Interface to your site visitors.
+
+=========================================================================================================
+## ‘This’ operator in JavaScript
+
+- The JavaScript this keyword refers to the object it belongs to. 
+- This has different values depending on where it is used
+
+=========================================================================================================
+
+## undefined, null, undeclared (not defined)
+
+undefined : Undefined means a variable has been declared but has not yet been assigned a value.
+	var x; // declaring x
+	console.log(x); //output: undefined
+
+null - null is an assignment value
+
+undeclared - Undeclared variables are those that do not exist in a program and are not declared
+	console.log(y);  // Output: ReferenceError: y is not defined
+=========================================================================================================
+
+## Namespace
+- The namespace is used for logical grouping of functionalities. 
+- A namespace can include interfaces, classes, functions and variables to support a single or a group of related functionalities.
+
+=========================================================================================================
+
+##Event capturing vs Event bubbling
+
+Event capturing (Top to Bottom)
+
+When you use event capturing
+
+               | |
+---------------| |-----------------
+| element1     | |                |
+|   -----------| |-----------     |
+|   |element2  \ /          |     |
+|   -------------------------     |
+|        Event CAPTURING          |
+-----------------------------------
+the event handler of element1 fires first, the event handler of element2 fires last.
+
+Event bubbling (Bottom to Top)
+
+When you use event bubbling
+
+               / \
+---------------| |-----------------
+| element1     | |                |
+|   -----------| |-----------     |
+|   |element2  | |          |     |
+|   -------------------------     |
+|        Event BUBBLING           |
+-----------------------------------
+the event handler of element2 fires first, the event handler of element1 fires last.
+
+------------------------------------------------------------------------
+========================================================================
+
+##closure closure-
+- While you create the JavaScript function within another function and the inner function freely access all the variable of outer function i.e.
+
+- Usage of closures is to provide information-hiding, which is helpful in bringing some kind of encapsulation to the language
+
+
+- In below example, inner function have access of param of outer function, multiple time. This is real use case of closure.
+
+
+
+function greet(name){
+  return function(data){
+    return "Hello " + name +" "+ data
+  }
+}
+
+var data = greet("John");
+console.log(data("Sam"));
+console.log(data("July"));
+
+// "Hello John Sam"
+// "Hello John July"
+
+
+function foo(outer_arg) { 
+  
+    function inner(inner_arg) { 
+        return outer_arg + inner_arg; 
+    } 
+    return inner; 
+}
+ 
+var get_func_inner = foo(5); 
+  
+console.log(get_func_inner(4)); // 9
+console.log(get_func_inner(3)); // 8
+
+
+Things to remember:
+
+A closure is an inner function which has access to the outer function scope
+Every call of the outer function creates a new closure
+Every call of the closure interacts with the same outer scope – which is persistent
+
+
+===
+Empty Array :
+
+var arrayList = ["a","b","c","d","e","f"]; // Created array 
+arrayList = []; // Empty the array 
+console.log(arrayList); //[]
+
+=====
+Check is array or not?
+
+var arrayList = [];
+console.log(Array.isArray(arrayList)); //true
+
+=====
+
+undefined and after delete an elements of the array length not affected 
+
+var trees = ["xyz","xxxx","test","ryan","apple"];
+console.log(trees.length); // 5
+console.log(trees); // ["xyz","xxxx","test","ryan","apple"]
+delete trees[3];
+console.log(trees.length); // 5
+console.log(rees); // ["xyz","xxxx","test",undefined,"apple"]
+console.log(trees.length); //5
+===
+
+var bar = true;
+console.log(bar + 0);   //1
+console.log(bar + "xyz");  //truexyz
+console.log(bar + true);  //2
+console.log(bar + false);   // 1
+
+===
+JavaScript Hoisting : Hoisting-
+
+- variables and function declarations are moved to the top of their scope before code execution
+
+ alert(foo()); 
+ 
+ function foo(){ 
+     return 12; 
+ };
+ 
+ 
+ x = 5; 
+ console.log(x); 
+ var x;           // 5
+ 
+==============
+variable typing = varible datatype changes 
+
+var x = 0; //Number 
+x = "123"  //String 
+
+
+==================
+
+<canvas id="c" width="300" height="300"></canvas>
+
+<script>
+  var canvas = document.getElementById( "c" );
+  var drawing_context = canvas.getContext( "2d" );
+  drawing_context.fillStyle = "blue";
+  drawing_context.fillRect( 50, 50, 100, 100 );
+</script>
+
+
+================
+Find number of occurance : 
+
+var arr = [5, 5, 5, 2, 2, 2, 2, 2, 9, 4];
+var counts = {};
+
+for(var i = 0; i< arr.length; i++) {
+    var num = arr[i];
+    counts[num] = counts[num] ? counts[num]+1 : 1;
+}
+
+console.log(counts);
+
+=====================================================================================================================
+================================================================================================
+
+##How would you specify that a scope variable should have one-time binding only?
+
+By using “::” in front of it. This allows the check if the candidate is aware of the available variable bindings in AngularJS.
+
+================================================================================================
+
+##What makes the angular.copy() method so powerful?
+
+- It creates a deep copy of the variable.
+
+- A deep copy of a variable means it doesn’t point to the same memory reference as that variable. 
+- Usually assigning one variable to another creates a “shallow copy”, which makes the two variables point to the same memory reference. 
+- Therefore if we change one, the other changes as well
+
+================================================================================================
+
+## Syntactically Awesome Stylesheets (Sass) and Leaner CSS (LESS) are both CSS preprocessors.
+
+- Nested syntax
+- Variables
+- Mixins	
+- include files 
+
+------------------------------------------------------------------------
+========================================================================
+
+##Diff localStorage vs SessionStorage 
+
+sessionStorage.setItem("key", "value");
+Session Storage store the value, but as long as the browser is open.
+
+localStorage.setItem("key", "value");
+Local Storage store the value, but persists even when the browser is closed and reopened.
+
+cookies
+
+- Cookies are bits of information either sent by the server or set on the client that are saved locally on the user’s browser. They are automatically attached to every request.
+
+- Cookies are saved in name-value pairs like
+i.e  document.cookie = "username=John Doe";
+
+
+------------------------------------------------------------------------
+
+
+================================================================================================
+
+
+##Way to use CSS 
+
+- Internal CSS Stylesheet
+
+<head>
+  <style>
+    h1 {color:blue;}
+    h2 {color:red;}
+    p {color:green;}
+  </style>
+</head>
+
+- External CSS Stylesheet
+
+<head>
+  <link rel="stylesheet" type="text/css" href="/support/style.css" />
+</head>
+
+- Inline CSS Styles
+<p style="color:red;font-size:18px">This is a paragraph!</p>
+
+
+================================================================================================
+
+var a = { "name" : "bhavin"};
+var b = a;
+b.name = "bhavesh";
+console.log(a);  // { "name" : "bhavesh"}
+
+
+================================================================================================
+
+## What is prototype in JavaScript prototype- pro-
+
+The prototype allows us to add new properties and methods to existing object.
+
+i.e 
+
+var obj = {};
+
+obj.toString();  => "[object Object]"
+
+obj => Object {}__proto__: 
+		Objectconstructor: function Object()
+		hasOwnProperty: function hasOwnProperty()
+		isPrototypeOf: function isPrototypeOf()
+		propertyIsEnumerable: function propertyIsEnumerable()
+		toLocaleString: function toLocaleString()
+		toString: function toString()
+		valueOf: function valueOf()
+
+		
+i.e 
+
+//We have created new custom function that inherit from string prototype.
+String.prototype.mystr = function() {
+    return this.replace("Hello","");
+}
+
+var x = new String("Hello world");
+console.log(x.mystr());    //World
+-------------------------------------------------
+//created custom String prtototype.
+var String = function(data){
+  this.data = data;
+}
+
+String.prototype.strlen = function(){
+  return this.data.length + 2;
+}
+
+var xx = new String("Hello world");
+console.log(xx.strlen()); //13
+
+
+=================================================================
+
+##function expression and function declaration
+
+myfun();  // function declaration  - it allow to call
+x();      // Error - x is not defined
+ 
+function myfun(){
+	console.log("function declaration");
+}
+
+let x = function(){
+	console.log("function expression");
+}
+
+=================================================================
+
+##cron - 
+
+create the cron 
+crontab -e
+
+view the cron list :
+crontab -l 
+
+run cron every two minutes :
+*/2 * * * * . /home/ubuntu/cris-restore/hello_world.sh 1> /home/ubuntu/cris-restore/hellolog.txt 2> /home/ubuntu/cris-restore/hellolog.err
+
+minute(s)   hour(s)   day(s)_of_month    month(s)    day(s)_of_week user command
+
+=================================================================
+
+ES-6 
+
+## Let and const  -  let- v/s var 
+
+
+var: -
+1.      var is function-scoped
+2.      var returns undefined when accessing a variable before it"s declared
+		console.log(a); // undefined
+		var a = 10 
+		
+		var is hoisted. 
+		
+3.      var a = 10;
+		var a = 20;
+		// No error 
+
+let: -
+1.      let is block-scoped
+2.      let throw ReferenceError when accessing a variable before it"s declared
+        console.log(x);
+		let x = 10;
+		
+		- let and const hoist but you cannot access them before the actual declaration is evaluated at runtime.
+		
+3.      let x = 10;
+		let x = 20;
+		Uncaught SyntaxError: Identifier "x" has already been declared
+4.      Benefits : It is nicely work with For loop.
+
+const:-
+1.      Const is block-scoped
+2.      Const throw ReferenceError when accessing a variable before it"s declared
+3.      Const cannot be reassigned
+
+
+
+const is global level scope
+- Benefits of const :
+- The person reading the code immediately sees the variable should not be changed
+- Changing the value will result in an error
+
+
+- let and const hoist but you cannot access them before the actual declaration is evaluated at runtime.(variable’s LexicalBinding)
+
+console.log(ee); let ee; 
+
+ReferenceError: Cannot access "ee" before initialization
+    at <anonymous>:1:13
+================================================================================================
+
+##Arrow Function Fat Arraow: arrow-
+
+Benefits : 
+
+//ES6 style
+el.onclick = () => this.doSomething()
+
+1-. The syntax allows an implicit return when there is no body block, resulting in shorter and simpler code in some cases
+
+//ES5 style
+var users = [{name: "bhavesh"}, {name: "bhavin"}];
+var result = users.filter(function(data){
+  return data.name == "bhavin";
+})
+ 
+//ES6 style
+var result1 = users.filter( data => data.name == "bhavin")
+
+2-. => is shorter and simpler than function, although stylistic issues are often subjective
+
+
+	var name = "global";
+	var person = {
+		name: "jason",
+
+		shout: function () {
+			console.log("my name is ", this.name);
+		},
+		shout2: () => {
+			console.log("my name is ", this.name);
+		},
+		// Shorter syntax
+		shout3() {
+			console.log("my name is ", this.name);
+		}
+	};
+
+	person.shout();  // "jason"
+	person.shout2(); // "global"
+	person.shout3(); // "jason"
+
+
+Arrow functions should NOT be used: 
+
+- When we want function hoisting as arrow functions are anonymous.
+- When we want to use this/arguments in a function as arrow functions do not have this/arguments of their own, they depend upon their outer context.
+
+- When we want to use function as a constructor as arrow functions do not have their own this.
+- When we want to add function as a property in object literal and use object in it
+as we can not access this (which should be object itself).
+
+
+================================================================================================================================
+ES5: 
+
+The "use strict" Directive : defines that the JavaScript code should be executed in "strict mode".
+String.trim(): String.trim() removes whitespace from both sides of a string.
+Array.isArray(): The isArray() method checks whether an object is an array.
+Array.forEach(): The forEach() method calls a function once for each array element.
+Array.map()
+Array.filter(): creates a new array from elements with a value larger than 18:
+Array.reduce()
+Array.reduceRight()
+Array.every()
+Array.some()
+Array.indexOf()
+Array.lastIndexOf()
+JSON.parse()
+JSON.stringify()
+Date.now()
+Property Getters and Setters
+New Object Property Methods
+
+
+================================================================================================================================
+------------------------------
+ES6: 
+
+#1. Rest Operator
+
+function sum(...n){
+  let result = 0;
+  for(let i = 0; i < n.length; i++){
+   result += n[i];
+ }
+  return result;
+}
+
+console.log(sum(1,2,3,4,5));  //Here we don"t know numbers of params
+
+------------------------------
+
+#2. Spread Operator => 
+
+let number = [1,2,3];
+let number2 = [4,5]
+console.log([...number,...number2]);
+
+o/p - 
+1
+2
+3
+4
+5
+
+
+let arr = ["a","b"]; 
+let arr2 = [...arr,"c","d"]; 
+
+console.log(arr);
+console.log(arr2);
+arr.push("e");
+console.log(arr);
+console.log(arr2);
+
+(2) ["a","b"]
+(4) ["a","b","c","d"]
+(3) ["a","b","e"]
+(4) ["a","b","c","d"]
+
+------------------------------
+#3. For Of  
+
+let obj = [
+  {
+  "name":"bhavesh",
+  "age":25
+},{
+  "name":"bhavesh",
+  "age":25
+}
+]
+
+for(let item of obj){
+  console.log(item);
+}
+
+o/p-
+{
+  age: 25,
+  name: "bhavesh"
+}
+{
+  age: 25,
+  name: "bhavesh"
+}
+
+
+--------------------------
+
+#4. string literals -> this is use for template 
+
+let name: string = "Sam";
+let a = ` Hello I am Bhavesh and ${name}`;
+
+console.log(a);
+
+o/p- 
+
+Hello I am Bhavesh and Sam
+
+--------------------------
+
+## object literal : The object literal is one of the most popular patterns for creating objects in JavaScript
+
+let firstname = "Sam";
+let lastname = "John"
+
+let person {
+	firstname,   // we can write as above instead of "firstname": firstname
+	lastname
+}
+
+console.log(person);
+--------------------------
+
+#5. Let and const
+--------------------------
+#6. Destructuring: 
+
+let a, b, rest;
+[a, b, ...rest] = [10, 20, 30, 40, 50];
+console.log(a); // 10
+console.log(b); // 20
+console.log(rest); // [30, 40, 50]
+
+--------------------------
+#7. arrow function
+--------------------------
+#8. promise
+--------------------------
+#9. class
+
+The Objects in Javascript are based on Prototypes and follows Prototypal Inheritance. But in ES6 the keyword class is introduced that makes the approach very easy.
+
+--------------------------
+
+#10. ## Generators
+
+Generators are functions that you can use to control the iterator. They can be suspended and later resumed at any time.
+
+
+function* fun() 
+{ 
+    yield 10; 
+    yield 20; 
+    yield 30;     
+} 
+  
+// Calling the Generate Function
+var gen = fun(); 
+console.log(gen.next().value); // 10
+console.log(gen.next().value); // 20
+console.log(gen.next().value); // 30
+
+
+function* fun() 
+{ 
+    yield 10; 
+    yield 20; 
+    yield 30;     
+}
+
+var obj = fun();
+console.log(obj.next().value);
+console.log(obj.next().value);
+console.log(obj.next().value);
+
+----------------------------------------------------------------------------------------------------------
+
+ES7:
+
+#1. EXPONENTIATION OPERATOR (**):
+
+let arr = [1,3]; 
+let [a,b] = arr;
+
+console.log(b ** 2);  // 3*3 = 9 
+
+
+#2. INCLUDES(): 
+
+let arr = [1,3]; 
+console.log(arr.includes(1));  // true
+
+----------------------------------------------------------------------------------------------------------
+
+ES8: 
+
+## String padding
+
+	#1. PADSTART():
+
+	let number = "8989895623";
+	console.log(number.padStart(13, "+91"));
+
+	#2. PADEND():
+
+	let number = "8989895623";
+	console.log(number.padEnd(13, "+91"));
+
+## Trailing comma
+	
+	ar list = [
+    "one",
+    "two",
+    "three",   // It is valid
+	]
+
+	var obj = {
+		one: "1",
+		two: "2",
+		three: "3", //  It is valid
+	}
+
+##Object.keys()
+	var obj = { foo: "bar", baz: 42 };
+	Object.keys(obj)
+	// ["foo", "baz"]
+
+## Object.values()
+	var obj = { foo: "bar", baz: 42 };
+	Object.values(obj)
+	// ["bar", 42]
+
+##Object.entries()
+	var obj = { foo: 'bar', baz: 42 };
+	Object.entries(obj)
+	// [ ["foo", "bar"], ["baz", 42] ]
+
+
+----------------------------------------------------------------------------------------------------------
+ES9:
+
+## asynchronous iterator
+	
+	ES2018 introduces asynchronous iterators, just like regular iterators, except that the next() method returns a Promise. Therefore, await can be used with the for...of loop to run asynchronous operations in a serial manner. For example:
+	
+	async function process(array) {
+	  for await (let i of array) {
+		doSomething(i);
+	  }
+	}
+	
+## Promise .finally
+	
+	A Promise call chain either successfully reaches the last. then(), or fails to trigger. catch(). In some cases, you want to run the same code no matter whether Promise runs successfully or fails, such as clearing, deleting conversations, closing database connections, etc.
+	
+	function doSomething() {
+	  doSomething1()
+	  .then(doSomething2)
+	  .then(doSomething3)
+	  .catch(err => {
+		console.log(err);
+	  })
+	  .finally(() => {
+		// finish here!
+	  });
+	}
+
+----------------------------------------------------------------------------------------------------------
+
+ES10: 
+
+## flat()
+	var arr1 = [1, 2, [3, 4]];
+	arr1.flat(); 
+	// [1, 2, 3, 4]
+
+## trimStart() and trimEnd() 
+
+	let  greeting =  "    Hello World";
+	console.log(greeting.trimStart());// "Hello World"
+
+	let greeting = "Hello World    ";
+	console.log(greeting.trimEnd());// "Hello World"
+
+## new basic data type BigInt
+
+	const sameBigint = BigInt("1234567890123456789012345678901234567890");
+	
+================================================================================================================================
+
+
+Function overloading - functions with same name, but different number of arguments
+
+Function overriding - concept of inheritance. Functions with same name and same number of arguments. Here the second function is said to have overridden the first
+
+
+https://www.youtube.com/watch?v=sxvcFR9plWE
+
+////////////////////JavaScript does not support overloading.
+
+
+OverRidding:
+
+var emp = function(name){
+  this.name = name;
+}
+
+//Here we have override the function 
+ emp.prototype.getName = function(){
+  return this.name.toUpperCase();
+}
+
+
+var empObj = new emp("Mark");
+console.log(empObj.getName());
+
+
+//This code is written in external js file
+emp.prototype.getName = function(){
+  return this.name;
+}
+
+===========================================================================
+
+map v/s reduces
+
+Map takes a callback and run it against every element on the array but whats makes it unique is it generate a new array based on your existing array.
+
+var arr = [1, 2, 3];
+var mapped = arr.map(function(elem) {
+    return elem * 10;
+})
+console.log(mapped)  // it genrate new array => [10,20,30]
+
+
+Reduce method of the array object is used to reduce the array to one single value.
+
+var arr = [1, 2, 3];
+
+var sum = arr.reduce(function(sum, elem){
+    return sum + elem;
+})
+
+console.log(sum) // reduce the array to one single value => 6
+
+
+========================================================================================================
+
+## What is a first class function?
+
+- a function can be passed as an argument to other functions, can be returned by another function and can be assigned as a value to a variable. 
+
+- For example, in the below example, handler functions assigned to a listener
+
+const handler = () => console.log ("This is a click handler function");
+document.addEventListener ("click", handler);
+
+========================================================================================================
+
+## What is a first order function?
+
+- First-order function is a function that doesn’t accept other function as an argument and doesn’t return a function as its return value.
+
+const firstOrder = () => console.log ("Iam a first order functionn!");
+
+========================================================================================================
+
+Higher-Order Functions
+
+- A Higher-Order function is a function that receives a function as an argument or returns the function as output.
+
+- One of the great advantages of using higher order functions when we can is composition.
+
+- We can create smaller functions that only take care of one piece of logic. Then, we compose more complex functions by using different smaller functions.
+
+- Array.prototype.map, Array.prototype.filter and Array.prototype.reduce are some of the Higher-Order functions built into the language.
+
+
+const numbers = [12,324,213,4,2,3,45,4234];
+const isEven = (x) => x % 2 === 0
+const evenNumbers = numbers.filter(isEven);
+console.log(evenNumbers);
+
+
+==========================================================================
+
+ADVANTAGES of typescript:
+
+- TypeScript always highlights errors at compilation time during the time of development, whereas JavaScript points out errors at the runtime.
+- TypeScript supports strongly typed or static typing, whereas this is not in JavaScript.
+- TypeScript runs on any browser or JavaScript engine.
+- Great tooling supports with IntelliSense, which provides active hints as the code is added.
+- It has a namespace concept by defining a module.
+
+==========================================================================
+
+## indexOf:
+
+The indexOf() method returns the position of the first occurrence of a specified value in a string.
+
+var str = "Hello world";
+var n = str.indexOf("world");  // 6
+
+
+==========================================================================
+
+## splice() and slice() 
+
+splice() changes the original array whereas slice() doesn"t
+
+var array=[1,2,3,4,5]; 
+var arr = array.splice(2); 
+console.log(array);   // [1, 2]
+console.log(arr);     // [3,4,5]
+
+
+var array=[1,2,3,4,5]; 
+var arr = array.slice(2); 
+console.log(array);   // [1,2,3,4,5]
+console.log(arr);     // [3,4,5]
+
+==========================================================================
+
+## Array to string
+
+var a = [1,2,3]; console.log(a.join()); //1 1,2,3
+
+## string to array 
+
+var a = "This is test"; var b = a.split(" "); console.log(b); //["This", "is", "test"]
+
+==========================================================================
+
+## Grunt v/s gulp  grunt- gulp-
+
+build tools are designed to save software developers from routine tasks. Some of them are:
+
+- CSS auto-prefixing and preprocessing
+- Minification and concatenation
+- Deleting debugger and console commands
+- Launching unit tests
+- Image optimization
+
+Grant : 
+- The JavaScript Task Runner
+- Grunt makes use of temporary files, 
+- while Grunt performs tasks one after another.
+
+Gulp: 
+- Automate and enhance your workflow
+- Gulp uses Node streams.
+- Gulp is able to perform several tasks at a time
+
+
+##Brower
+
+A package manager for the web
+
+==========================================================================
+
+##What is State?
+ State is simply information about something
+
+##what is immutable and mutated?
+mutated - state value can change
+immutable - state value cant change
+
+## mutated: 
+
+var a = {name: "Sam"};
+var b = a;
+b.name = "John";
+console.log(a);  //{name: "John"}
+console.log(b);  // {name: "John"}
+
+//To prevent this in object
+
+var a = {name: "John", age:21};
+var b = Object.assign({}, a, {name:"Sam"});
+b.age = 25;
+console.log(b);  //{name: "Sam", age: 25}
+console.log(a); //{name: "John", age: 21}
+
+
+//To prevent this in array
+
+var a = [1,2,3];
+var b = a.concat(4);
+b.push(4);
+console.log(b)   // [1, 2, 3, 4]
+console.log(a)   // [1, 2, 3]
+
+
+// We can use spread operator 
+## immutable: 
+
+var a = 10;
+var b = a;
+b = 20;
+console.log(a); //10
+console.log(b); //20
+
+
+Two type of variable: 
+1. Primitive type - Number, string, Boolean
+2. Reference Type - Object, array 
+
+===========================================================================================================
+
+## Lexical Scoping / static scope
+
+- Variables declared outside of a function are global variables and are visible everywhere in a JavaScript program. 
+- Variables declared inside a function have function scope and are visible only to code that appears inside that function.
+
+
+var scope = "I am global";
+function whatismyscope(){
+   var scope = "I am just a local";
+   function func() {return scope;}
+   return func();
+}
+
+whatismyscope();  //"I am just a local"
+
+==========================================================================================================
+
+## Diff bet Promise and callback
+
+- Promises code is much more readable then Callback code.
+- Promise code is much easier to debug then callback code.
+- Promises are better when it comes to handle more then one AJAX requests then callback code.
+
+i.e: 
+
+Promise.all ([ ajaxResuest1(), ajaxResuest2(), ajaxResuest3() ]).then( function ( result ) {
+    //do work. result is an array contains the values of the three fulfilled promises.
+}).catch( function ( error ) {
+    //handle the error. At least one of the promises rejected.
+});
+
+i.e:
+
+function api1(){
+  return new Promise((resolve, reject) => {
+    fetch("https://api.github.com/users/KrunalLathiya")
+      .then(response => response.json())
+      .then(data => {
+        resolve(data);
+      })
+      .catch(error => console.error(error))
+  })
+}
+
+function api2(data){
+  console.log("api2" + data);
+  return new Promise((resolve, reject) => {
+    fetch("https://jsonplaceholder.typicode.com/posts/1")
+      .then(response => response.json())
+      .then(data => {
+        resolve(data);
+      })
+      .catch(error => console.error(error))
+  })
+}
+
+function api3(data){
+  console.log("api3" + data);
+  return new Promise((resolve, reject) => {
+    fetch("https://jsonplaceholder.typicode.com/users/1/todos")
+      .then(response => response.json())
+      .then(data => {
+        resolve(data);
+      })
+      .catch(error => console.error(error))
+  })
+}
+
+
+api1().then(api2).then(api3).then( data => {
+  console.log(data);
+})
+
+NOTE: When we call in dependent call, (p1 -> p2 -> p3), we pass it as param without brackets ()
+==========================================================================================================
+
+## Diff bet Promise and async await 
+
+- Promises is used to call multiple asynchronous jobs using Promise.all() 
+- Other case async and await is good.
+
+
+===========================================================================================================
+
+## Merge two array object 
+
+let arr1 = [
+    { id: "abdc4051", date: "2017-01-24" },
+    { id: "abdc4052", date: "2017-01-22" }
+];
+
+let arr2 = [
+    { id: "abdc4052", name: "abc" },
+    { id: "abdc4051", name: "ab" },
+];
+
+let arr3 = [];
+
+arr1.forEach((itm, i) => {
+  arr3.push(
+  Object.assign({}, 
+  itm, 
+  (arr2.find((itmInner) => itmInner.id === arr1[i].id))));
+});
+
+console.log(JSON.stringify(arr3));
+
+===========================================================================================================
+
+===========================================================================================================
+
+
+## MVVM MVC
+
+#1. Models: Models contain data information. Contains the business logic and ways to represent data. 
+
+#2. Controller: Acts as the connection between view and model. View calls Controller and Controller calls the model. 
+
+- It basically informs the model and/or the view to change as appropriate.
+
+#3. View: Deals with UI part. Interacts with the user.
+
+MVVM (Model View View Model)
+
+===========================================================================================================
+
+## ViewModel:
+
+- It holds the data that’s displayed in the view.
+- Responds to view events, aka presentation logic.
+- Calls other functionalities for business logic processing.
+
+===========================================================================================================
+
+## what is object?
+
+- Object is collection of name-value pairs.
+var myObject= {empId : “001”, empCode :”X0091”};
+
+Types of creating an object
+1.      Object Literals: 
+		- var emptyObj = {};
+		
+2.      Object constructor
+		- var obj = new Object();
+
+===========================================================================================================
+		
+## How To Achieve Inheritance in JavaScript?
+
+- We can implement inhiritance using some alternative ways as we can not defined class keyword.
+
+#1. Pseudo-classical inheritance
+- In this way, create a constructor function using the new operator and add the members function with the help for constructor function prototype.
+
+// Define the Person constructor function
+function Person() {}
+Person.prototype.sayHello = function(){
+    alert ("hello");
+};
+
+// Define the Student constructor function
+function Student() {}
+// Inherit from Person
+Student.prototype = new Person();
+
+// Correct the constructor pointer, because it points to Person
+Student.prototype.constructor = Student;
+
+// Replace the sayHello method (a polymorphism example)
+Student.prototype.sayHello = function () {
+    alert("hi, I am a student");
+}
+
+var student1 = new Student();
+student1.sayHello();
+
+#2. Prototype inheritance :  In this mechanism, we can reuse the existing objects as prototypes.
+
+let car = function(model){
+	this.model = model;
+}
+
+car.prototype.getModel = function(){
+	return this.model;
+}
+
+let obj = new car("toyota");
+console.log(obj.getModel());   //toyota
+
+
+========================================================================================================
+
+
+## What Is a Public, Private and Static Variable in JavaScript?
+
+- I am going to explain like strongly typed object-oriented language (OOPs) like(C#, C++, and Java, etc.).
+
+Fist I am creating a conductor class and trying to achieve to declare the public, private and static variables and detail as given below –
+
+
+function MyClass () { // constructor function
+  var privateVariable = "foo";  // Private variable 
+
+  this.publicVariable = "bar";  // Public variable 
+
+  this.privilegedMethod = function () {  // Public Method
+    alert(privateVariable);
+  };
+}
+
+// Instance method will be available to all instances but only load once in memory 
+MyClass.prototype.publicMethod = function () {    
+  alert(this.publicVariable);
+};
+
+// Static variable shared by all instances
+MyClass.staticProperty = "baz";
+
+var myInstance = new MyClass();
+
+
+========================================================================================================
+
+## What does “favor object composition over class inheritance” mean?
+
+-  code reuse should be achieved by assembling smaller units of functionality into new objects instead of inheriting from classes and creating object taxonomies.
+
+========================================================================================================
+
+## Call, Apply and Bind   - Call Apply Bind
+
+#1. Call: The call() method invokes a function immediately & does not create a new copy of the function and arguments provided one by one.
+
+#2. Apply: The Apply() method invokes a function immediately & does not create a new copy of the function and arguments provided in array.
+
+#3. Bind:  The bind() creates a copy of function, sets the this keyword context and arguments provided one by one.
+
+
+##Call
+
+	var person1 = {firstName: "Jon", lastName: "Kuperman"};
+	var person2 = {firstName: "Kelly", lastName: "King"};
+
+	function say(greeting) {
+		console.log(greeting + " " + this.firstName + " " + this.lastName);
+	}
+
+	say.call(person1, "Hello"); // Hello Jon Kuperman
+	say.call(person2, "Hello"); // Hello Kelly King
+
+
+##Apply
+
+	var person1 = {firstName: "Jon", lastName: "Kuperman"};
+	var person2 = {firstName: "Kelly", lastName: "King"};
+
+	function say(greeting) {
+		console.log(greeting + " " + this.firstName + " " + this.lastName);
+	}
+
+	say.apply(person1, ["Hello"]); // Hello Jon Kuperman
+	say.apply(person2, ["Hello"]); // Hello Kelly King
+
+##Bind
+
+	var person1 = {firstName: "Jon", lastName: "Kuperman"};
+	var person2 = {firstName: "Kelly", lastName: "King"};
+
+	function say(greeting) {
+		console.log(greeting + " " + this.firstName + " " + this.lastName);
+	}
+
+	var sayHelloJon = say.bind(person1);
+	var sayHelloKelly = say.bind(person2);
+
+	sayHelloJon("Hello"); // Hello Jon Kuperman
+	sayHelloKelly("Hey"); // Hey Kelly King
+
+
+- The value of this always refers to the object left of the dot from where is the function is called
+
+var x = 9; // this refers to global "window" object here in the browser
+var person = {
+  x: 81,
+  getX: function() {
+    return this.x;
+  }
+};
+
+console.log(person.getX()) // 81
+var y = person.getX; // It will return 9, because it will call global value of x(var x=9).
+console.log(y()) // 9 as it called as window.y(); , window is left side so it will print 9
+console.log(y.bind(person));
+
+========================================================================================================
+
+function getData(){
+  try{
+    throw "Would you like to do it";
+  }catch(e){
+    console.log(e);
+    throw "It is done with Error" + e;
+  }finally{
+    return "code executed."
+  }
+}
+
+var result = getData(); // code executed.
+
+o/p:
+"Would you like to do it"
+"code executed."
+
+Ans : As finally override the return value.
+========================================================================================================
+
+console.log([1] == [1]); // false
+console.log([1] === [1]); // false
+
+const a = [1];
+const b = [2];
+
+console.log(a == a); // true
+
+Ans: If we do direct compare the array (like [1] == [1]), it will compare the memory allocation.
+
+========================================================================================================
+
+for(var i = 0; i < 5; i++){
+  setTimeout(() =>{
+    console.log(i);
+  },0)
+}
+
+o/p: 
+5
+5
+5
+5
+5
+
+Ans: Var has functional level scope.
+
+for(let i = 0; i < 5; i++){
+  setTimeout(() =>{
+    console.log(i);
+  },0)
+}
+
+o/p: 
+1
+2
+3
+4
+5
+
+Ans: Let has block level scope.
+
+========================================================================================================
+##debounce javascript
+
+- In the debouncing technique, no matter how many times the user fires the event, the attached function will be executed only after the specified time once the user stops firing the event.
+
+========================================================================================================
+
+##Throttling in JavaScript (search functionality)
+
+- Throttling is a technique in which, no matter how many times the user fires the event, the attached function will be executed only once in a given time interval.
+
+- In the case of search functionality we can use throttlling.
+
+##Use of Debouncing and Throttling in Real Life
+
+- We can throttle a button click event, if we do not want the user to spam by clicking the button frequently.
+
+- With Mouse move event, if we are displaying the location coordinates of the mouse pointer, it is much better to show the coordinates once the user reached the desired location. Here, we can use debouncing.
+
+- In the case of window resize event, if we want to redraw the UI only when the user has fixed the size of the window, we can use debouncing.
+
+- In the case of search functionality we can use throttlling.
+
+
+https://stackoverflow.com/questions/5027045/what-is-inheritance-in-javascript
+
+========================================================================================================
+
+
+##constructor function: 
+
+- We use "new" keyword, It will return this.
+
+function Circle(radius){
+  this.radius = radius;
+  this.draw = function(){
+    console.log("Draw");
+  }
+}
+
+const obj = new Circle(5);
+console.log(obj.radius)
+
+========================================================================================================
+## Factory function:
+
+- It will return new object.
+
+function circle(radius){
+   return {
+     radius,
+     draw(){
+       console.log("draw");
+     }
+   }
+
+}
+
+const obj = Circle(5);
+console.log(obj.radius);
+
+========================================================================================================
+
+## Design patterns
+
+- Design patterns are programming strategies for solving a common problem. By using the design patterns you can make your code more flexible, reusable and maintainable
+
+
+1. Creational Design Patterns
+- problem by controlling the creation process of an object.
+2. Structural Design Patterns
+- It help obtain new functionalities without tampering with the existing ones.
+3. Behavioral Design Patterns
+- These patterns are concerned with improving communication between dissimilar objects.
+
+
+========================================================================================================
+## Difference between SessionState and ViewState
+
+- A ViewState is a state of a page within a browser wherein the values of controls persist when post back operation is done.
+When another page is loaded, the previous page data is no longer available.
+
+- SessionState is the data of a user session and is maintained on the server side. This data available until user closes the browser or session time-outs.
+
+========================================================================================================
+
+## Promise 
+
+- Three state of Promise - Fulfilled, Rejected, Pending
+
+#Promise.all : will reject as soon as one of the Promises in the array rejects.
+
+#Promise.allSettled : will never reject - it will resolve once all Promises in the array have either rejected or resolved.
+
+
+Promise.all([Promise.reject(1), Promise.resolve(2)])
+  .catch((err) => {
+    console.log("err", err);
+});
+  
+O/P: err 1
+  
+Promise.allSettled([Promise.reject(1), Promise.resolve(2), Promise.reject(3)])
+  .then(console.log);
+  
+O/P: 
+
+[
+  {
+    "status": "rejected",
+    "reason": 1
+  },
+  {
+    "status": "fulfilled",
+    "value": 2
+  }, 
+  {
+    "status": "rejected",
+    "reason": 3
+  },
+]
+
+#race: 
+- race() will return the promise instance which is firstly resolved or rejected:
+
+	var p1 = new Promise(function(resolve, reject) { 
+    setTimeout(resolve, 500, "one success"); 
+	});
+	var p2 = new Promise(function(resolve, reject) { 
+		setTimeout(reject, 100, "two rejected"); 
+	});
+
+	Promise.race([p1, p2]).then(function(value) {
+	  console.log(value); // "two"
+	  // Both resolve, but p2 is faster
+	}).catch(e => {
+	  console.log(e);
+	});
+
+o/p:
+two
+
+#Promise.any() is fulfilled with the value of the first fulfilled promise regardless of other rejected promises.  
+
+// Add bluebird dependency
+
+
+	const promisesCalls = [
+                       new Promise.reject("Error1"), 
+                       new Promise.resolve("done 1"),
+                       new Promise.reject("Error2"), 
+                       new Promise.resolve("done 2")
+                      ];
+
+
+	const promise = Promise.any(promisesCalls);
+
+	promise.then((response) => {
+		console.log(response);  // "done 1"
+	}).catch((e) => {
+		console.log('error');   // Not executed
+		console.log(e);
+	});
+
+=======
+## Copy the array/object without shallow copy
+
+Shallow Copy : A new object is created that has an exact copy of the values in the original object. just the reference addresses are copied 
+
+
+## Array 
+
+let a = [1,2,3]; 
+let b = [...a]; 
+a[0]=10;
+//a [10, 2, 3]
+//b [1, 2, 3]
+
+## Object 
+
+let a = {a:10,b:20}; 
+let b = Object.assign({}, a, {}); 
+a.a = "Test"; 
+
+a // {a: "Test", b: 20}
+b // {a:10, b:20}
+
+## Array of object
+
+let a = [{ x:{z:1} , y: 2}];
+let b = JSON.parse(JSON.stringify(a));
+b[0].x.z=0
+console.log(JSON.stringify(a)); //[{"x":{"z":1},"y":2}]
+console.log(JSON.stringify(b)); // [{"x":{"z":0},"y":2}]
+
+
+========================================================================================================
+
+Ticky Logic question:
+
+#1.
+function foo() {
+  let a = b = 0;
+}
+
+foo();
+typeof a; // => ???
+typeof b; // => ???
+
+
+function foo() {
+  let a;
+  window.b = 0;
+  a = window.b;
+}
+
+foo();
+typeof a;        // => "undefined"
+typeof window.b; // => "number"
+
+
+#2.
+const clothes = ["jacket", "t-shirt"];
+clothes.length = 0;
+
+clothes[0]; // => undefined
+
+#3. Being easily overlooked, this semicolon creates a null statement. The null statement is an empty statement that does nothing.
+
+const length = 4;
+const numbers = [];
+for (var i = 0; i < length; i++);{
+  numbers.push(i + 1);
+}
+
+numbers; // => [5]
+
+Above code is same like below 
+
+const length = 4;
+const numbers = [];
+var i;
+for (i = 0; i < length; i++) {
+  // does nothing
+}
+{ 
+  // a simple block
+  numbers.push(i + 1);
+}
+
+numbers; // => [5]
+
+#4.
+
+function arrayFromValue(item) {
+  return
+    [item];
+}
+
+arrayFromValue(10); // => ???
+
+- this newline makes the JavaScript automatically insert a semicolon between return and [item] expression.
+
+function arrayFromValue(item) {
+  return;
+  [item];
+}
+
+arrayFromValue(10); // => undefined
+
+#5. 
+
+0.1 + 0.2 === 0.3 // => false
+
+0.1 + 0.2; // => 0.30000000000000004
+
+#6. 
+
+let i;
+for (i = 0; i < 3; i++) {
+  const log = () => {
+    console.log(i);
+  }
+  setTimeout(log, 100);
+}
+
+// 3,3,3
+
+#7. 
+// interviewer: what will the following code output?
+const arr = [10, 12, 15, 21];
+for (var i = 0; i < arr.length; i++) {
+  setTimeout(function() {
+    console.log("Index: " + i + ", element: " + arr[i]);
+  }, 3000);
+}
+
+// Index 4 element undefined
+
+========================================================================================================
+
+## What is Coercion in JavaScript?
+
+In JavaScript conversion between different two build-in types called coercion.
+
+Here"s an example of explicit coercion:
+
+var a = "42";
+var b = Number( a );
+a;              // "42"
+b;              // 42 -- the number!
+
+
+var a = "42";
+var b = a * 1;  // "42" implicitly coerced to 42 here
+a;              // "42"
+b;              // 42 -- the number!
+
+
+## How would you check if a number is an integer?
+
+function isInt(num) {
+  return num % 1 === 0;
+}
+
+console.log(isInt(4)); // true
+
+## How would you create a private variable in JavaScript?
+
+function func() {
+  var priv = "secret code";
+  return function() {
+    return priv;
+  }
+}
+
+var getPriv = func();
+console.log(getPriv()); // => secret code
+
+
+==========================================================================================
+
+## Operator precedence
+
+let x = 10 * 3 + 2 => 32 
+
+let x = 10 + 3 * 2 => 16
+
+let x = (10 + 5) * 2 => 30 
+
+Precedence : parenthesis , multiple, Division, addition, substract 
+
+==========================================================================================
+
+## short-circuit-evaluation (ampersand symbol)
+
+let x = true; 
+let b = x && "X is true"; // X is true
+
+==========================================================================================
+
+## Diff bet map and forEach 
+
+- The first difference between map() and forEach() is the returning value. 
+	The forEach() method returns undefined and 
+	map() returns a new array with the transformed elements.
+	
+	const myAwesomeArray = [1, 2, 3, 4, 5]
+	myAwesomeArray.forEach(x => x * x)
+	//>>>>>>>>>>>>>return value: undefined
+
+	myAwesomeArray.map(x => x * x)
+	//>>>>>>>>>>>>>return value: [1, 4, 9, 16, 25]
+
+
+-  forEach is not chainable because, as you might guess, it returns undefined.
+-  map() is chainable, This means that you can attach reduce(), sort(), filter() and so on after performing a map() method on an array.
+
+	
+	const myAwesomeArray = [1, 2, 3, 4, 5]
+	myAwesomeArray.forEach(x => x * x).reduce((total, value) => total + value)
+	//>>>>>>>>>>>>> Uncaught TypeError: Cannot read property "reduce" of undefined
+	myAwesomeArray.map(x => x * x).reduce((total, value) => total + value)
+	//>>>>>>>>>>>>>return value: 55
+	
+- forEach() does not mutate the array on which it is called. 
+- map() does not mutate the array on which it is called. 
+
+
+==========================================================================================
+## Diff bet spread and rest opeator as both have same ... 
+
+- When we see "..." in the code, it is either rest parameters or the spread operator.
+
+	There’s an easy way to distinguish between them:
+
+	When ... is at the end of function parameters, it’s “rest parameters” and gathers the rest of the list into the array. 
+
+	When ... occurs in a function call or alike, it’s called a “spread operator” and expands an array into the list. Use patterns:
+	
+
+==========================================================================================
+## How to prevent the change the value of object key
+
+	const car = { make: "Honda", year: 2020}
+	Object.getOwnPropertyDescriptor(car, "make")
+	// 	{value: "Honda", writable: true, enumerable: true, configurable: true}configurable: trueenumerable: //   truevalue: "Honda"writable: true__proto__: Object
+	Object.defineProperty(car, "make", { writable: false})
+	car.make = "Ford"
+	car // {make: "Honda", year: 2020}
+
+==========================================================================================
+
+## Event loop understanding :
+
+	http://latentflip.com/loupe/
+
+==========================================================================================
+
+## Currying 
+
+	Currying is when you break down a function that takes multiple arguments into a series of functions that each take only one argument
+	
+	function add (a, b) {
+	  return a + b;
+	}
+	add(3, 4); // returns 7
+	
+	function add (a) {
+	  return function (b) {
+		return a + b;
+	  }
+	}
+	add(3)(4);
+
+==========================================================================================
+## Links 
+
+https://www.freecodecamp.org/news/nine-most-common-mistakes-developers-make-in-javascript/
+
+==========================================================================================
+
+## defer 
+
+<script src="demo_defer.js" defer></script>
+
+The defer attribute is a boolean attribute.
+
+	When present, it specifies that the script is executed when the page has finished parsing.
+
+	Note: The defer attribute is only for external scripts (should only be used if the src attribute is present).
+
+	Note: There are several ways an external script can be executed:
+
+	If async is present: The script is executed asynchronously with the rest of the page (the script will be executed while the page continues the parsing)
+	
+	If async is not present and defer is present: The script is executed when the page has finished parsing
+	
+	If neither async or defer is present: The script is fetched and executed immediately, before the browser continues parsing the page
+
+==========================================================================================
+
+## shareReplay & publishReplay
+
+	Generally, if the observable is to be used in a template (html file) use shareReplay. The advantage being you won't have to worry about unsubscribing etc.
+	
+	But the very important difference between them is:
+
+	- shareReplay: won't stop emitting until it's completed, no matter if there are no subscriptions anymore or not.
+	
+	- publishReplay: will stop after the last subscriber unsubscribes if used together with refCount
+
+==========================================================================================
+
+## Object vs Map in JavaScript 
+
+	-The Map is an instance of an object but the vice-versa is not true.
+	
+		var map = new Map();
+		var obj = new Object(); 
+		console.log(obj instanceof Map);   // false
+		console.log(map instanceof Object);  // true
+		
+	-In Object, the data-type of the key-field is restricted to integer, strings, and symbols. 
+	-Whereas in Map, the key-field can be of any data-type (integer, an array, an object)
+		
+		var map = new Map();//Empty 
+		map.set(1,'1');
+		map.set('one', 1);
+		map.set('{}', {name:'Hello world'});
+		map.set(12.3, 12.3)
+		map.set([12],[12345])
+
+		for(let [key,value] of map.entries())
+		  console.log(key+'---'+value)
+		  
+	-In the Map, the original order of elements is preserved. 
+	-the original order of elements is not true in case of objects.
+	
+
+==========================================================================================
+	
+## function composition in javascript
+
+	Function composition is the process of combining two or more functions to produce a new function.
+	
+	const add = (a, b) => a + b;
+	const mult = (a, b) => a * b;
+	add(2, mult(3, 5))

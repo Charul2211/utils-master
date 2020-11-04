@@ -1,0 +1,130 @@
+##INNER JOIN: returns rows when there is a match in both tables.
+
+SELECT `emp`.`id`, `emp`.`name`, `salary`.`amount`
+FROM `emp`
+INNER JOIN salary 
+ON emp.id = salary.emp_id
+
+##LEFT JOIN / LEFT OUTER JOIN: returns all rows from the left table, even if there are no matches in the right table.
+
+SELECT `emp`.`id`, `emp`.`name`, `salary`.`amount`
+FROM `emp`
+LEFT JOIN salary 
+ON emp.id = salary.emp_id
+
+##RIGHT JOIN / RIGHT OUTER JOIN: returns all rows from the right table, even if there are no matches in the left table.
+
+SELECT `emp`.`id`, `emp`.`name`, `salary`.`amount`
+FROM `emp`
+RIGHT JOIN salary 
+ON emp.id = salary.emp_id
+
+##FULL JOIN / FULL OUTER JOIN / OUTER JOIN: returns rows when there is a match in one of the tables.
+
+SELECT `emp`.`id`, `emp`.`name`, `salary`.`amount`
+FROM `emp`
+FULL JOIN salary 
+ON emp.id = salary.emp_id
+
+##
+SELECT emp.name FROM emp 
+INNER JOIN salary
+ON emp.id = salary.emp_id
+WHERE salary.amount = (SELECT MAX(salary.amount) FROM salary)
+
+##
+SELECT emp.name FROM emp 
+INNER JOIN salary
+ON emp.id = salary.emp_id
+ORDER BY salary.amount DESC
+LIMIT 0, 1
+
+##
+SELECT emp.name FROM emp 
+INNER JOIN salary
+ON emp.id = salary.emp_id
+ORDER BY salary.amount DESC
+LIMIT 1, 2
+
+
+## MYISAM vs INNODB
+
+MYISAM:
+
+- MYISAM supports Table-level Locking
+- MyISAM does not support foreign keys hence we call MySQL with MYISAM is DBMS
+- MYISAM not supports transaction. You cannot commit and rollback with MYISAM. Once you issue a command it’s done.
+- MYISAM supports fulltext search
+- You can use MyISAM, if the table is more static with lots of select and less update and delete.
+
+INNODB:
+
+- InnoDB supports Row-level Locking
+- InnoDB support foreign keys hence we call MySQL with InnoDB is RDBMS
+- InnoDB supports transaction. You can commit and rollback with InnoDB
+
+##What do DDL, DML, and DCL stand for?
+
+DDL is the abbreviation for Data Definition Language dealing with database schemas An example is CREATE TABLE command. 
+DML denotes Data Manipulation Language such as SELECT, INSERT etc. 
+DCL stands for Data Control Language and includes commands like GRANT, REVOKE etc.
+
+## DROP, DELETE, TRUNCATE
+
+- drop table tablename;
+- No more table. No more data.
+- Use this when you don"t need that table any more.
+
+- truncate table tablename;
+- the table is empty
+- Use this when you just want an empty table. 
+- No Rollback
+
+- delete from tablename;
+- This lets you filter which rows to delete based on an optional WHERE clause.
+- Use this when you want to delete specific records, eg: DELETE FROM tablename WHERE username = "joe
+- Can Rollback
+
+##What is the difference between primary key and unique key?
+-Primary key does not allow ‘NULL’ but unique key allows it. 
+
+##ACID is the abbreviation for 
+- Atomicity, Consistency, Isolation, and Durability
+
+##How to get Last insertID in MYSQL?
+Use LAST_INSERT_ID() MySQL Function
+
+##How many columns can we create for index?
+16
+
+
+##MYSQL Function
+- always returns a value 
+-A function can be called from inside a statement just like any other function and can return a scalar value.
+
+
+##PROCEDURE 
+- return values is not mandatory
+-A procedure is invoked using a CALL statement and can only pass back values using output variables.
+
+## Print query
+
+DB::enableQueryLog();
+DB::getQueryLog();
+
+## Recently ID
+return Response::json(array("success" => true, "last_insert_id" => $data->id), 200);
+
+
+
+## How to delete duplicate rows in SQL Server?
+	
+  Common table expression(CTE)
+  
+  WITH CTE AS(
+	   SELECT [col1], [col2], [col3], [col4], [col5], [col6], [col7],
+		   RN = ROW_NUMBER()OVER(PARTITION BY col1 ORDER BY col1)
+	   FROM dbo.Table1
+	)
+	DELETE FROM CTE WHERE RN > 1
+ 

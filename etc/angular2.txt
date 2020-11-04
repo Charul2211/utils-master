@@ -1,0 +1,2141 @@
+## What is Angular 
+
+- Typescript based 
+- component/service based
+- open-source
+- Front end framework 
+- Develop and maintain by Google
+
+--------------------------------------------------------------
+
+##What are the advantages of using Angular 2 over Angular 1?
+
+
+AngularJS
+- This uses JavaScript to build the application
+- Based on controllers concept
+- $routeprovider.when() is used for routing 
+- AngularJS supports the MVC design model
+
+Angular
+- Introduced the typescript to write the application
+- This is a component based UI approach
+- @routeConfig is used for routing 
+- Angular relies on components and directives instead
+- Better Speed and Performance - AOT
+
+
+--------------------------------------------------------------
+
+
+
+## ADVANTAGES of Angular 
+
+- Better Speed and Performance:  AOT, Lazy loading, Tree shaking
+- Simpler Dependency Injection
+- Modular, cross platform
+- Benefits of ES6 and Typescript.
+
+
+## DISADVANTAGES of Angular 
+
+- Complex SPA - it can be inconvenient and laggy(slow to respond) to used due to their size 
+- Dynamic application - is not always perform well 
+- Learning curve - it required decent time to gain 
+
+--------------------------------------------------------------
+
+## what is new in angular8 
+
+ivy engine : 
+- Angular lvy is a next generation rendering pipeline, which reduce the bundle size.
+- Load faster in slower network 
+
+Developer pespective: 
+Ivy is a complete rewrite of the compiler (and runtime) in order to achieves better build sizes that load faster. 
+
+- You may be disappointed by the fact we cut only near 15% of the bundle size.
+
+- It’s just as simple as setting the angularCompilerOptions section enableIvy flag to true in tsconfig.app.json
+  "angularCompilerOptions": {
+    "enableIvy": true
+}
+
+OR 
+ng new angular-project --enable-ivy  
+ 
+ 
+ 
+Bezel engine : 
+- It provide the tool can be used to build frontends and backends.
+- It allowing incremental builds, that save time on the rebuild.
+
+Differential Loading:
+- It will produce the two bundle set.
+
+1.Modern browser that support the ES6
+2.Older(legacy) browser that only support ES5
+
+- It helps to reduce the bundle size
+
+- To create optimized bundles for modern browsers.
+- To create legacy bundles for older browsers.
+- To ensure that the browser loads the right set of bundles.
+- To automate the process by facilitating an CLI extension.
+
+--------------------------------------------------------------
+
+## what is new angular7 
+- split of the @angular/core will have no more than 418 modules.
+- Drag and drop of item
+- Virtual scrolling
+- Application performance improvements : 
+
+ {
+   "budgets": 
+		"maximumWarning": "2mb",
+		"maximumError": "5mb"
+ }
+
+--------------------------------------------------------------
+## What is new in Angular6?
+
+
+- typescript 2.7
+
+- Angular Elements – It allows converting Angular components into web components and embeds the same in some non-Angular application
+
+- Tree Shakeable Provider – Angular 6 introduces a new way of registering a provider directly inside the @Injectable() decorator. It is achieved by using the providedIn attribute
+
+- RxJS 6 – Angular 6 makes use of RxJS 6 internally
+- // Rxjs 5 
+  import { Observable }	from "rxjs/Observable";
+  import { Subject }	from "rxjs/Subject";
+  import { catchError }	from "rxjs/operators/catchError";
+  
+  // Rxjs 6 
+  import { Observable, Subject } from "rxjs";
+  import { catchError }	from "rxjs/operators";
+	
+- i18n (internationalization) – Without having to build the application once per locale, any Angular application can have “runtime i18n
+
+
+--------------------------------------------------------------
+
+
+## what is new angular4 
+
+- Animation feature pullout of @angular/core and moved to into their package
+- new if/else style syntax with *ngIf structure directive
+
+------------------------------------------------------------------------
+<div *ngIf="isValid;else other_content">
+    content here ...
+</div>
+
+<ng-template #other_content>other content here...</ng-template>
+
+------------------------------------------------------------------------
+
+<p>{{ "ninja squad" | titlecase }}</p>
+<!-- will display "Ninja Squad" -->
+
+------------------------------------------------------------------------
+
+deprecate : 
+
+render => render 2
+animation => new seprate package 
+
+--------------------------------------------------------------
+
+## string interpolation
+
+- Angular Interpolation / String Interpolation. String Interpolation uses template expressions in double curly {{ }} braces to display data from the component.
+
+--------------------------------------------------------------
+
+##How routing works in Angular 2.
+
+app.component.ts
+<router-outlet></router-outlet>
+
+
+app-routing.module.ts
+import { Routes, RouterModule } from "@angular/router";
+const routes: Routes = [
+{
+    path:"about",
+    component: AboutUserComponent
+}
+
+
+app.module.ts
+inlcude this app-routing.module.ts
+
+--------------------------------------------------------------
+
+##What is lazy loading and How to enable lazy loading in angular 2?	
+
+-Lazy loading speeds up the application initial load time by splitting the code into multiple bundles and loading them on demand
+
+i.e :
+
+- Created separated customer module
+
+customers-routing.module.ts:
+
+const routes: Routes = [
+  {
+    path: "",
+    component: CustomerListComponent
+  }
+];
+
+app-routing.module.ts:
+const routes: Routes = [
+  {
+    path: "customers",
+    loadChildren: () => import("./customers/customers.module").then(mod => mod.CustomersModule)
+  },
+]
+
+
+Angular 6: 
+loadChildren: "../app/posts/posts.module#PostsModule"
+
+Angular 8: 
+loadChildren: () => import("./orders/orders.module").then(m => m.OrdersModule)
+
+--------------------------------------------------------------	
+###How would you optimize the angular2- application for better performance- improvement-?
+
+Well, optimization depends on the type and size of application and many other factors. But in general, I would consider the following points while optimizing the angular 2 app:
+
+1.Consider AOT compilation.
+2.Make sure the application is bundled, uglified, and tree shaking is done.
+3.Make sure the application doesn’t have un-necessary import statements.
+4.Make sure that any 3rd party library, which is not used, is removed from the application.
+5.Have all dependencies and dev-dependencies are clearly separated.
+6.I would consider lazy loading instead of fully bundled app if the app size is more.
+7.Server side render using angular universal  
+8.Use trackBy in your ngFor
+9.Minimize Change Detections by using OnPush change detection
+10.use gzip compressing (done at the server level)
+11.Caching
+
+https://medium.com/burak-tasci/angular-4-with-server-side-rendering-aka-angular-universal-f6c228ded8b0
+
+--------------------------------------------------------------
+
+##LIFECYCLE: 
+
+constructor()
+ngOnChange()
+ngOnInit()
+ngDoChange()
+ngAfterContentInit()
+ngAfterContentChecked()
+ngAfterViewInit()
+ngAfterViewChecked()
+ngOnDestroy()
+
+--------------------------------------------------------------
+
+##Promises vs Observables
+
+Promises:
+	1.Promise object may provide only a single value. It can be an array but it’s still a single object.
+	2.not cancellable
+	3.Promise is eager execution
+	
+	const a = new Promise((resolve, reject) => {
+		console.log("test");
+		resolve("Test");
+	})
+	o/u: test
+
+Observables:
+	1.an Observable may emit multiple values over time.
+	2.cancellable
+	3.Observable is lazy
+	4.supports map, filter, reduce, catch  and similar operators
+	5.proposed feature for ES 2016
+	6.use Reactive Extensions (RxJS)
+	7.an array whose items arrive asynchronously over time
+
+-----------------------------------------------------
+@ViewChildren @viewchild(): Shadow DOM 
+
+- It provides a reference to elements or components in your view:
+
+@Component({
+  selector: "some-component",
+  template: `
+    <h1>I am Shadow DOM!</h1>
+    <h2>Nice to meet you :)</h2>
+    <ng-content></ng-content>
+  `;
+})
+class SomeComponent { /* ... */ }
+
+-------------------------------------------------------
+@ContentChildren - Light DOM
+
+@Component({
+  selector: "another-component",
+  directives: [SomeComponent],
+  template: `
+    <some-component>
+      <h1>Hi! I am Light DOM!</h1>
+      <h2>So happy to see you!</h2>
+    </some-component>
+  `
+})
+class AnotherComponent { /* ... */ }
+
+
+##what is Angular Filter : 
+
+- Filters format the value of an expression for display to the user. 
+
+currency : Format a number to a currency format.
+date : Format a date to a specified format.
+json : Format an object to a JSON string.
+limitTo : Limits an array/string, into a specified number of elements/characters.
+lowercase:  Format a string to lower case.
+uppercase:  Format a string to upper case.
+
+
+-------------------------------------------------------------
+
+##What is Pipe?
+
+1.You can display only some filtered elements from an array.
+2.You can modify or format the value.
+3.You can use them as a function.
+4.You can do all of the above combined.
+
+- Pipe with param parameterized pipe.
+SYNTAX:
+
+myValue | myPipe:param1:param2 | mySecondPipe:param1
+
+{{"Paul Shan" | lowercase}} //Build in Pipe
+
+
+## pure vs impure pipe
+
+
+@Pipe({
+  name: "sort",
+  pure: true //true makes it pure and false makes it impure
+})
+export class myPipe implements PipeTransform {
+
+  transform(value: any, args?: any): any {
+     //your logic here and return the result
+  }
+}
+
+<p> {{"Hello" | translate }}<p>
+<p> {{"World" | translate }}<p>
+
+
+- A pure pipe is only called when Angular detects a change in the value or the parameters passed to a pipe.
+- i.e change in string, number 
+- If pipe is pure: there will be only one instance of the pipe. The transform method will be called twice but on the same instance.
+
+- Impure is called for every change detection cycle no matter whether the value or param change.
+- i.e an impure pipe is called as often as every  keystroke or mouse-move.
+- If pipe is impure: there will be two instances of the pipe.
+-------------------------------------------------------------
+
+##What is $event?
+
+HTML:
+<select (change)="onChangePushUrls($event)">
+         <option value="" selected>Please Select the URL</option>
+        <option *ngFor="let item of pushUrls" value="{{item.url}}">{{item.name}}</option>
+</select>
+
+COMPONENT:
+
+  onChangePushUrls(event: any) {
+		//Here we get value of select value from dropdown.
+        let pushUrl = event.target.value;
+    });
+
+--------------------------------------------------------------
+
+##Loop Syntax 
+<option *ngFor="let item of pushUrls" value="{{item.url}}">{{item.name}}</option>
+
+<li *ngFor="let item of canResponseData |  filterSkills:cannedResponseSearch" (click)="selectResponse(item.name)"><i class="material-icons">assignment</i> <span>{{item.name}}</span></li>
+
+--------------------------------------------------------------
+
+##NGCLASS
+[ngClass]="{"active-chat": highlightedDiv === item.id}"
+
+multiple : 
+
+[ngClass]="{statusNotAvailable: !isVisitorStatusAvailable, statusAvailable: isVisitorStatusAvailable}"
+--------------------------------------------------------------
+
+##NGMODEL
+[(ngModel)]="msgText"
+--------------------------------------------------------------
+
+##CLICK FUNCTION 
+(click)="addNewMsg($event)"
+--------------------------------------------------------------
+
+##what is service & How to create a service? service-
+
+- Service allow you to define code that"s accessible and reusable throughout multiple components. 
+- A common use case for services is when you need to communicate with a backend of some sort to send and receive data.
+
+
+- Create users.service.ts file
+
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";  // Import it up here
+import { Observable } from "rxjs"; //
+  
+@Injectable({
+  providedIn: "root"
+})
+export class UsersService {  //Service Name
+    constructor(private http: HttpClient) { }
+    getHeroes() {
+        return this.http.get("src/app/services/hero.json")
+            .map((response: Response) => response.json())
+            .catch(this.handleError);
+    }
+
+    handleError(error: Response) {
+        console.error("error" + error);
+        return Observable.throw(error || "Server Error");
+    }
+}
+
+- include this service inside app.module.ts
+import { UsersService } from "./services/users.service";
+
+add this inside provide : UsersService
+
+- component side : 
+	import { UsersService } from "../services/users.service";
+	add in constructor as DI
+	constructor(private usersService: UsersService) {}
+	
+       this.usersService.getHeroes()
+            .subscribe(users => this.users = users,
+            heroesError => this.heroErrorMsg = heroesError);
+    }
+
+--------------------------------------------------------------	
+
+##Diff Service and Factory 
+-Factory and Service is a just wrapper of a provider
+
+module.service("MyService", function() {
+
+    this.method1 = function() {
+            //..method1 logic
+        }
+
+    this.method2 = function() {
+            //..method2 logic
+        }
+});
+
+
+module.factory("MyFactory", function() {
+
+    var factory = {}; 
+
+    factory.method1 = function() {
+            //..method1 logic
+        }
+
+    factory.method2 = function() {
+            //..method2 logic
+        }
+
+    return factory;
+});
+
+
+service : If you use a service you will get the instance of a function ("this" keyword).
+factory: If you use a factory you will get the value that is returned by invoking the function reference (the return statement in factory)
+
+
+----------------------------------------------
+provider, factory, and service are all providers. 
+
+- A factory is a special case of a provider when all you need in your provider is a $get() function. 
+
+- It allows you to write it with less code. 
+
+- A service is a special case of a factory when you want to return an instance of a new object, with the same benefit of writing less code.
+
+------------------------------------------------
+
+##Tree Shaking
+
+- tree-shaking is the ability to only include code in your bundle that is being used
+Tree shaking is a term commonly used in the JavaScript context for dead-code elimination, or more precisely, live-code import.
+
+// module.js
+export const sayHello = name => `Hello ${name}!`;
+export const sayBye = name => `Bye ${name}!`;  
+
+// index.js
+import { sayHello } from "./module";
+
+sayHello("World"); 
+
+
+sayBye is exported but never imported. Anywhere. 
+Therefore, due to tree-shaking, it won"t be included in our bundle:
+
+// bundle.js
+const sayHello = name => `Hello ${name}!`;
+import { sayHello } from "./module";
+
+sayHello("World"); 
+
+------------------------------------------------
+
+##What are Event Emitters and how it works in Angular 2?
+
+- used by components and directives to emit custom events.
+
+---------------------------------------------------
+
+##What are the security threats should we be aware of in angular 2 application?
+
+1. Avoid using/injecting dynamic Html content to your component.
+2. If using external Html, that is coming from database or somewhere outside the application, sanitize it.
+3. Try not to put external urls in the application unless it is trusted. Avoid url re-direction unless it is trusted.
+
+Consider using AOT compilation or offline compilation.
+
+-----------------------------------------------------
+
+##ECMAScript 
+
+- standard for modern scripting-language
+
+-----------------------------------------------------
+
+##What is Traceur compiler?
+
+- Convert ES6 to JavaScript 
+- Browser understand the JavaScript
+- Traceur compiler compiles ECMAScript Edition 6 (ES6) (including classes, generators and so on) code on the fly to regular Javascript (ECMAScript Edition 5 [ES5]) to make it compatible for the browser.
+
+------------------------------------------------------------------------
+
+##Router 
+
+<a [routerLink]="["/agent_chat"]">Chat</a>
+
+------------------------------------------------------------------------
+
+##types of directives-  directive-
+
+- Directive is use to design re-usable components
+
+#1. Component directives
+
+@Component({
+    selector: "my-app"
+    template: "<h1>Hello,</h1>"
+})
+
+<my-app></my-app>
+
+#2. Structural directives
+
+- Modify the structure of DOM 
+- *ngFor
+- *ngIf
+
+#3. Attribute directives
+
+- Modify the attribute of DOM elements
+
+For example, 
+NgClass
+NgStyle
+
+===================================================================
+
+## Custom directives 
+
+1. Class custom directive 
+
+import { Directive,ElementRef,Renderer } from "@angular/core";
+
+@Directive({
+  selector: ".appMyDirective"
+})
+export class MyDirectiveDirective {
+
+  constructor(private el: ElementRef,
+              private renderer: Renderer) {
+          el.nativeElement.style.backgroundColor = "yellow";
+     }
+}
+
+<p class="appMyDirective">
+  Start editing to see some magic happen :)
+</p>
+
+2. Attribute custom directive
+
+
+import { Directive,ElementRef,Renderer } from "@angular/core";
+
+@Directive({
+  selector: "[appMyDirective]"
+})
+export class MyDirectiveDirective {
+
+  constructor(private el: ElementRef,
+              private renderer: Renderer) {
+          el.nativeElement.style.backgroundColor = "yellow";
+     }
+}
+
+<p appMyDirective>
+  Start editing to see some magic happen :)
+</p>
+
+
+----------------------------------------------------------------------
+## Data binding- : 
+
+- It allows us to define communication between the component and view
+
+1. String Interpolation. 
+- Angular Interpolation / String Interpolation. String Interpolation uses template expressions in double curly {{ }} braces to display data from the component.
+
+-  String Interpolation converts the expression results to strings.
+
+2. Property Binding.
+- <img [src]="imagePath" class="image-adjustment"/><br>
+
+- Property binding does not convert the expression result to a string.
+- to set an element property to a non-string data value, you must use property binding
+<button [disabled]="isDisabled">Try Me</button>
+
+3. Event Binding.
+- <button (click)="changeMyTitle()">Title is changed on click of this button.</button>
+
+4. Two-Way Data Binding.
+- synchronization of a data from view to the component and component to the view,
+
+<input type = "text" [(ngModel)]="userName"/>
+
+----------------------------------------------------------------------
+
+## Angular Elements aelement- ele-
+
+Angular Elements allows you to convert ordinary Angular components into native web components (custom HTML elements). 
+
+----------------------------------------------------------------------
+
+## building block of angular : 
+
+Component 
+Data bindding 
+Dependency Injectation 
+Directive 
+Metadata 
+Modules
+Routing
+Services
+Template
+
+----------------------------------------------------------------------
+
+## diff bet Angular Expression v/s JavaScript Expression
+
+Angular Expression: 
+- They can write inside the HTML tag
+- They do not supports loops, exception 
+
+JavaScript Expression: 
+- They can write inside the HTML tag
+- They do supports loops, exception 
+
+----------------------------------------------------------------------
+
+
+## What is router outlet?
+
+- The RouterOutlet is a directive from the router library.
+- The Router outlet is a placeholder that gets filled dynamically by Angular, depending on the current router state.
+
+<router-outlet></router-outlet>
+<!-- Routed components go here -->
+
+
+## What is activated route?
+- you can access route path and parameters
+
+@Component({...})
+class MyComponent {
+  constructor(route: ActivatedRoute) {
+    const id: Observable<string> = route.params.pipe(map(p => p.id));
+    const url: Observable<string> = route.url.pipe(map(segments => segments.join("")));
+    // route.data includes both `data` and `resolve`
+    const user = route.data.pipe(map(d => d.user));
+  }
+}
+
+
+## What is Angular Universal-?
+- White screen for some time upto content get laod 
+- Angular Universal is a server-side rendering module for Angular applications in various scenarios. This is a community driven project and available under @angular/platform-server package. Recently Angular Universal is integrated with Angular CLI.
+
+
+## What is the purpose of metadata json files?
+
+The metadata.json file can be treated as a diagram of the overall structure of a decorator"s metadata, represented as an abstract syntax tree(AST).
+
+------------------------------------------------------------------------
+========================================================================
+
+##Documentation in Angular
+
+typedoc --experimentalDecorators --target "es5" --module "commonjs" --out E:/new_ice/cathy-app-angular2/public/doc E:/new_ice/cathy-app-angular2/
+
+========================================================================
+
+##shared data between the component  (@input-)
+
+
+
+@Input():  Defines input variable in component communication. 
+		   It is used to communicate from parent to child component using property binding. 
+		   
+		   parent <-> child
+		   
+@Output(): Defines output variable in component communication. 
+           It is used to communicate from child to parent component using custom event binding.
+
+		   child <->  parent
+		   
+		   
+<counter [count]="5"></counter>
+
+counter.component.ts
+
+import { Component, Input } from "@angular/core";
+
+@Component({
+  selector: "counter",
+  template: `
+    <div class="counter">
+      <button (click)="decrement()">
+        Decrement
+      </button>
+      <input type="text" [value]="count">
+      <button (click)="increment()">
+        Increment
+      </button>
+    </div>
+  `
+})
+
+export class CounterComponent {
+  @Input()
+  count: number = 0;
+  increment() {
+    this.count++;
+  }
+  decrement() {
+    this.count--;
+  }
+}
+------------------------------------------------------------------------
+========================================================================
+What is Observable except the http? 
+
+common.service.ts
+--
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
+import { Subject } from "rxjs/Subject";
+
+/**
+ * @export
+ * @class CommonService
+ */
+@Injectable()
+export class CommonService {
+    private subject = new Subject<any>();
+   
+    /**
+     * @description Send the Tab status - Chat or Email 
+     * @param {*} message
+     * @memberOf CommonService
+     */
+    sendStatus(message: any) {
+        this.subject.next(message);
+    }
+
+    /**
+    * @description Get the Tab status - Chat or Email 
+    * @param {*} message
+    * @memberOf CommonService
+    */
+    getStatus(): Observable<any> {
+        return this.subject.asObservable();
+    }
+}
+
+--
+Add as provider in app.module.ts 
+subscribe in component where it require : 
+--
+this.subscription = this.commonService.getStatus().subscribe(message => {
+            this.isChat = message;
+});
+--
+call observable - 
+this.commonService.sendStatus(status); //When we call observable it will call subscribe as well.
+
+
+## Other way 
+
+
+Declare a variable before the constructor that instantiates BehaviorSubject with object data. Also, a variable that converts BehaviorSubject as Observable.
+	
+	// shared.service.ts
+	private dataSource = new BehaviorSubject({name: "Maradona"});
+	currentData = this.dataSource.asObservable();
+	
+	changeData(data: any) {
+		this.dataSource.next(data);
+	}
+	
+	// home.component.ts
+	constructor(private router: Router, private sharedData: SharedService) { }
+	ngOnInit() {
+		this.sharedData.currentData.subscribe(data => this.data = data);
+	}
+
+
+------------------------------------------------------------------------
+========================================================================
+
+##How to disable the click method 
+
+(click)="login()" -> This is allow to click even button is disabled
+
+(click)="condition && login()" -> This is not allow to click
+
+------------------------------------------------------------------------
+========================================================================
+##Remove the value from object.
+
+var test = {"red":"#FF0000", "blue":"#0000FF"};
+
+delete test.blue; // or use => delete test["blue"];
+console.log(test);
+
+{"red":"#FF0000"} 
+
+------------------------------------------------------------------------
+========================================================================
+##SystemJS v/s Webpack
+
+Webpack:
+
+Webpack prepares a single file called bundle.js - This file contains all HTML, CSS, JS, etc. 
+Because all files are bundled in a single file, there is now no need for a lazy loader like SystemJS (where individual files are loaded as needed)
+
+- Angular2 quickstart uses SystemJS.
+
+
+SystemJS: 
+-It loads modules (files) dynamically on demand when they are needed.
+
+-Angular2 quickstart uses SystemJS.
+
+System.import("my-module").then((myModule) {
+  // myModule is available here
+  myModule.doSomething()
+});
+
+------------------------------------------------------------------------
+
+Angular Cli 
+
+#1. npm install -g @angular/cli
+#2. ng new angular-app 
+#3. ng serve
+#4. ng build --target=production
+
+------------------------------------------------------------------------
+========================================================================
+
+#How to create the A4 application?
+
+ng new projectNew --ng4
+
+------------------------------------------------------------------------
+========================================================================
+
+#Migrate A2 -> A4
+
+https://angular-update-guide.firebaseapp.com/
+
+npm install @angular/{
+animations,
+common,
+compiler,
+compiler-cli,
+core,
+forms,
+http,
+platform-browser,
+platform-browser-dynamic,
+platform-server,router}@4.0.0 typescript@latest --save
+
+------------------------------------------------------------------------
+========================================================================
+
+#Typescript - Define array that contain any types of data 
+
+public users: any[] = [];
+
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+Redis : 
+
+HSET myhash 126 "this is for testing 126"
+HLEN myhash
+HDEL myhash 126
+HLEN myhash
+HGETALL myhash
+HDEL myhash 126
+HMGET myhash 126
+
+
+
+flushdb  => clears contents of one database
+flushall   =>clears contents of all databases
+
+SET data "123"
+GET data => 123
+DEL data 
+===============================================================================
+
+
+var kvArray = [{key: 1, value: 10}, 
+                      {key: 2, value: 20}, 
+                      {key: 3, value: 30}
+                     ];
+
+var newArr = ["1","2"];
+
+console.log(newArr.length); // 2
+
+console.log(kvArray.length);  // 3
+console.log(Object.keys(kvArray).length); // 3
+
+---------------------------------------------------------
+
+let obj = {
+  "math":"23",
+  "pt":"56"
+}
+
+console.log(obj.hasOwnProperty("math")); //true
+console.log(obj.hasOwnProperty("science")); //false
+
+---------------------------------------------------------
+
+var vArray = {"key": "1", "value": "10", "data" : "30" };
+console.log(Object.keys(vArray).length);  // 3
+
+-----------------------------------------------------------
+
+const arr = [{"data": "25"}, {"data": "50"}];   //Remove the value that 50 
+
+const newArr = arr.filter((data, index) => {
+  console.log(data);    // {"data": "25"} {"data": "50"}
+  console.log(index);  // 0 1 
+  if(data.data == "50"){
+    return data;
+  }
+});
+console.log(newArr);    // [{"data": "50"}]
+
+---------------------------------------------
+##remove the object value 
+
+let obj = { "science":"123", "math":"123"};
+
+delete obj.science;
+
+console.log(obj);  // { "math" : "123"}
+
+		   
+=================================================================
+## HTML bind - 
+
+In Angular2 you can use property binding to access properties of DOM elements, in your case:
+
+let post = [{
+	"text":"<a href="url">Description</a>"
+},{
+	"text":"<a href="url">Description</a>"
+}];
+
+
+<div [innerHTML]="post.text"></div>
+
+=======================================================================================
+
+## How to store Array in local storage 
+
+localStorage.setItem("IdArr",JSON.stringify([123,567]));
+
+JSON.parse(localStorage.getItem("IdArr")),
+
+=======================================================================================
+##How to do multiple HTTP call?
+
+-> Observable.forkJoin
+
+- It is same as Promise.all()
+
+import "rxjs/add/observable/forkJoin";
+
+
+    let character = this.http.get("https://swapi.co/api/people/1").map(res => res.json());
+    let characterHomeworld = this.http.get("http://swapi.co/api/planets/1").map(res => res.json());
+
+    Observable.forkJoin([character, characterHomeworld]).subscribe(results => {
+      // results[0] is our character
+      // results[1] is our character homeworld
+      results[0].homeworld = results[1];
+      this.loadedCharacter = results[0];
+    });
+  }
+  
+
+  
+======================================================================================
+##AOT- JIT-
+
+##JIT:
+
+- produce Typescript code to Javascript code
+- bind HTML form javascript
+- Run in browser
+
+- For JIT compilation the browser needs to download the angular compiler(vendor.bundle.js)
+- Just in time is run time complier 
+- Suit for development 
+- It is compile for every user
+- we can see error at run time only(inspect element)
+
+- HTML Template -> Javascript code, but angular decorator not Interpreted -> Angular interpreter do it for angular decorator at run time (vendor.bundle.js file will do)
+
+- ng serve 
+- source-map-explorer
+
+##AOT
+- pre-compiled code
+- we can see error at complite time
+- ng serve --aot true
+
+//How to check this in browser
+- ng build --prod -sm true       //This will generate the source code using sm(source-map-explorer)
+
+- For AOT compilation the browser dont not needs to download the angular compiler(vendor.bundle.js), that helps in reduce the size.
+
+==========================================================================================
+
+
+Diff bet annotation & decorator
+
+- A decorator corresponds to a function that is called on the class
+- An annotations are "only" metadata set on the class using the Reflect Metadata library.
+
+
+=========================================================================================
+
+Diff bet component & directive component-directive--
+
+- For register component we use @Component meta-data annotation.
+- Component is used to break up the application into smaller components.
+
+Example –
+
+import {Component, View} from "angular2/angular2";
+
+@Component({
+  selector: "message"
+})
+@View({
+  template: `
+      <h1>Hello Angular {{version}}</h1>
+  `
+})
+class Message {
+  constructor(public version: string) {}
+}
+
+<message></message>
+
+
+
+Directive: 
+- For register directives we use @Directive meta-data annotation.
+- Directive is use to design re-usable components.
+- Element, Attribute, CSS we can add custom directive 
+
+Example –
+
+import {Directive} from "angular2/angular2";
+
+@Directive({
+    selector: "[myDirective]",
+    hostListeners: {
+        "click": "showMessage()"
+    }
+})
+class Message {
+
+    constructor() {}
+
+    showMessage() { console.log("Hello Directive"); }
+}
+
+
+=====================================================
+
+## template expression: 
+
+<h1>{{username }}, hello </h1>
+
+## template statement
+
+<buton (click)="getData()" />
+=====================================================
+
+SPA v/s tradition web app
+
+SPA 
+- only single page, which is index.html, is maintained although the URL keeps on changing. 
+- Faster than tradition web technology
+
+tradition web technology
+- https://test.com/users -> load user page
+- https://test.com/product -> load product page
+
+
+
+
+=====================================================
+
+## What is API in AngularJS?
+
+- API (Application Programming Interface) in AngularJS is a set of global JavaScript functions used for the purpose of carrying out the common tasks such as comparing objects, iterating objects, converting data. Some API functions in AngularJS are as follows :
+
+Comparing objects
+Iterating objects
+Converting data
+
+
+ie. angular.isString(value);
+
+
+
+==========================================================
+
+## What is router event (route event)
+
+- During each navigation, the Router emits navigation events through the Router.events property. These events range from when the navigation starts and ends to many points in between. The full list of navigation events is displayed below.
+
+- NavigationStart
+- RoutesRecognized
+- RouteConfigLoadStart
+- RouteConfigLoadEnd
+- NavigationEnd
+- NavigationCancel
+- NavigationError
+
+==========================================================
+
+## web worker limitation
+
+- in server side rander, web worker is not supported.
+- fallback machanism 
+
+==========================================================
+
+
+
+## Form- in angular (Form- angular form-)
+
+Template-driven and Reactive Forms
+
+- Template-driven forms make use of the "FormsModule", 
+- Template-driven forms are asynchronous in nature
+- most of the logic is driven from the template
+~~~~~~~~ <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+
+
+- reactive forms are based on "ReactiveFormsModule".
+- Reactive forms are mostly synchronous.
+- the logic resides mainly in the component or typescript code.
+
+~~~~~ courseForm: FormGroup;
+
+@property {boolean} $untouched True if control has not lost focus yet.
+@property {boolean} $touched True if control has lost focus.
+@property {boolean} $pristine True if user has not interacted with the control yet.
+@property {boolean} $dirty True if user has already interacted with the control.
+
+
+Validation : 
+
+1. Include HTML5 validation attribute i.e required
+<input type="text" id="username" required >
+
+2. Export ngModel directive to local reference variable
+<input type="text" id="username" required #namecontrol="ngModel">
+
+3. Now we can access properties like touched/untouched, prestine/dirty
+
+{{namecontrol.touched}}
+{{namecontrol.untouched}}
+
+4. To check form is valid or not 
+
+<form #empForm="ngForm" (ngSubmit)="saveEmp()" >
+
+{{empForm.valid}}
+
+=========================================================================
+##karma and protractor angular 
+
+
+karma.conf.js        -> Unit Testing 
+protractor.config.js -> End to End Testing 
+
+- Jasmine is a behavior-driven development framework for testing JavaScript code. It does not depend on any other JavaScript frameworks. It does not require a DOM. And it has a clean, obvious syntax so that you can easily write tests.
+
+- Karma is essentially a tool for testing which spawns a web server that executes source code against test code for each of the browsers connected. The results of each test against each browser are examined and displayed via the command line to the developer such that they can see which browsers and tests passed or failed.
+
+- Jasmine and Karma are usually used together to perform Unit testing or integration testing.
+
+- Protractor is an end-to-end test framework for Angular and AngularJS applications. Protractor runs tests against your application running in a real browser, interacting with it as a user would without depending on other tools for performing the same
+
+https://github.com/techsithgit/ng5-jasmin-karma-test/blob/master/src/app/test.service.spec.ts
+
+=========================================================================
+##ng-content : 
+
+<ng-content></ng-content> tag as a placeholder for that dynamic content, then when the template is parsed Angular will replace that placeholder tag with your content
+
+=========================================================================
+
+## Shadow DOM
+
+Shadow DOM brings Encapsulation to HTML Elements. 
+
+=========================================================================
+
+## View Encapsulation
+
+- View encapsulation defines whether the template and styles defined within the component can affect the whole application or vice versa
+
+1. Emulated:  styles from main HTML propagate to the component
+
+-  import { viewEncapsulation } from @angular/core
+
+@component({
+ selector:"my-app",
+ encapsulation: viewEncapsulation.Emulated,
+ style:[
+	.test{
+		padding:10px;
+	}
+ ], 
+ template:`<div class="test"></div>`
+})
+
+- It apply the style to the component  that specified in component + inhiritanted (i.e index.html)
+- It is default 
+
+2. Native: styles from main HTML do not propagate to the component.
+
+-  import { viewEncapsulation } from @angular/core
+
+@component({
+ selector:"my-app",
+ encapsulation: viewEncapsulation.Native,
+ style:[
+	.test{
+		padding:10px;
+	}
+ ], 
+ template:`<div class="test"></div>`
+})
+
+- It apply the style to the component  that specified in native component
+
+
+3. None : styles from the component propagate back to the main HTML
+
+- No shadow DOM
+- No style encapsulation
+- It is not created any shadow dom
+- It is general behaviour 
+
+=========================================================================
+
+##Dependency Injection: 
+Dependency Injection (DI) is a software design pattern that deals with how components get hold of their dependencies
+
+=========================================================================
+
+## Why nodejs node is required for angular 
+
+- Yes. Node.js required for Angular.
+- We need to install Node.js to develop Angular Apps.
+
+Why it is required?
+
+- Generally, we write the code in Typescript for angular. Browser does not understand Typescript (i.e., .ts) we need to compile them in plain JavaScript i.e., .js.
+
+- Most of the Angular packages or libraries at GitHub repository (github.com/angular/angular) are distributed as different NPM packages. Node Package Manager is heavily dependent on Node.js
+
+- Using Angular CLI module we can automate so many things in Angular 2
+
+- we do not need to use Node anywhere in production server to use front-end JavaScript frameworks like Angular.
+
+
+============================================================================= 
+
+## Behavior Subject- in angular 
+
+- The BehaviorSubject holds the value that needs to be shared with other components. 
+- These components subscribe to data which is simple returning the BehaviorSubject value without the functionality to change the value
+
+File name : data.service.ts
+
+import { Injectable } from "@angular/core";
+import { BehaviorSubject } from "rxjs";
+
+@Injectable()
+export class DataService {
+
+  private messageSource = new BehaviorSubject("default message");
+  currentMessage = this.messageSource.asObservable();
+
+  constructor() { }
+
+  changeMessage(message: string) {
+    this.messageSource.next(message)
+  }
+  
+}
+
+File name : home.component.ts
+
+import { DataService } from "../data.service";
+
+@Component({
+  selector: "app-parent",
+  template: `
+    {{message}}
+  `,
+})
+export class HomeComponent implements OnInit {
+
+  message:string;
+
+  constructor(private data: DataService) { }
+
+  ngOnInit() {
+    this.data.currentMessage.subscribe(message => this.message = message)
+  }
+
+}
+
+=========================================================================================
+## pipe in rxjs pipe- pipe-rxjs 
+
+- We can use pipes to link operators together. 
+- Pipes let you combine multiple functions into a single function.
+
+
+The pipe() function takes as its arguments the functions you want to combine, and returns a new function that, when executed, runs the composed functions in sequence.
+
+
+- It cleans up Observable.prototype by removing operators
+- It makes the RxJS library more tree-shakeable
+- It makes it easier to write and use third-party operators (since you don’t have to worry about patching Observable.prototype).
+
+let data = [1,2,3];
+data.pipe(
+  map(x => x + 1),
+  filter(x => x > 2)
+);
+
+=========================================================================================
+
+## what is RxJS-RxJS-
+
+-  	Reactive Extensions for JavaScript (RxJS) is a reactive streams library that allows you to work with asynchronous data.
+
+-  tap(), map() and filter()
+
+
+## What is observable, observer and subscribe in angular?
+
+https://i.stack.imgur.com/vvHEc.png
+
+- Observable: Observable is a stream of events or data.
+
+- subscribe : represents the execution of an Observable, is primarily useful for cancelling the execution.
+
+- Observer: is a collection of callbacks that knows how to listen to values delivered by the Observable.
+
+- Operators: are pure functions that enable a functional programming style of dealing with collections with operations like map, filter, concat, flatMap, etc.
+
+- Subject: is the equivalent to an EventEmitter, and the only way of multicasting a value or event to multiple Observers.
+
+- Schedulers: are centralized dispatchers to control concurrency, allowing us to coordinate when computation happens on e.g. setTimeout or requestAnimationFrame or others.
+
+
+There are three types of values an Observable Execution can deliver:
+
+"Next" notification: sends a value such as a Number, a String, an Object, etc.
+"Error" notification: sends a JavaScript Error or exception.
+"Complete" notification: does not send a value.
+
+
+i.e 
+
+- serive.ts 
+
+getData(): Observable<User[]>{
+	return this.http.get(url);
+}
+
+subscribe: 
+- Subscribing the observable stream.
+
+component.ts 
+
+this.service.getData().subscribe({
+	(users: User[]) => this.users = users,
+	(error : any )  => console.log(error);
+})
+
+https://stackoverflow.com/questions/51520584/what-is-observable-observer-and-subscribe-in-angular
+
+=====================================================================================
+##Shadow DOM
+
+Shadow DOM basically allows group of DOM implementation to be hidden inside a single element (which is the basic idea of components) and encapsulate styles to the element.
+
+=====================================================================================
+##NgZone
+
+- An injectable service for executing work inside or outside of the Angular zone.
+
+The most common use of this service is to optimize performance when starting a work consisting of one or more asynchronous tasks 
+- that don"t require UI updates or error handling to be handled by Angular. 
+- Such tasks can be kicked off via runOutsideAngular and if needed, these tasks can reenter the Angular zone via run.
+
+
+import { Component, NgZone } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+
+@Component({
+  selector: "my-app",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"]
+})
+export class AppComponent {
+  data: any;
+  constructor(private http: HttpClient, private _ngZone: NgZone) {
+    
+  }
+
+  ngOnInit() {
+    this.getData();
+    this._ngZone.runOutsideAngular(() => {
+      this.getData();
+      this.http.get("https://jsonplaceholder.typicode.com/posts/1").subscribe((data1: any) => {
+        // First response came back, so its data can be used in consecutive request
+        this.http.get(`https://jsonplaceholder.typicode.com/posts/1`).subscribe((data2: any) => {
+          this.http.get(`https://jsonplaceholder.typicode.com/posts/1`).subscribe((data3: any) => {
+            this.getData();
+            this._ngZone.run(() => {
+              this.data = [data1, data2, data3];
+              this.getData();
+              console.log(this.data);
+            });
+          });
+        });
+      });
+    });
+  }
+
+  getData(){
+    console.log(this.data);
+  }
+}
+
+
+=====================================================================================
+##Angular v/s jquery-
+
+- Angular has two-way data binding, jQuery does not
+- Angular provides support for RESTful API while jQuery doesn’t
+- Angular supports deep linking routing, jQuery does not support
+- Angular support form validation in jQuery not support
+
+=====================================================================================
+
+## async pipe asyncpipe-
+
+- The AsyncPipe subscribes to an observable or promise and returns the latest value it has emitted.
+
+=====================================================================================
+
+## data binding types
+
+- From the source-to-view
+- From view-to-source
+- View-to-source-to-view
+
+=====================================================================================
+
+
+## bootstrapping module
+
+- Every application has at least one Angular module, the root module that you bootstrap to launch the application is called as bootstrapping module. 
+
+=====================================================================================
+
+## HttpClientModule 
+
+The major advantages of HttpClient can be listed as below,
+
+Contains testability features
+- Provides typed request and response objects
+- Intercept request and response
+- Supports Observalbe APIs
+- Supports streamlined error handling
+
+
+=====================================================================================
+## interceptor
+
+- interceptors can be used to pre process HTTP requests. 
+- i.e add token in header using interceptor
+
+
+intercept() 
+
+Identifies and handles a given HTTP request.
+
+intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>>
+ 
+req	HttpRequest - The outgoing request object to handle.
+
+next HttpHandler - The next interceptor in the chain, or the backend if no interceptors remain in the chain.
+
+=====================================================================================
+
+## singleton
+
+A singleton is a class that allows only a single instance of itself to be created and gives access to that created instance.
+
+There are two ways to make a service a singleton in Angular:
+
+Declare that the service should be provided in the application root.
+Include the service in the AppModule or in a module that is only imported by the AppModule.
+
+============================================================================================
+## CoreModule SharedModule
+
+-# CoreModule(core.module.ts) Core feature module
+
+- All services that should be singleton should be provided here. For example HelperService, LoggerService.
+
+- Application wide component should be declared in CoreModule like header, footer.
+
+CoreModule provides one or more singleton services. Angular registers the providers with the app root injector, making a singleton instance of each service available to any component that needs them, whether that component is eagerly or lazily loaded.
+
+Only the root AppModule should import the CoreModule.
+
+-# SharedModule(shared.module.ts) Shared feature module
+
+declare components, directives, and pipes in a shared module when those items will be re-used and referenced by the components declared in other feature modules
+
+=====================================================================================
+## Change Detection - Angular Change Detection Strategies
+
+- Change Detection means updating the view (DOM) when the data has changed.
+
+#1. ChangeDetectionStrategy.Default :
+ - By default, Angular has to be conservative and will checks every time something may have changed, this is called dirty checking.
+ 
+#2. ChangeDetectionStrategy.onPush
+ - With onPush, Angular will only depend on the component’s inputs, events, markForCheck method, or the use of the async pipe in the template, to perform a change detection mechanism and update the view. 
+
+- By using onPush Change Detection, Angular will only check the tree if the reference passed to the component is changed instead of some property changed in the object
+
+- Primitive : Number, string, boolean are Immutable.
+- Object and array are mutable.
+
+
+
+Example: 
+
+Parent -> Child component, both have user 
+
+Parent: 
+import { Component, DoCheck } from "@angular/core";
+import { Person } from "./child/child.component";
+
+@Component({
+  selector: "my-app",
+  templateUrl: "./app.component.html",
+  styleUrls: [ "./app.component.css" ]
+})
+export class AppComponent {
+  
+  public person: Person = {
+    name: "John Doe",
+    age: 20
+  };
+
+  public reassign(): void {
+    this.person = {
+      name: this.person.name,
+      age: this.person.age
+    };
+  }
+}
+
+
+
+<div class="container">
+	<h3> Parent component </h3>
+	Name: <input type="text" [(ngModel)]="person.name">
+	<br /> Age:
+	<button (click)="person.age = person.age+1">+</button> {{ person.age }}
+	<button (click)="person.age = person.age-1">-</button>
+	<br />
+	<button (click)="reassign()">Re-Assign</button>
+	<br>
+	<pre>{{ person | json}}</pre>
+	<child [person]="person"></child>
+</div>
+
+
+Child: 
+
+import { Component, Input, ChangeDetectionStrategy, ChangeDetectorRef } from "@angular/core";
+
+@Component({
+  selector: "child",
+  template: `
+    <div class="child-container">
+      <h3> Child component </h3>
+      <pre>{{person | json}}</pre>
+    </div>
+  `,
+  styleUrls: ["child.component.css"],
+  changeDetection: ChangeDetectionStrategy.OnPush
+})
+export class ChildComponent {
+  constructor(private cd: ChangeDetectorRef){
+      // this.cd.detach();            // Prevent all changes.
+  }
+  @Input() person: Person;
+
+  ngDoCheck(){
+    // this.cd.markForCheck();
+    console.log("changes occured.!");
+	// this.cd.reattach();         // Apply change that prevent by detach.
+  }
+}
+
+export interface Person {
+  name: string;
+  age: number;
+}
+
+
+Summarize: 
+
+If Angular ChangeDetector is set to default then for any change in any model property, Angular will run change detection traversing the component tree to update the DOM.
+
+If Angular ChangeDetetor is set to onPush then Angular will run change detector only when new reference is being passed to the component.
+
+If observable is passed to the onPush change detector strategy enabled component then Angular ChangeDetctor has to be called manually to update the DOM.
+
+=====================================================================================
+
+
+##ng-container directive
+
+<div class="lesson" *ngIf="lessons" *ngFor="let lesson of lessons">
+    <div class="lesson-detail">
+        {{lesson | json}}
+    </div>
+</div>
+
+Above code give error : 
+Uncaught Error: Template parse errors:
+Can"t have multiple template bindings on one element. Use only one attribute 
+named "template" or prefixed with *
+
+Solution : 
+
+1. We can add new div/span, but it create dom element.
+2. ng-container is solution for it.
+
+<ng-container *ngIf="lessons">
+    <div class="lesson" *ngFor="let lesson of lessons">
+        <div class="lesson-detail">
+            {{lesson | json}}
+        </div>
+    </div>
+</ng-container>
+
+
+##ng-template
+
+<div class="lessons-list" *ngIf="lessons else loading">
+  ... 
+</div>
+
+<ng-template #loading>
+    <div>Loading...</div>
+</ng-template>
+
+=======================================================================================================
+
+##ngTemplateOutlet : ngTemplateOutlet="ng-template ID; context"
+
+<ng-template #estimateTemplate let-item="name">
+    <div> {{item}} </div>
+</ng-template>
+
+<div *ngFor="let item of items;let i = index"> 
+<ng-container 
+   *ngTemplateOutlet="estimateTemplate;context:item">
+</ng-container>
+</div>
+
+
+=======================================================================================================
+##Template Reference Variables and @ViewChild 
+
+- A template reference variable is often a reference to a DOM element within a template.
+
+- We can access reference variable in component using @viewChild.
+
+##app.component.html
+<input type="text" #firstNameInput>
+<input type="text" #lastNameInput>
+<button (click)="show()">Show</button>
+<p>Full Name: {{ firstNameInput.value }} {{ lastNameInput.value }}</p>  // Using template reference variable
+<p>Full Name @view : {{ firstNameInput.value }} {{ lastNameInput.value }}</p> // using @ViewChild from component
+	
+##app.component.ts
+ show(){
+	this.fullName = this.nameInputRef.nativeElement.value + " " + this.lastInputRef.nativeElement.value;
+}
+
+=======================================================================================================
+
+maxlength Issue : 
+
+We have added ignore-pattern for import statement
+i.e : import { PersonsSingleAccountComponent} from "./persons-single-account-bookings/persons-single-account-bookings.component
+
+#1. 
+"max-line-length": [
+      true,
+      {
+        "limit": 120, 
+        "ignore-pattern": "^import [^,]+ from |^export | implements"
+      }
+],
+
+
+=======================================================================================================
+
+## Why providedIn: "root" ?
+
+- If it is never used it will not be contained in the build (tree shaked).
+- If the service is only used within a lazy loaded module it will be lazy loaded with that module
+- The service will be available application wide as a singleton with no need to add it to a module"s providers array 
+
+=======================================================================================================
+
+##How to analyze the bundle size?
+
+ng build --prod --stats-json
+
+npm install webpack-bundle-analyzer -D
+
+=======================================================================================================
+##What is source maps 
+
+At its core, a source map is a JSON file that contains all the necessary information to map the transpiled code back to the original sources.
+
+=======================================================================================================
+
+Best Explained - https://codecraft.tv/courses/angular/routing/routing-strategies/
+
+
+##PathLocationStrategy 
+
+-PathLocationStrategy also sets us up for a future architecture where we can speed up loading time by pre-rendering the pages with Angular running on the server side and then once it’s downloaded to the browser the client can take over routing. This is called Angular Universal and it’s currently in development.
+
+-The default client-side routing strategy used in Angular is the PathLocationStrategy.
+
+-For Angular Universal to work URLs need to be passed to the server side which is why it can only work with a PathLocationStrategy and not a HashLocationStrategy.
+
+
+	Let we are at -> localhost:4040/search and navigate to localhost:4040/artist/1234/tracks 
+
+	Unfortunately it has one big downside: if we reload the page, or bookmark it and open it later, the browser would make a request to the server for e.g. localhost:4040/artist/1234/tracks.
+
+	Base HRef
+	When using the PathLocationStrategy we need to tell the browser what will be prefixed to the requested path to generate the URL.
+
+	We do that by specifying a base href, either in the head section of our HTML like so:
+
+	HTML
+	<base href='/my/app'/>
+	
+	Or 
+	
+	you can provide it to the DI framework it via the symbol APP_BASE_HREF.
+
+	The value of the base href gets prepended to every navigation request we make, so if we ask to navigate to ['moo','foo'] with the above href the URL would change to /my/app/moo/foo
+
+
+##HashLocationStrategy
+
+-HashLocationStrategy uses the hash fragment part of the URL to store state for the client, it easier to setup and doesn’t require any co-operation from the server side but has the downside that it won’t work with Angular Universal once that’s released.
+
+<a name="routing-strategies"></a>
+
+http://somedomain.com/page#routing-strategies
+
+
+=======================================================================================================
+
+## DOM - Virtual DOM VS Regular DOM
+
+React is using virtual DOM when is updating the application. We can think of Virtual DOM as React’s local and simplified copy of the HTML DOM. When some component receives new props or the internal state of the component change, React checks the differences between the previuos state of the Virtual DOM and the new one, and then updates the real DOM only with the modified nodes. More about this process called Reconciliation.
+
+compare : new value to VDOM -> change is there -> updates the real DOM only with the modified nodes.
+
+Angular update mechanism is using Zones.js which is a library that patch browser APIs with a lot more functionality, so they can trigger change detection in Angular. Mechanisms that support change detection are: browser events (click, mouseover, keyup, etc), setTimeout() and setInterval(), and Ajax requests. Each Angular component has an associated change detector, which is created at application startup time. When the change detection is triggered, for each expression used in the component template, it will compare the current and the previous value. If they are different the DOM is updated.
+
+compare : new value to previous value -> Changes is there -> DOM updated.
+
+=======================================================================================================
+## Diff bet canActivate vs canLoad
+
+canActivate is used to prevent an unauthorized user
+
+canLoad is used to prevent the entire module of app
+
+=======================================================================================================
+
+## Angular Security
+
+- Prevent cross-site scripting (XSS) : 
+	import { DomSanitizer } from "@angular/platform-browser";
+	this.sanitizer.bypassSecurityTrustHtml(html);
+	
+	bypassSecurityTrustHtmlThe following methods are used for marking a value as trusted depending on the value type:
+
+	- bypassSecurityTrustScript
+	- bypassSecurityTrustStyle
+	- bypassSecurityTrustUrl
+	- bypassSecurityTrustResourceUrl
+
+- Use Route guards when required	
+	CanActivate : checks the route access
+	CanActivateChild :Checks the child route access
+	CanDeactivate : it asks the permission to discard the changes
+	CanLoad : Checks before load feature module
+	Resolve : it pre-fetch the route data
+
+
+- Implement CSP (Content Security Policies)
+
+	- It added layer of security which help us to detect and mitigate certain types of attacks (including data injection and XSS attack).
+	
+	https://stackoverflow.com/questions/30280370/how-does-content-security-policy-work
+	
+	<meta http-equiv="Content-Security-Policy" content="default-src https://myexample.com; child-src "none"; object-src "none"">
+	
+- Prevent CSRF (Cross-site request forgery)
+	https://medium.com/@naman.sancheti/angular-security-best-practices-xsrf-37d32049ed2f
+	
+	- Also, in case the backend service uses different names for the XSRF token cookie or header, then we can use ‘HttpClientXsrfModule.withOptions()’ to override the defaults :
+	
+	imports: [
+	HttpClientModule,
+	HttpClientXsrfModule.withOptions({
+	cookieName: ‘My-Xsrf-Cookie’,
+	headerName: ‘My-Xsrf-Header’,
+	}),
+	]
+	
+- Prevent Cross-Site Script Inclusion (XSSI)
+
+	-Cross-site script inclusion (CSSI) is also known as JSON vulnerability that allows the attacker to read data from JSON API. 
+	-We can prevent an attack by prefixing all JSON responses with well-known string ")]}", \n".
+	-Angular library (HttpClient) recognize the "\n" character and makes script is not executable.
+
+- Use Offline Template Compiler
+
+	It would be recommended to use offline template compiler to prevent security vulnerabilities called template injection. It recommended to use the offline template compiler in production deployment. Basically, Angular trusts on template code, so someone can add vulnerabilities to dynamically created template as a result malicious attack on DOM tree.
+	
+- Up-to-date Angular Libraries
+- Avoid Modifying the Angular Copy
+- Validate user submitted data on server-side code	
+- Do not use components with Known Vulnerabilities
+
+=======================================================================================================
+
+## forwardRef
+
+forwardRef allows us to reference types that are defined later on in our source code, preventing our code from crashing and providing more flexibility in the way we organize things in our code.
+
+
+=======================================================================================================
+
+Angular 9: 
+
+## dependency injection - Service Provider Scope: 
+
+1. root 
+
+		import { Injectable } from "@angular/core";
+		@Injectable({  
+		   providedIn: "root"
+		})
+		export class MyService { 
+		}
+	
+	- providedIn : root - means that your service is going to be a global singleton that can be injected anywhere in your application.
+	
+	- Using that syntax is similar to adding your service to the array of providers of your main AppModule, with one key difference: The providedIn: ‘root’ syntax makes your service tree-shakeable.
+	
+2. any
+
+		@Injectable({  
+		   providedIn: "any"
+		})
+		export class ProvidedInAnyService {
+		}
+	
+	In other words, if you have three different modules in your application, and 2 of them use the above service, you would end up with two different instances of the service, one in each module that injects it.
+	
+3. platform
+
+	@Injectable({  
+	   providedIn: "platform"
+	})
+	export class ProvidedInPlatformService {
+	}
+
+	- This type of dependency injection is especially interesting if you’re running multiple Angular applications on one web page. That’s because when using platform, your service is now a global singleton at the platform-level, and is shared between all of the Angular applications on your page.
+
+https://indepth.dev/angulars-root-and-any-provider-scopes/
+https://stackblitz.com/edit/angular9-di-service?file=src/app/app.component.ts
+
+
+=======================================================================================================
+
+## Renderer2 rendering pipeline:
+
+	Currently in Renderer2 pipeline, the template HTML that we’ve written runs through the Angular compiler and generates highly optimised JS code that represents the structure of your template. At runtime, this data structure is passed to the Angular interpreter, which uses the data to determine how to create the DOM.
+
+	Template HTML  -> (pass to angular compiler and generate) -> Template Data -> (at run time it pass to ) -> Angular Interpreter (generate the DOM)-> DOM
+
+##Ivy rendering pipeline:
+
+	Instead of generating template data and passing it into an interpreter that then makes decisions on which operations to run ,we generate a set of template instructions directly. These instructions will do the work of creating the correct DOM on their own. So we no longer need an interpreter that will check whether every operation is needed.
+
+	Template HTML  -> Template Instructions -> DOM
+
+https://miro.medium.com/max/751/1*JwLExN7MCKoyjqxurDwOUA.png
+
+
+https://medium.com/js-imaginea/ivy-a-look-at-the-new-render-engine-for-angular-953bf3b4907a
+
+
+=======================================================================================================
+
+##Virtual DOM
+
+	Virtual DOM compares (diff) a new entire virtual DOM with the previous virtual DOM for changes then applies those changes to the actual DOM. - This approach creates a new virtual DOM to determine the changes (memory heavy).
+
+	Virtual DOM - has a big memory footprint because it needs headroom for changes that "might" happen to the virtual DOM.
+
+
+## Incremental DOM
+
+	Incremental DOM has one virtual DOM and walks along the tree to find changes then mutates(change) the virtual DOM and then apply those changes to the actual DOM - (reduced memory size and garbage collection).
+
+	Incremental DOM - doesn’t need such a big footprint as memory is only allocated for changes.
+
+
+
+=======================================================================================================
+
+## optimizing performance angular application
+
+https://netbasal.com/optimizing-the-performance-of-your-angular-application-f222f1c16354
+
+1. Using OnPush
+2. Using TrackBy
+3. Avoid Computing Values in the Template
+4. Disable Change Detection
+5. Using Lazy Loading
+6. Compression of app - ng build --prod
+7. server side rendering - angular universal 
+
+=======================================================================================================
+## Cookies 
+
+- Cookies are essentially used to store a session id from server and this session id will be send during every API call.
+
+Restrictions of cookies
+Cookies can only store 4KB of data
+
+#Cookie Security
+	1. Secure
+		Adding the Secure parameter makes sure the cookie can only be transmitted securely over HTTPS, and it will not be sent over unencrypted HTTP connections:
+	2. HttpOnly
+		One useful parameter is HttpOnly, which makes cookies inaccessible via the document.cookie API, so they are only editable by the server
+		
+=======================================================================================================
+
+
+## RxJS Subjects Tutorial - Subjects, BehaviorSubject, ReplaySubject & AsyncSubject
+ https://coursetro.com/posts/code/149/RxJS-Subjects-Tutorial---Subjects,-BehaviorSubject,-ReplaySubject-&-AsyncSubject
+ 
+
+BehaviorSubject is a special type of Subject whose only different is that it will emit the last value upon a new observer"s subscription.
+
+	var subject = new Rx.BehaviorSubject(0);  // 0 is the initial value
+	subject.subscribe({
+	  next: (v) => console.log("observerA: " + v)  // output initial value, then new values on `next` triggers
+	});
+	subject.next(1);  // output new value 1 for "observer A"
+	subject.subscribe({
+	  next: (v) => console.log("observerB: " + v)  // output current value 2, then new values on `next` triggers
+	});
+	subject.next(2);
+
+	"observerA: 0"
+	"observerA: 1"
+	"observerB: 1"
+	"observerA: 2"
+	"observerB: 2"
+
+=======================================================================================================
+
+## What is Pipe, Tap, shareReplay
+
+	Pipe: Used to stitch together functional operators into a chain. Before we could just do observable.filter().map().scan(), but since every RxJS operator is a standalone function rather than an Observable"s method, we need pipe() to make a chain of those operators (see example above).
+
+	Tap: Can perform side effects with observed data but does not modify the stream in any way. Formerly called do(). You can think of it as if observable was an array over time, then tap() would be an equivalent to Array.forEach().
+
+	shareReplay returns a hot, reference-counted observable, but replays the specified number of next notifications. You generally want to use shareReplay when you have side-effects or taxing computations that you do not wish to be executed amongst multiple subscribers
+ 
+
+=======================================================================================================
+
+## Reactive Programming
+	- Reactive Programming is programming with asynchronous data streams
+	
+## observer pattern
+
+	The observer pattern is a software design pattern in which an object, called the subject, maintains a list of its dependents, called observers, and notifies them automatically of any state changes, usually by calling one of their methods. Observer pattern.
+
+=======================================================================================================
+## Dif bet @HostBinding & @HostListener
+
+	@HostBinding: This decorator binds a class property to a property of the host element.
+	HostBinding('value') myValue; is exactly the same as [value]="myValue"
+
+
+	@HostListener: This decorator binds a class method to an event of the host element.
+	HostListener('click') myClick(){ } is exactly the same as (click)="myClick()"
+	
+=======================================================================================================
+
+## Dif bet angular module and javascript module
+
+ES6 modules:
+
+	The ES6 Modules ,which also goes by the name JS modules or JavaScript modules or ECMAScript modules are part of the JavaScript Language.
+
+	The JS Modules are stored in a file. There is exactly one module per file and one file per module.
+
+	These modules contains a small units of independent, reusable code. They export a value, which can be imported and used in some other module.
+
+	#Purpose of ES6 Modules:
+
+	Avoid leaking code to the global namespace,
+	Encapsulate code to hide implementation details
+	
+Angular Modules:
+
+	Angular Modules are an Angular-specific construct.
+
+	Angular Modules logically group different Angular artifacts such as components, pipes, directives, etc.
+
+	Angular Modules in the form of the @NgModule decorator provide metadata to the Angular compiler which in turn can better “reason about our application” structure and thus introduce optimizations.
+
+	#Purpose of Angular Modules:
+
+	organize the Angular application parts into cohesive blocks
+	helps to keep the Separation of concerns
+
+=======================================================================================================
+
+## What are providers in Angular2?
+
+Providers make injectables known to Angular's DI and define the scope of an injectable (service)
+
+
+## Internationalize in angular 
+
+	ngx-translate 
+	transloco 
+	i18n

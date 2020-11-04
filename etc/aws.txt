@@ -1,0 +1,416 @@
+S3, Lambda, API Gateway, ELB, EC2.
+AWS - Amazon web services
+	  
+##s3: s3-
+
+- Amazon Simple Storage Service
+- S3 provides object storage through a web service interface
+
+- Individual Amazon S3 objects can range in size from a minimum of 0 bytes to a maximum of 5 terabytes.
+- The largest object that can be uploaded in a single PUT is 5 gigabytes. 
+- For objects larger than 100 megabytes, customers should consider using the Multipart Upload capability.
+
+Benefits:
+
+#Low Cost:
+- Hosting Images on Amazon S3 gives us the ability to store a large amount of data with a very low cost. 
+- It uses lifecycle policies, we can set policies to migrate your data automatically to standard – infrequent access. Amazon Glacier further reduces cost.
+
+#Availability:
+- Hosting Images on Amazon S3 gives us 99.99% availability that will protect your data. 
+- data will be protected against network and power problems as well as against hardware failure.
+
+#Security:
+- Data stored in Amazon is secure by default because only owner and bucket have access to Amazon S3 resources. 
+- It provides encryption for both secure storage and secure transit.
+
+#Easy to Manage:
+- Amazon S3 provides you a data-driven approach to data security, management efficiency, and storage optimization.
+
+
+## Versioning 
+- It is a means of keeping multiple variants of an object in the same bucket. 
+- You can use versioning to preserve, retrieve, and restore every version of every object stored in your Amazon S3 bucket. 
+- With versioning, you can easily recover from both unintended user actions and application failures.
+ 
+============================================================================================================
+
+## Explain the various storage classes available in S3? 
+
+- Standard frequency accessed - Default storage
+- One-zone infrequency accessed 
+- RRS - reduced redundancy storage
+- Standard infrequency accessed 
+- Glacier.  
+
+## Secure s3 
+ 
+- two ways that you can control the access to your S3 buckets,
+
+1. ACL – Access Control List
+2. Bucket polices
+============================================================================================================
+
+## What is Glacier?
+
+- The Glacier is the backup tool available in amazon web services to retrieve or back up the data in S3.
+
+============================================================================================================
+
+## What are the methods to encrypt the data in S3? 
+- We have three different methods available for encrypting the data in S3, which are as follows.
+
+Server Side Encryption – S3 (AES 256 encryption)
+Server Side Encryption – KMS (Key management Service)
+Server Side Encryption – C (Client Side)
+
+============================================================================================================
+
+## roles- role 
+
+- Roles are used to provide permissions to entities that you trust within your AWS account.
+- Roles are similar to users but with roles you do not need to create any username and password to work with the resources.
+
+============================================================================================================
+
+## Tags tag-
+
+- Tags are used to identify instances and to establish recognisable groups for those instances.
+
+## polices policy- 
+
+- Policies are permissions that you can attach to the users that you create.
+
+1. Managed policies
+2. Inline policies
+
+============================================================================================================
+
+## EC2 ec2-
+
+- Elastic Compute Cloud :  Its is could computer for hosting application.
+
+
+============================================================================================================
+
+## What are the pricing models available for EC2 instances? 
+
+On-demand : it is for suitable short time, testing purpose 
+Spot : Price based instance 
+Reserved : it is reservation of resources for one or three years and utilized whenever you need
+
+============================================================================================================
+
+## Explain the types of instances available? 
+
+General-purpose 
+Storage optimized 
+Accelerated computing
+Computer-optimized 
+Memory-optimized 
+
+============================================================================================================
+
+## Explain the advantages of auto-scaling? autoscaling 
+
+- AutoScaling helps to automatically adjust the capacity as per need. 
+
+- Better availability 
+- Better cost management 
+- High fault-tolerant 
+
+============================================================================================================
+
+## AWS Lambda  lam- lambda-
+
+- AWS Lambda is a computational service that enables you to run code without maintaining any servers. 
+- It automatically executes the code whenever needed. 
+- We need to pay for the time that you have used it for. 
+- Lambda enables you to run the code virtually for any kind of application without managing without any servers.  
+
+============================================================================================================
+
+## Elastic Load Balancing (ELB-) 
+
+- Elastic Load Balancing allows the income of traffic to get easily distributed across the plenty of healthy EC2 instances, IP Address, and containers in an automatic way.
+
+- High availability:
+- Automatic scaling Process:
+
+Types of AWS Elastic Load Balancers
+
+1. Application Load Balancer
+
+- Application Load Balancer routes traffic gets targeted to Amazon Virtual Private Cloud (Amazon VPC) based on the request. 
+
+2. Network Load Balancer
+
+- Network Load Balancer in AWS technology is best suited for load balancing of various TCP traffic with high requirement of extreme performance. 
+
+3. Classic Load Balancer
+
+Classic Load Balancer has come up to deliver basic load balancing across various multiple Amazon EC2 instances.
+
+============================================================================================================
+
+## AWS API Gateway? gateway-
+
+- The AWS API Gateway is enable users to ‘create’, ‘publish’, ‘monitor’, ‘maintain’ and ‘secure’ their APIs.
+
+- It acts as a ‘gateway’ for the end users to access your applications/business logic
+
+
+1. Create an API: This is the first step, once you launch the API Gateway Console. It creates a ‘gate’ for your existing API, or creates a new API on top of your business logic/back-end code or clone an API existing in AWS API gateway.
+
+2. Create a Resource: A resource in the AWS API is similar to a resource in a web application – just as in a web app, you define a URL to access a physical resource, similarly in AWS API, while creating a ‘Resource’, define a URL to access a piece of our physical resources – the back-end code, lambda functions or an existing API. In this step, you just create a logical name, the actual target of this URL is defined while creating a method in the next step.
+
+3. Create a Method: A method corresponds to an HTTP verb like GET, POST, DELETE “inside a Resource”. In a method, you would define your request/response structure for the method call and the end target which will be called when this method is invoked. The end target can be a Lambda function or an existing public application (either deployed on Amazon Cloud or is publicly accessible otherwise).
+
+A method contains four sections:
+
+1.. Method Request – Defines who is authorized to access this method and the request structure (headers, body data format through ‘Models’) expected by the AWS API Gateway.
+
+2... Integration Request – Defines the ‘end point’, and the request structure as expected by the end target (the original application). Here, you can have transformations to change your original input request data to a format expected by the end target.
+
+3..Integration Response – Defines the actual response returned by the end target, apply transformations here to change the response body/headers.
+
+4..Method Response – Defines the response returned by the AWS API to the end user (after being transformed if required), you can have different transformations for different response codes.
+
+============================================================================================================
+
+## Cloud Front: 
+
+- AWS cloud front allow us to send customized content through Could Front based on their geographic locations.
+
+============================================================================================================
+
+## edge locations
+- Edge location is the place where the contents will be cached. 
+- When a user tries to access some content, the content will be searched in the edge location.
+
+============================================================================================================
+
+## Cloud Watch: 
+
+- Cloud watch helps to monitor: 
+
+- State changes in AWS EC2
+- Auto scaling event
+- Scheduled events
+- AWS api call
+
+============================================================================================================
+
+## security group? grp- group-
+
+- In AWS the in and out traffic to instances are controlled with virtual firewalls which are known as Security groups. 
+- Security groups allow you to control traffic based on various aspects such as protocol, port and source destination.    
+
+
+============================================================================================================
+
+## Amazon Kinesis  kinesis- kine-
+
+Amazon Kinesis makes it easy to collect, process, and analyze real-time, streaming data so you can get timely insights and react quickly to new information
+
+Benifit: 
+
+- Real-time : Amazon Kinesis enables you to ingest, buffer, and process streaming data in real-time, so you can derive insights in seconds or minutes instead of hours or days.
+
+- Fully managed : Amazon Kinesis is fully managed and runs your streaming applications without requiring you to manage any infrastructure.
+
+- Scalable : Amazon Kinesis can handle any amount of streaming data and process data from hundreds of thousands of sources with very low latencies.
+
+============================================================================================================
+
+## Amazon SES- 
+
+- Amazon Simple Email Service (Amazon SES) is a cloud-based email sending service.
+
+============================================================================================================
+
+##AMI-
+
+- AMI stands for Amazon Machine Image. 
+- AMI is a template that contains the software configurations, launch permission and a block device mapping that specifies the volume to attach to the instance when it is launched.
+
+==========================================================================================================
+
+## Amazon DynamoDB
+
+- Amazon DynamoDB is a fully managed proprietary NoSQL database service that supports key-value and document data structures
+
+
+## primary keys: 
+
+	There are two types of primary key: 
+		1. simple primary key (partition key) - One example would be a Users table with a Username primary key.
+			
+		2. composite primary key (Partition Key and Sort Key) - One example could be an Orders tables for recording customer orders on an e-commerce site. The partition key would be the CustomerId, and the sort key would be the OrderId.
+		
+## Secondary Indexes: 
+
+	The primary key uniquely identifies an item in a table, and you may make queries against the table using the primary key. However, sometimes you have additional access patterns that would be inefficient with your primary key. DynamoDB has the notion of secondary indexes to enable these additional access patterns.
+	
+	1. local secondary index:
+		- Index that have some partition key + but different sort key.
+		- Order table have oderId as partition key and createdData as sort key (Local secondary index)
+		
+	2. global secondary index :
+		- Index that have one partition key and sort key that can be different from those on the table have.
+		- User table have id as partition key, but we want to add more column as aadhaar number, Phone number and BOD. we want data sort by BOD than Phone number (global secondary index #1), aadhaar(global secondary index #2), BOD (sort key - (global secondary index #2))
+		- Per table we can store 20 global secondary index.
+
+
+## Read and Write Capacity 
+	
+	1. Provisioned Mode :  	
+	- These units allow a given number of operations per second. This is a fundamentally different pricing paradigm than the instance-based world(Ec2 instance(micro) for database) -- pricing can more closely reflect actual usage.
+	- auto scalling available
+	
+	2. On-demand Mode
+	
+## Query vs Scan 
+
+- Scan search through each individual item in the database.
+- Query search based on primary or secondary index. 
+	
+============================================================================================================
+
+##Nginx
+
+NGINX is open source software for web serving, reverse proxying, caching, load balancing, media streaming, and more.
+
+============================================================================================================
+
+## AWS region 
+
+- AWS region is a separated geographic area 
+- E.g US-West 1
+
+- Each AWS region has multiple isolated locations known as Availibility Zones.
+
+
+============================================================================================================
+
+## VPC-
+
+Amazon Virtual Private Cloud (Amazon VPC) enables you to launch AWS resources into a virtual network that you"ve defined
+
+--Benifit
+
+- An isolated environment inside AWS to launch your instances 
+- A virtual network where you can define rules and policies for your services
+- A great solution to have a wall between the Internet and your instances, you can decide to expose only a - part of your infrastructure, basically, the only one that needs to speak with the rest of the world
+- The opportunity to set up subnets, IP ranges, and network configurations as you prefer
+
+
+## NAT gateways? nat- 
+
+- NAT stands for Network Address Translation. 
+- NAT gateways enables instances in a private subnet to connect to the internet but prevent the internet from initiating a connection with those instances.
+
+============================================================================================================
+
+## snowball
+
+- you can move huge amount of data from one place to another which reduces your network costs, long transfer times and also provides better security.
+
+## Amazon Route 53 
+
+- it is a highly available and scalable cloud Domain Name System (DNS) web service.
+
+- types of routing policies in route53
+
+1. Simple routing
+2. Latency routing
+3. Failover routing
+4. Geolocation routing
+5. Weighted routing
+
+============================================================================================================
+
+## IAM iam-  
+- AWS Identity and Access Management (IAM) enables you to manage access to AWS services and resources securely
+
+============================================================================================================
+
+## Elastic Beanstalk
+
+- AWS Elastic Beanstalk is the fastest and simplest way to get an application up and running on AWS.
+- Developers can simply upload their code and the service automatically handle all the details such as resource provisioning, load balancing, Auto scaling and Monitoring.
+
+============================================================================================================
+
+## Subnets: 
+- A subnet can be thought of as dividing a large network into smaller networks. This is done because maintenance of smaller networks is easier and it also provides security to the network from other networks.
+
+============================================================================================================
+
+## Route Tables: 
+- A route table contains a set of rules called routes which determine where traffic has to be directed. 
+- we can have multiple route tables in a VPC.
+
+============================================================================================================
+
+## VPC peering : vpcp-
+- A VPC peering connection is a networking connection between two VPCs that enables you to route traffic between them using private IPv4 addresses or IPv6 addresses
+
+============================================================================================================
+
+## VPN- 
+
+- Virtual Private Network (AWS VPN) lets you establish a secure and private tunnel from your network or device to the AWS global network
+
+
+============================================================================================================
+
+##AWS Compute Service 
+
+1. EC2 - Elastic Compute Cloud :  Its is could computer for hosting application. 
+2. Lambda - Execute the background task. This is not for hosting. (Image compression example)
+3. Elastic Beanstalk - Deploy the application without worrying about the hardware.
+4. Load Balancer - Manage the load among the EC2 servers
+4. AutoScaling - Scale up and down automatically 
+
+##AWS Storage Service: 
+
+1. S3 - Simple storage services
+2. Elastic Block Storage - Harddisk space
+3. Glacier - For Backup, cheapest Service, Store on Maganetic disk, takes more time for data retrieve. 
+
+##AWS Database Service:
+
+1. RDS - Relational Database Service Management 
+2. DynamoDB - NonRelational Database Service Management
+3. Redshift - analysis the data
+
+##AWS Management Service:
+
+1. CloudWatch - Cloud Monitoring tool, Create the alerm when CPU is reach to perticular limit
+2. CloudFormation - templatize the AWS structure
+3. CloudTrail - Logging Service, Store the log to S3
+4. CLI - Command line tool
+
+##AWS Security Service:
+
+1. IAM - Identification and Authentication Management tool, Create user account 
+
+##AWS application Service:
+
+1. SES - bulk email services
+2. SNS - Send notification to AWS Service 
+
+
+=========================================================================================================
+
+## Disadvantage of serverless?
+
+	Serverless architectures are not built for long-running processes
+		This limits the kinds of applications that can cost-effectively run in a serverless architecture. Because serverless providers charge for the amount of time code is running, it may cost more to run an application with long-running processes in a serverless infrastructure compared to a traditional one.
+		
+	Performance may be affected
+		Because it's not constantly running, serverless code may need to 'boot up' when it is used. This startup time may degrade performance. However, if a piece of code is used regularly, the serverless provider will keep it ready to be activated – a request for this ready-to-go code is called a 'warm start.' A request for code that hasn't been used in a while is called a 'cold start.'
+
+		Cloudflare Workers largely avoids the cold-starting issue by using the Chrome V8 engine, which in most cases is able to start up and run JavaScript code in under 5 milliseconds. If the code is already running, the response time is under a millisecond.
+		

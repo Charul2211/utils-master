@@ -1,0 +1,204 @@
+##PHP7 - release date - 2015 
+
+- Scalar Type Declaration
+
+declare(strict_types=1);
+function getSum(float $a, float $b) {
+    return $a + $b;
+}
+ 
+getSum(3, "2 week");
+// Fatal error: Uncaught TypeError: Argument 2 passed to getSum() must be of the type float, string given
+ 
+getSum(1.8,  "4.5");
+// Fatal error: Uncaught TypeError: Argument 2 passed to getSum() must be of the type float, string given
+ 
+getSum(3.1, 2);
+// int(2) change to float(2.0)
+//returns float(5.1)
+
+- Return Type Declarations
+
+function getSum(float $a, float $b) : float {
+ 
+}
+
+-Spaceship Operator
+
+$compareResult = $a <=> $b
+ 
+if $a < $b it returns “-1” to the variable “compareResult”
+ 
+if $a = $b it returns “0” to the variable “compareResult”
+ 
+if $a > $b it returns “1” to the variable “compareResult”
+
+
+- Null Coalesce Operator
+
+$user = isset($userName) ? $userName : “v3ron”;
+
+$user = $userName ??  "v3ron";
+
+- Random Integers
+random_int(2,10);
+
+The above code returns a random number between 2 and 10, including those two as well.
+
+=================================================================================================
+
+##What’s the difference between the include() and require() functions?
+
+- they both include a specific file 
+- but on require the process exits with a fatal error if the file can’t be included, 
+- while include statement may still pass and jump to the next step in the execution.
+
+=================================================================================================
+
+##How can we get the IP address of the client?
+
+ $_SERVER["REMOTE_ADDR"]
+ 
+=================================================================================================
+
+
+##What’s the difference between unset() and unlink()
+
+- unset() sets a variable to “undefined” 
+- while unlink() deletes a file we pass to it from the file system.
+
+=================================================================================================
+
+##error types in PHP
+
+Notices – Simple, non-critical errors that are occurred during the script execution. 
+        - An example of a Notice would be accessing an undefined variable.
+
+Warnings – more important errors than Notices, however the scripts continue the execution. 
+   		 -  An example would be include() a file that does not exist.
+
+Fatal   – this type of error causes a termination of the script execution when it occurs. 
+		- An example of a Fatal error would be accessing a property of a non-existent object or require() a non-existent file.
+		
+=================================================================================================
+
+##What is the difference between GET and POST?
+
+– GET displays the submitted data as part of the URL, 
+- POST this information is not shown as it’s encoded in the request.
+
+- GET has restrictions( handle a maximum of 2048 characters) , POST has no such restrictions.
+
+=================================================================================================
+
+##How can you enable error reporting in PHP?
+- ini_set('display_errors', 1)
+- error_reporting(E_ALL)
+
+=================================================================================================
+
+##What are Traits?
+- Traits are a mechanism that allows you to create reusable code
+- PHP where multiple inheritance is not supported. A Trait cannot be instantiated on its own.
+
+=================================================================================================
+
+## Can you extend a Final defined class?
+- you cannot extend a Final defined class. 
+- A Final class or method declaration prevents child class or method overriding.
+
+=================================================================================================
+
+##What PSR Standards do you follow? Why would you follow a PSR standard?
+- PSRs are PHP Standards Recommendations that aim at standardising common aspects of PHP Development
+
+=================================================================================================
+
+##What is PEAR in php?
+- PEAR (PHP Extension and Application Repository) is a framework and repository for reusable PHP components. 
+
+=================================================================================================
+
+##What are the differences between echo and print in PHP?
+- echo can accept multiple parameters 
+- print can only take a single argument.
+
+=================================================================================================
+##Mysql version - 5.7
+
+=================================================================================================
+
+   strtolower()
+   strtoupper()
+   ucwords()
+   strlen()
+   
+   explode(',', $arr);
+   implode(',',$str);
+
+
+##implode 
+
+$arr = array('Hello','World!','Beautiful','Day!');
+echo implode(",",$arr);
+
+Hello,World!,Beautiful,Day!
+
+##explode
+
+$str = "Hello world. It's a beautiful day.";
+print_r (explode(" ",$str));
+
+Array ( [0] => Hello [1] => world. [2] => It's [3] => a [4] => beautiful [5] => day. )
+
+##strlen("Hello"); => 5
+
+##ucwords("hello world"); => Hello World
+
+##strtolower("Hello WORLD."); => hello world
+
+##strtoupper('hello') => HELLO
+
+=================================================================================================
+
+##Array Function 
+
+  count($arr)
+  in_array('str',$arr)
+  array_key_exists('key',$arr)
+  array_keys($arr)
+  array_sum($arr)
+  
+  
+-1. in_array
+
+$people = array("Peter", "Joe", "Glenn", "Cleveland");
+if(in_array("Glenn", $people))
+
+2. count 
+$cars=array("Volvo","BMW","Toyota");
+echo count($cars); => 5
+
+3. array_keys 
+$a=array("Volvo"=>"XC90","BMW"=>"X5","Toyota"=>"Highlander", "qqq");
+print_r(array_keys($a)); => Array ( [0] => Volvo [1] => BMW [2] => Toyota [3] => 0 )
+
+4. array_key_exists
+
+$a=array("Volvo"=>"XC90","BMW"=>"X5");
+array_key_exists("Volvo",$a)
+
+5. array_sum 
+
+$a=array(5,15,25);
+echo array_sum($a);  => 50
+
+=================================================================================================
+
+## Overloading btw overriding
+
+- Overloading is defining functions that have similar signatures, yet have different parameters. 
+- overriding where the parent class has defined a method and the derived class wishes to override that method.
+
+=================================================================================================
+

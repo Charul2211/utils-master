@@ -1,0 +1,1737 @@
+##What does event-driven programming mean in NODEJS?
+Block base programme
+
+##What is callback in NODEJS
+A function
+
+##What is Event Loop in NODE
+single threaded
+
+##What is PM2 in NODEJS
+A service for managing process	
+
+##what is Dependency Injection?
+A pattern to pass reference
+
+##What is SWAGER
+A tool for documenting
+
+##What is REST API?
+Architectural style
+
+##What is Aggregator?
+provides computed results
+
+##What is an error-first callback?
+first param of function
+
+##What is callback hells?
+Deadlock
+
+##How to inherit one controller into the second controller in the Angular?
+extend
+
+##What is the main difference in between service and factory in the Angular?
+service is a constructor and factory is a function
+
+##What is Design pattern?
+a practice for reusable
+
+
+#npm-shrinkwrap - lock package.json
+
+=========================================================================
+
+##Check package.json
+
+npm-check - Check for outdated, incorrect, and unused dependencies.
+=========================================================================
+
+#package.json
+
+ 3.5.9 => major.minor.patch
+
+^3.5.9 => 3.*.*
+
+~3.5.9 => 3.9.*
+
+
+The tilde ~ matches the most recent patch version (the third number) for the specified minor version (the second number).
+
+~1.2.3 will match all 1.2.x versions but will hold off on 1.3.0.
+
+The caret ^ is more relaxed. It matches the most recent minor version (the second number) for the specified major version (the first number).
+
+^1.2.3 will match any 1.x.x release including 1.3.0, but will hold off on 2.0.0
+
+=========================================================================
+
+##Dependency type
+
+- dev   => npm install express --dev-save
+- production => npm install express --save
+
+npm install --production
+
+"dependencies": {
+    "@angular/common": "2.3.0",
+    "@angular/compiler": "2.3.0",
+ }
+ 
+npm install
+
+"dependencies": {
+    "@angular/common": "2.3.0",
+    "@angular/compiler": "2.3.0",
+ },
+"devDependencies": {
+    "@types/jquery": "^2.0.41",
+ }
+ 
+=========================================================================
+
+##checkout dated npm 
+
+npm outdated
+
+=========================================================================
+
+##check lastest version of npm 
+
+npm view express version
+
+=========================================================================
+
+##create or initialization of package.json
+
+npm init
+
+Set defualt package.json => npm init --yes
+
+=========================================================================
+
+##Exact version npm 
+
+npm install express --save-exact 
+
+install npm without ~ or ^ symbol
+i.e  3.4.4
+=========================================================================
+
+##Handle Exception Globally in Node.js (uncaughtException)?
+
+
+process.on("uncaughtException", (err) => {
+   console.log("whoops! there was an error");
+});
+
+
+process.on("unhandledRejection", (reason, promise) => {
+  console.log("Unhandled Rejection at:", reason.stack || reason)
+  // Recommended: send the information to sentry.io
+  // or whatever crash reporting service you use
+})
+
+=========================================================================
+
+##List all installed package 
+
+npm ls --json
+
+=========================================================================
+
+##Autoupdate all dependencies in nodejs 	
+
+npm-check-updates 
+	- upgrade your package.json dependencies to the latest versions
+
+=========================================================================
+
+##Yarn vs npm: Functional Differences
+
+	- yarn.lock File automatic, npm we need to use npm-shrinkwrap 
+	- Add automatic to package.json, npm we need to mention explicity --save-exact
+	- yarn install dependencies faster than the npm 
+	
+=========================================================================
+
+## What is node.js
+
+-  Node.js is an open-source, run-time environment that executes JavaScript 
+
+=========================================================================
+
+##How node.js works
+
+- it works on a v8 environment
+
+=========================================================================
+
+
+## Features of nodejs: (fea)
+
+Fast	
+- Node.js is built on Google Chrome’s V8 JavaScript Engine which makes its library very fast in code execution
+
+Asynchronous	
+- Node.js based server never waits for an API to return data thus making it asynchronous
+
+Scalable	
+- It is highly scalable because of its event mechanism which helps the server to respond in a non-blocking way
+- Single thread Event, Pareller worker:Thread pool
+
+Open Source	
+- Node.js has an extensive open source community which has contributed in producing some excellent modules to add additional capabilities to Node.js applications
+
+No Buffering	
+-Node.js applications simply output the data in chunks and never buffer any data
+
+=========================================================================
+
+
+## What are Globals in Node.js?
+
+Three keywords in Node.js constitute as Globals. These are:
+
+#Global – 
+	it represents the Global namespace object and acts as a container for all other <global> objects.
+
+global.name = "Bhavin"
+console.log("index file" + global.name);
+
+
+#Process – 
+	It is one of the global objects but can turn asynchronous function into an async callback. 
+	It can be accessed from anywhere in the code, 
+	and it primarily gives back information about the application or the environment. 
+
+process.on("uncaughtException", function(err) {
+  console.log("Caught exception: " + err);
+});
+
+properties of process?
+
+- Stdout
+- Stderr
+- env
+- argv
+
+#Buffer – it is a class in Node.js to handle binary data.
+
+=========================================================================
+
+
+## 47. Describe the exit codes of Node.js.
+
+- In Node.js, exit codes are a set of specific codes which are used for finishing a specific process. These processes can include the global object as well. Below are some of the exit codes used in Node.js:
+
+- Uncaught fatal exception
+- Fatal Error
+- Internal Exception handler Run-time failure
+- Internal JavaScript Evaluation Failure
+
+=========================================================================
+
+## What does event-driven programming mean?
+
+- flow of the program is determined by events
+
+=========================================================================
+
+##Where can we use node.js
+
+Example of application where we have 
+- Non-Blocking
+- Event-Driven
+- I/O intensive 
+- Data intensive
+
+Such as : 
+
+- Web applications 
+- real-time web apps
+- General purpose applications
+- Video Streaming application
+- APIs with Nosql 
+- Command line utility - Event base - fire command and exist 
+
+##Where to not use 
+
+- CPU intensive
+- High calculation
+
+=========================================================================
+
+##What is control flow function?
+
+- code which runs in between several asynchronous function calls is known as control flow function.
+
+=========================================================================
+
+##How "Control Flow" controls the functions calls?
+
+- Control the order of execution   -> Manage order of execution
+- Collect data                     -> Manage Data      
+- Limit concurrency                -> Manage concurrency
+- Call the next step in program    -> Call next step in program
+
+=========================================================================
+
+##Why Node.js is single threaded?
+
+- more performance and scalability can be achieved by doing async processing on a single thread
+
+=========================================================================
+
+##What is an event loop in Node.js ? (event-l)
+
+
+When no any I/O operation: 
+- Client Request -> Event Queue -> Event Loop -> Response
+
+When I/O operation:
+- Client Request -> Event Queue -> Event Loop -> Thread Pool (If there is I/O operation) -> Execute the callback - Event Loop -> Response
+
+- Single thread Event, Pareller worker:Thread pool
+
+
+- There is only one thread that executes JavaScript code and this is the thread where the event loop is running. 
+- The execution of callbacks (know that every userland code in a running Node.js application is a callback) is done by the event loop.
+- The event loop do a process is a set of phases with specific tasks that are processed in a round-robin manner.
+- Round-robin manner : CPU provided fixed time slot in cylc way to each process.
+
+Phases: 
+
+#1. Timers
+- Everything that was scheduled via setTimeout() or setInterval() will be processed here.
+
+#2. IO Callbacks
+- Here most of the callbacks will be processed. As all userland code in Node.js is basically in callbacks (e.g a callback to an incoming http request triggers a cascade of callbacks), this is the userland code.
+
+#3. IO Polling
+- Polls for new events to be processed on the next run.
+
+#4. Set Immediate
+- Runs all callbacks registered via setImmediate().
+
+#5. Close
+- Here all on(‘close’) event callbacks are processed.
+
+
+=========================================================================
+
+
+=============================================================================================
+
+/* Simple Hello World in Node.js */
+
+console.log("Start");
+
+process.nextTick(function(){
+   console.log("nextTick - after current process!"); // It"s like be at the bottom at this file
+});
+
+
+setTimeout(function(){
+  console.log("setTimeout - end of event loop"); // It"s waiting like a normal person at a queue
+}, 0);
+
+setImmediate(function(){
+  console.log("setImmediate - start of next event loop"); 
+});
+
+console.log("End");
+
+---------------------------------------------------------------
+
+Start
+End
+nextTick - after current process!
+setTimeout - end of event loop
+setImmediate - start of next event loop
+
+- Any function passed as the setImmediate() argument is a callback that"s executed in the next iteration of the event loop. 
+
+- A function passed to process.nextTick() is going to be executed on the current iteration of the event loop, after the current operation ends
+In Node.js, each iteration of an Event Loop is called a tick.
+ 
+=============================================================================================
+
+## What is the command that is used in node.js to import external libraries
+
+const http = require(“http”)
+
+=========================================================================
+
+## Clustor 
+
+- It will help us in multi core processor 
+- it will not help if we have single core processor
+
+- It creates child process so it will helps for traffic management.
+
+=========================================================================
+
+##flightplan 
+
+- it is a npm
+- It will do automatic code deployment and service starting 
+
+=========================================================================
+
+##What is error-first callback?
+
+fs.readFile(filePath, function(err, data) {    
+  if (err) {  
+    //handle the error  
+  }  
+  // use the data object  
+});  
+
+=========================================================================
+
+##What types of tasks can be done asynchronously using the event loop?
+
+-I/O operations
+-Heavy computation
+-Anything requiring blocking
+
+===========================================================================
+
+##difference between operational and programmer errors?
+
+- Operational errors means request timeout or hardware failure
+- programmer errors are actual bugs.
+
+===========================================================================
+
+##List out the properties of process?
+
+- Stdout
+- Stderr
+- env
+- argv
+
+===========================================================================
+
+##Node core modules
+
+"child_process",
+"cluster",
+"crypto",
+"fs",
+"http",
+"https",
+"os",
+"path",
+"querystring",
+"stream",
+
+===========================================================================
+
+##stub 
+
+- Stub is a small program, which substitutes for a longer program.
+- Stubs are functions/programs that simulate the behaviors of components/modules
+
+- Stubs provide canned answers to function calls made during test cases.
+
+========================================================================
+
+## When are background worker processes useful? How can you handle worker tasks?
+
+- Worker processes are extremely useful if you"d like to do data processing in the background, like sending out emails or processing images.
+
+- There are lots of options for this like RabbitMQ or Kafka.
+
+========================================================================
+
+## How can you secure your HTTP cookies against XSS attacks?
+
+- XSS (Cross-Site Scripting) occurs when the attacker injects executable JavaScript code into the HTML response.
+
+- To mitigate these attacks, you have to set flags on the set-cookie HTTP header:
+
+#1. HttpOnly - this attribute is used to help prevent attacks such as cross-site scripting since it does not allow the cookie to be accessed via JavaScript.
+
+#2. secure - this attribute tells the browser to only send the cookie if the request is being sent over HTTPS.
+
+So it would look something like this: Set-Cookie: sid=<cookie-value>; HttpOnly. If you are using Express, with express-cookie session, it is working by default.
+
+========================================================================
+
+##
+console.log(__filename); -> /home/cg/root/main.js
+console.log(__dirname);  -> /home/cg/root
+
+===========================================================================
+
+## Pass Param in nodejs using nodejs 
+ 0      1      2         3
+node app.js production root 
+
+process.argv[2] => production
+process.argv[3] => root
+
+===========================================================================
+## Routing 
+
+app.js
+
+global.express = require("express");
+global.app = express();
+
+app.use("/api", require(__dirname + "routes/api"));
+
+api.js 
+
+var router = express.Router();
+router.route("/GetTranscriptByClId").post(users.GetTranscriptByClId);
+
+===========================================================================
+
+##app.get vs router 
+
+- app.get can be used to create routes for your application at the top level.
+- express.Router class to create modular, mountable route handlers. 
+- A Router instance is a complete middleware and routing system
+
+
+===========================================================================
+
+## Static files 
+
+public
+	images 
+		a.jpg
+	css
+	js
+	
+
+
+app.use(express.static("public"));  => http://localhost:3000/images/a.jpg
+
+app.use("/assets", express.static(path.join(__dirname, "public/images/")))  => http://localhost:3000/assets/a.jpg 
+
+===========================================================================
+
+## Testing Pyramid 
+
+Unit Test -> Integration Test -> End to End Test 
+
+===========================================================================
+
+## Explain How Does Node.Js Work?
+
+Usually, the delivery boy goes to each and every house to deliver the packet. 
+Node.js works in the same way and processes one request at a time. 
+The problem arises when any one house is not open. 
+The delivery boy can’t stop at one house and wait till it gets opened up. 
+What he will do next, is to call the owner and ask him to call when the house is open. 
+Meanwhile, he is going to other places for delivery. Node.js works in the same way.
+It doesn’t wait for the processing of the request to complete (house is open). 
+Instead, it attaches a callback function (call from the owner of the house) to it. 
+Whenever the processing of a request completes (the house is open), an event gets called, which triggers the associated callback function to send the response.
+
+To summarize, Node.js does not process the requests in parallel. 
+Instead, all the back-end processes like, I/O operations, heavy computation tasks, that take a lot of time to execute, run in parallel with other requests.
+
+=============================================================================================
+
+##Node.Js Entirely Based On A Single-Thread?
+
+To explain it practically, let’s assume there are 100s of requests lined up in Node.js queue. 
+As per design, the main thread of Node.js event loop will receive all of them and forwards to background workers for execution. 
+Once the workers finish processing requests, the registered callbacks get notified on event loop thread to pass the result back to the user.
+
+
+User -> 100 Request -> Event Loop -> Worker (Execute Task in Background) 
+
+Once task is done it will notify to Event Loop -> Event Loop -> User
+
+=============================================================================================
+
+##Create HTTP Server In Nodejs
+
+var express = require("express");
+var app = express();
+
+app.listen(4100, function () {
+    console.log("Express server listening for HTTPS on port 4100");
+});
+
+=============================================================================================
+
+##What Is A Child_process Module In Node.Js?
+
+Node.js supports the creation of child processes to help in parallel processing along with the event-driven model.
+
+-----------------------------------------------------------------------------------------------
+exec – <child_process.exec> method runs a command in a shell/console and buffers the output.
+
+const exec = require("child_process").exec;
+exec("netstat -aon | find "9000"", (e, stdout, stderr)=> {
+    if (e instanceof Error) {
+        console.error(e);
+        throw e;
+    }
+    console.log("stdout ", stdout);
+    console.log("stderr ", stderr);
+});
+
+-----------------------------------------------------------------------------------------------
+spawn – <child_process.spawn> launches a new process with a given command.
+
+- spawn () launches a new process with the available set of commands. 
+- This doesn’t generate a new V8 instance 
+- This method can be used when your child process returns a large amount of data to the node.
+
+-----------------------------------------------------------------------------------------------
+
+fork – <child_process.fork> is a special case of the spawn() method to create child processes.
+
+- fork () is a particular case of spawn () which generates a instance. Through this method, multiple workers run on a single node code base for multiple tasks.
+
+
+
+------------------------------------------------------------------------
+========================================================================
+
+## Express advantages
+
+ExpressJS is a prebuilt NodeJS framework that can help you in creating server-side web applications faster and smarter. 
+
+-Sub routers
+-Static file serving
+
+------------------------------------------------------------------------
+========================================================================
+
+{
+    // Use IntelliSense to learn about possible Node.js debug attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Program",
+            "program": "${workspaceRoot}\\cluster.js"
+        },
+        {
+            "type": "node",
+            "request": "attach",
+            "name": "Attach to Port",
+            "address": "localhost",
+            "port": 5858
+        }
+    ]
+}
+
+
+------------------------------------------------------------------------
+========================================================================
+#######Single-threaded + Event Loop + non blocking
+
+function placeOrder(orderId){
+	console.log("open  placeOrder called  ###" + orderId);
+	
+	getOrder(orderId ,function(ReturnorderId){
+		console.log("done placeOrder getOrder called @@@" + ReturnorderId);
+	})
+}
+
+function getOrder(orderId, callback){
+	setTimeout(function(){
+		//assume here like some time consume operation i.e database, file reading 
+		console.log("inprogress getOrder called -->" + orderId);
+		callback(orderId);
+	}, 5000);
+}
+
+
+placeOrder(1);
+placeOrder(2);
+
+
+OUTPUT : 
+
+open  placeOrder called  ###1
+open  placeOrder called  ###2
+inprogress getOrder called -->1
+done placeOrder getOrder called @@@1
+inprogress getOrder called -->2
+done placeOrder getOrder called @@@2
+
+=============================================================================
+
+examples of microtasks:
+
+process.nextTick
+promises
+Object.observe
+
+examples of macrotasks:
+
+setTimeout
+setInterval
+setImmediate
+I/O
+
+========================================================================
+Whats new in Nodejs 8 :
+
+Async Hooks API (AsyncWrap):
+-The Async Hooks (formerly known as AsyncWrap) API has got a notable upgrade to the latest version. 
+-This API opens the way for developers to supervise the operation of the Node.js event loop, as well as allowing them to inspect the life of handle objects in the node.
+- Async Hooks is a new experimental feature shipped with Node.js that digs deep into what a Node.js process is doing and enables you to pull out a large amount of analytical information about that process. Here’s how the Node.js Docs define Async Hooks
+
+TurboFan and Ignition:
+-Node.js 8 now ships with V8 to 5.8, which includes TurboFan and Ignition. 
+
+The util.promisify() feature allows Node.js callback-style APIs to be wrapped in a Promise.
+
+npm@5
+- With the release of Node.js 8 has come the parallel release of npm@5, with a ton of improvements and new features.
+- Some of the new features include lockfiles, local caching with offline fallbacks, SHA512 checksums, and a suite of other smaller features. In terms of performance, you can expect up to 5x performance increases in the best cases. On average, you can expect 20-100% faster npm installs.
+
+Aysnc/await
+- One of the most exciting things to be added recently to the core JavaScript language is coming to Node.js 8 LTS - async/await. Many see async/await as the next evolution of asynchronous programming in Node.js, beating out both callbacks and promises.
+
+http/2
+- HTTP/2 is one of the larger updates to Node.js core that is being shipped with Node.js 8 LTS. It landed recently after exhaustive and long-term work driven by James Snell to discuss and make the hard decisions about certain implementation details of HTTP/2 over the current HTTP implementation in Node.js core.
+
+
+======================================================================
+
+function makeDouble(x){
+return new Promise((resolve, reject) => {
+setTimeout(()=> {
+resolve(x * 2)
+}, 2000)
+})
+}
+
+async function asyncFun(){
+const a = await makeDouble(10);
+const b = await makeDouble(20);
+return a + b;
+}
+
+asyncFun().then((data) => {
+console.log(data);
+});
+
+
+output - 60 
+
+
+======================================================================
+
+nconf.js 
+
+
+ var fs    = require("fs"),
+     nconf = require("nconf");
+ 
+  //function Config() {
+  //
+  // Setup nconf to use (in-order):
+  //   1. Command-line arguments
+  //   2. Environment variables
+  //   3. A file located at "path/to/config.json"
+  //
+  nconf.argv()
+   .env()
+   .file({ file: "config.json" });
+ 
+  //
+  // Set a few variables on `nconf`.
+  //
+  //nconf.set("database:host", "127.0.0.1");
+  //nconf.set("database:port", 5984);
+ 
+  //
+  // Get the entire database object from nconf. This will output
+  // { host: "127.0.0.1", port: 5984 }
+  //
+  
+   var environment = nconf.get("NODE:ENV") || "development";
+   console.log("nconf environment:-"+environment);
+   nconf.file(environment,__dirname+ "/" + environment + ".json");
+
+  //console.log("foo: " + nconf.get("foo"));
+  console.log("NODE_ENV: " + nconf.get("NODE_ENV"));
+  //console.log("database: " + nconf.get("database:host"));
+ 
+  //
+  // Save the configuration object to disk
+  //
+  //nconf.save(function (err) {
+    //fs.readFile("config.json", function (err, data) {
+      //console.dir(JSON.parse(data.toString()))
+    //});
+  //});
+  //}
+  
+  exports.get = function(key) { 
+return nconf.get(key);
+  };
+  
+//where we need to use it is: main.js
+
+var nconf = require("./nconf.js");
+console.log("database: " + nconf.get("database:host"));
+
+
+
+
+
+==================================================================
+
+## Scaling 
+
+- Horizontal scaling :  Add more machines  
+	- Elastic load balance 
+
+- Verical scaling : Increase capacity(CPU, RAM) of same machine
+
+- Optimise: 
+
+#1. Bandwidth : 1000 kb per page,100 qps per machine, 100 machine = 10gbbps 
+
+Solution : compression
+
+var app = express()
+app.use(compression())
+
+Here it take node server CPU cost to compress it, so it is better to do this at nginx. 
+
+Reuest -> Elastic Load balance -> nginx -> PM2 -> Nodejs 
+
+#2. Network profoling : 
+
+- netstat - network tcp statistics 
+- lsof - list of open file 
+
+- keep-alive header : request to nodejs  : 
+
+By default, HTTP connections close after each request. ... Enabling the keep-alive header allows you to serve all web page resources over a single connection
+
+
+Object.assign(header, {
+"compress": true
+"connection": "keep-alive",
+"keep-alive": "timeout=200"
+})
+
+
+const http = require("http");
+fetch(url, {
+ agent: new http.Agent({
+	keepAlive: true,
+	maxSockets: 24
+ })
+})
+
+- connection polling: a connection pool is a cache of database connections maintained so that the connections can be reused when future requests to the database are required.
+
+
+#3. Disk 
+
+- disk operation should not be include in app.use 
+- logs should not be in sync mode 
+
+===============================================================================
+
+process.on("uncaughtException", function(err) {
+  console.log("Caught exception: " + err);
+});
+
+process.on("unhandledRejection", (err) => {
+  console.log(err)
+})
+
+
+Async execution
+
+Non blocking system
+
+Single thread application
+
+
+Event-Driven system :
+Event-driven programming is a programming paradigm in which the flow of the program is determined by events such as user actions (mouse clicks, key presses), sensor outputs, or messages from other programs/thread
+
+Event Loop:
+The event loop is in the heart of Node.js / Javascript - it is responsible for scheduling asynchronous operations.
+
+
+===================================================================
+
+## What is the area of problem Node addresses
+
+- Slow web servers due to synchronous I/O.
+- Multithreaded programming bottlenecks.
+- Scaling.
+- Package management and deployment.
+
+===================================================================
+
+## Why Node uses Google V8 Engine
+- Google V8 is Chrome runtime engine which converts JavaScript code into native machine code which in turn provides a fast running application.
+
+===================================================================
+
+## Can we use other engines than V8
+- Yes. Microsoft Chakra is another JavaScript engine which can be used with Node.js. It’s not officially declared yet.
+
+===================================================================
+
+## If Node is single threaded then how it handles concurrency
+
+- Node provides a single thread to programmers so that code can be written easily and without bottleneck. Node internally uses multiple POSIX threads for various I/O operations such as File, DNS, Network calls etc.
+
+- When Node gets I/O request it creates or uses a thread to perform that I/O operation and once the operation is done, it pushes the result to the event queue. On each such event, event loop runs and checks the queue and if the execution stack of Node is empty then it adds the queue result to execution stack.
+
+===================================================================
+
+This is how Node manages concurrency.
+
+## Explain event loop
+ - As said, Node.js is single threaded but it supports concurrency using events and callbacks. The event loop is a component which checks event queue on a periodic basis and pushes the result in execution stack if the stack is empty.
+
+ ===================================================================
+
+## What is callback hell
+
+The asynchronous function requires callbacks as a return parameter. When multiple asynchronous functions are chained together then callback hell situation comes up. Consider the example code below.
+
+This situation is referred to as “callback hell” situation.
+
+===================================================================
+
+## Which is your preferred way to write asynchronous code in Node
+
+- Using Async module.
+- Using promises.
+- Using function decomposition.
+- Using async/await.
+
+===================================================================
+
+
+## What is stream and explain types of streams (str-)
+
+- Streams are a collection of data that might not be available all at once and don’t have to fit in memory. Streams provide chunks of data in a continuous manner. It is useful to read a large set of data and process it.
+
+
+- Readable streams as the name suggest used in reading a large chunk of data from a source. 
+- Writable streams are used in writing a large chunk of data to the destination.
+
+- Duplex streams are both readable and writable ( Eg socket). 
+- Transform stream is the duplex stream which is used in modifying the data (eg zip creation).
+
+===================================================================
+
+
+Explain child processes in Node
+
+- Child process module enables us to access operating system functionaries. Scalability is baked into Node and child processes are the key factors to scale our application. You can use child process to run system commands, read large files without blocking event loop,  decompose the application into various “nodes” (That’s why it’s called Node).
+
+===================================================================
+
+##Can we send/receive messages between child processes
+
+Yes, we can.
+
+We can use send() function to send message to workers and receive the response on process.on(‘message’) event.
+
+===================================================================
+
+
+## Explain file system module of Node
+
+- Node fs module provides simple file system module to perform files related operation. This module comprises of synchronous and asynchronous functions to read/write files. 
+
+- For example, readFile() function is asynchronous function to read file content from specified path and readFileSync() is synchronous function to read files.
+
+===================================================================
+
+## How to scale Node application
+ 
+- We can scale Node application in following ways:
+- cloning using cluster module.
+- Decomposing the application into smaller services – i.e micro services.
+
+===================================================================
+
+## Asynchronous Non-Blocking
+
+Asynchronous literally means not synchronous. We are making HTTP requests which are asynchronous, means we are not waiting for the server response. We continue with other block and respond to the server response when we received.
+
+The term Non-Blocking is widely used with IO. For example non-blocking read/write calls return with whatever they can do and expect caller to execute the call again. Read will wait until it has some data and put calling thread to sleep.
+
+
+===================================================================
+
+## libuv
+
+libuv is a multi-platform support library with a focus on asynchronous I/O.
+
+Some of the features of libuv are:
+
+- Full-featured event loop backed by epoll, kqueue, IOCP, event ports.
+- Asynchronous TCP and UDP sockets
+- Asynchronous file and file system operations
+- Child processes
+- File system events
+
+===================================================================
+
+## How does Node.js handle the child threads?
+
+- Node.js is a single threaded process and doesn’t expose the child threads or thread management methods. 
+- we can still make use of the child threads using spawn() for some specific asynchronous I/O tasks which execute in the background and don’t usually execute any JS code or hinder with the main event loop in the application. 
+- If you still want to use the threading concept in your application you have to include a module called ChildProcess explicitly.
+
+
+===================================================================
+
+## Pipe
+
+The pipe() function reads data from a readable stream as it becomes available and writes it to a destination writable stream
+
+===================================================================
+
+## Explain what is Reactor Pattern in Node.js?
+
+	Reactor Pattern is used to avoid the blocking of the Input/Output operations. 
+
+	Request come -> event queue -> if it is I/O operation -> submitted to a demultiplexer -> It will assign handler (call back function)
+
+
+	- demultiplexer - handles concurrency in avoiding the blocking of the I/O mode
+
+
+libuv is the low-level engine that implements reactor pattern thus providing an API for creating the Event Loop, managing an Event Queue and running asynchronous I/O operations.
+
+	what is need for libuv?
+	- Each operating system has its own interface for the demultiplexer. Such as Kqueue for Mac OS X, IOCP for Windows and Epoll for Linux. Different multiplexers will behave differently when handling an I/O request. And then, each I/O operation can differ in its behaviour within the same operating system. This creates an inconsistency and to overcome this inconsistency libuv is the solution.
+
+
+	This demultiplexer is a notification interface that is used to handle concurrency in non-blocking I/O mode and collects every request in form of an event and queues each event in a queue. Thus, the demultiplexer provides the Event Queue.
+
+
+===================================================================
+
+## Why should you separate Express "app" and "server"?
+
+- It also allows deploying the same API under flexible and different network conditions. 
+- better separation of concerns and cleaner code.
+- allows testing the API in-process, without performing network calls
+
+- API declaration, should reside in app.js:
+
+var app = express();
+app.use(bodyParser.json());
+app.use("/api/events", events.API);
+app.use("/api/forms", forms);
+
+
+- Server network declaration, should reside in /bin/www:
+
+var app = require("../app");
+var http = require("http");
+app.set("port", port);
+
+
+==============================================================================================
+
+https://github.com/bhavinsa/nodebestpractices
+
+## security 
+
+- Run Node.js as non-root user
+  - An attacker who manages to run a script on the server gets unlimited power over the local machine (e.g. change iptable and re-route traffic to his server)
+  - Solution : Run as without sudo user 
+
+- Validate incoming JSON schemas
+  - Validate the incoming requests’ body payload and ensure it qualifies the expectations, fail fast if it doesn’t
+  - Solution : jsonschema or hapi/joi
+  
+
+- Limit concurrent requests using a middleware : 
+  - DOS attacks are very popular and relatively easy to conduct. Implement rate limiting using an external service such as cloud load balancers,
+  - Solution : express-rate-limit
+
+
+- Adjust the HTTP response headers for enhanced security
+  - Your application should be using secure headers to prevent attackers from using common attacks like cross-site scripting (XSS), clickjacking and other malicious attacks. 
+  - Solution : Helment 
+
+- Extract secrets from config files or use packages to encrypt them
+
+- Constantly and automatically inspect for vulnerable dependencies
+  - With the npm ecosystem it is common to have many dependencies for a project. Dependencies should always be kept in check as new vulnerabilities are found
+  - Solution :  npm audit, nsp or snyk 
+
+  
+- Support blacklisting JWT tokens
+
+- Limit payload size using a reverse-proxy or a middleware
+  - Your application will have to deal with large requests, unable to process the other important work it has to accomplish, leading to performance implications and vulnerability towards DOS attacks
+  
+
+- Avoid JavaScript eval statements
+ -  Malicious JavaScript code finds a way into a text passed into eval or other real-time evaluating JavaScript language functions, and will gain complete access to JavaScript permissions on the page. 
+
+- Run unsafe code in a sandbox
+
+- Configure 2FA for npm or Yarn
+
+- Modify session middleware settings
+
+- Avoid DOS attacks by explicitly setting when a process should crash : try catch 
+
+- Prevent unsafe redirects
+
+=====================================================================================================
+
+## node12 
+
+#1. import / export statements supported (no required keyword)
+
+// default exports
+import module from "module"
+// named exports
+import { namedExport } from "module"
+// namespace exports
+import * as module from "module"
+
+
+#2. V8 Engine. 
+
+- V8 7.4 and eventually upgrade to 7.6
+
+Benefit: 
+- Faster parsing of JavaScript
+- Faster calls with arguments mismatch
+
+#3. Private Class Fields. -> using #nameofvariable
+
+
+class Greet {
+  #name = "World";
+  get name() {
+    return this.#name;
+  }
+  set name(name) {
+    this.#name = name;
+  }
+  sayHello() {
+    console.log(`Hello, ${this.#name}`);
+  }
+}
+
+const greet = new Greet()
+greet.#name = "NewName";
+// -> SyntaxError
+console.log(greet.#name)
+// -> SyntaxError
+
+#4. Improved Startup Performance:
+
+- The main thread is able to use this code cache improving the startup time by 30%.
+
+#5. TLS and Security. : Node now supports TLS 1.3 which offers increased security
+
+#6. assert : ERR_MISSING_ARGS error code
+
+#7. Async stack traces : It helps to identify the error in Async function execution.
+
+#8. Heap limits : 
+
+- Configuring the heap size based on available memory ensures that Node.js does not try to use more memory than is available and terminating when its memory is exhausted.
+			   
+- V8 defaulted to limiting the max heap size to 700 MB or 1400MB on 32 and 64-bit platforms respectively
+			   
+- it will still be possible to set –max-old-space-size to use a different limit 
+- if the default is not appropriate for your application
+
+#9. Heap Dumps : 
+
+If you ever needed to generate heap dumps in order to investigate memory issues but were slowed down by having to install a new module into production, the good news is that Node.js 12 brings integrated heap dump capability out of the box
+
+#10.Diagnostic Reports : 
+
+- This allows you to generate a report on demand or when certain events occur. 
+
+$ node --experimental-report --diagnostic-report-uncaught-exception index.js
+
+Writing Node.js report to file: report.20190309.102401.47640.001.json 
+Node.js report completed
+
+
+#11 Worker Threads : 
+
+- While Node.js already performs well with the single-threaded event loop, 
+there are some use-cases where additional threads can be leveraged for better results. 
+
+- It is usefull when do pareller CPU-intensive tasks in your Node.js application
+- It’s like threads without shared memory and without the potential race conditions.				
+- It is same as worker-farm.
+					
+#12. Switch default http parser to llhttp
+
+#13. ES6 Module Support : import/export syntax
+
+// named exports
+import { namedExport } from "module"
+
+
+============================================================================================================
+
+Generate the address, coordinate(latitude, longitude) from input given:  https://www.npmjs.com/package/node-geocoder
+
+Required the keys/provider, that use in node-geocoder: 
+https://developer.mapquest.com/plan_purchase/steps/business_edition/business_edition_free/register
+
+To show map at front end : https://www.mapbox.com/ or https://www.npmjs.com/package/mapbox
+
+============================================================================================================
+## How to manage the version in API: 
+
+const express = require("express");
+const app = express();
+
+const router1 = require("./router/v1/router");
+app.use("/v1", router1);
+
+const router2 = require("./router/v2/router");
+app.use("/v2", router2);
+
+app.listen(3000);
+
+============================================================================================================
+
+## Add multiple middleware in nodejs
+
+var middleware = {
+    requireAuthentication: function(req, res, next) {
+        console.log("private route list!");
+        next();
+    },
+    logger: function(req, res, next) {
+       console.log("Original request hit : "+req.originalUrl);
+       next();
+    }
+}
+
+
+app.get("/", [middleware.requireAuthentication, middleware.logger], function(req, res) {
+    res.send("Hello!");
+});
+
+============================================================================================================
+
+## Response Object Methods
+
+res.send({ some: "json" });
+res.sendStatus(200);
+res.status(404).sendFile("/absolute/path/to/404.png");
+res.set(field [, value])
+res.redirect("http://example.com");
+res.cookie("name", "tobi", { domain: ".example.com", path: "/admin", secure: true });
+res.download("/report-12345.pdf");
+
+
+## Request Object Properties
+
+req.app
+-This property holds a reference to the instance of the express application that is using the middleware.
+
+req.hostname
+-Contains the hostname from the "Host" HTTP header.
+
+req.ip
+-The remote IP address of the request
+
+req.params
+-An object containing properties mapped to the named route “parameters”. For example, if you have the route /user/:name, then the "name" property is available as req.params.name. This object defaults to {}.
+
+req.body
+-Contains key-value pairs of data submitted in the request body. By default, it is undefined, and is populated when you use body-parsing middleware such as body-parser
+
+req.cookies
+-When using cookie-parser middleware, this property is an object that contains cookies sent by the request.
+============================================================================================================
+
+SOAP stands for Simple Object Access Protocol
+REST stands for Representational State Transfer.
+
+SOAP is a protocol
+REST is an architectural pattern.
+
+SOAP uses service interfaces to expose its functionality to client applications
+REST uses Uniform Service locators to access to the components on the hardware device.
+
+
+SOAP needs more bandwidth for its usage (SOAP requires more bandwidth for its usage. Since SOAP Messages contain a lot of information inside of it, the amount of data transfer using SOAP is generally a lot.)
+REST doesn’t need much bandwidth.
+
+
+SOAP only works with XML formats
+REST work with plain text, XML, HTML and JSON.
+
+SOAP cannot make use of REST whereas REST can make use of SOAP.
+
+============================================================================================================
+##How do I manage MongoDB connections in a Node.js web application?
+
+You open do MongoClient.connect once when your app boots up and reuse the db object. It"s not a singleton connection pool each .connect creates a new connection pool.
+
+So, to answer your question directly, reuse the db object that results from MongoClient.connect(). This gives you pooling, and will provide a noticeable speed increase as compared with opening/closing connections on each db action.
+
+============================================================================================================
+
+##Explain readFile and createReadStream in Node.js
+
+Answer: Both readFile and createReadStream are ways to read and execute files provided by the Node.js.
+
+The readFile process is fully buffered which returns response(s) only if the complete file is entered into the buffer and can be read. This process is highly memory intensive and can become slow in case the file size is large.
+
+The createReadStream process is partially buffered, treating the entire process as a series of events. In this process, the whole files are split into chunks that are processed and then sent as a response individually in succession. Unlike readFile, createReadStream is effective when it comes to reading and processing large files.
+
+============================================================================================================
+##What are express.json() and express.urlencoded()?
+
+Express provides you with middleware to deal with the (incoming) data (object) in the body of the request.
+
+a. express.json() is a method inbuilt in express to recognize the incoming Request Object as a JSON Object. This method is called as a middleware in your application using the code: app.use(express.json());
+
+b. express.urlencoded() is a method inbuilt in express to recognize the incoming Request Object as strings or arrays. This method is called as a middleware in your application using the code: app.use(express.urlencoded());
+
+ALTERNATIVELY, I recommend using body-parser (it is an NPM package) to do the same thing. It is developed by the same peeps who built express and is designed to work with express. body-parser used to be part of express. Think of body-parser specifically for POST Requests (i.e. the .post request object) and/or PUT Requests (i.e. the .put request object).
+
+In body-parser you can do
+
+// calling body-parser to handle the Request Object from POST requests
+var bodyParser = require("body-parser");
+
+// parse application/json, basically parse incoming Request Object as a JSON Object 
+app.use(bodyParser.json());
+
+// parse application/x-www-form-urlencoded, basically can only parse incoming Request Object if strings or arrays
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// combines the 2 above, then you can parse incoming Request Object if object, with nested objects, or generally any type.
+app.use(bodyParser.urlencoded({ extended: true }))
+
+
+============================================================================================================
+## Check the event loop & Memory consumptions.
+
+https://www.smashingmagazine.com/2018/06/nodejs-tools-techniques-performance-servers/
+
+https://www.npmjs.com/package/autocannon#api
+
+https://www.npmjs.com/package/clinic
+
+=========================================================================================================
+
+const fs = require("fs");
+if (fs.existsSync(__dirname + "/test/info2.txt")) {
+  console.log("The path exists.");
+}else{
+  console.log("The path does not exists.");
+}
+
+
+=========================================================================================================
+
+## Elasticsearch Stack 
+
+## Logstash : A data processing pipeline.
+
+## Elasticsearch : indexing & Storage 
+
+## Kibana : Analysis & Visualize 
+
+Log File -> Logstash -> elasticsearch -> kibana
+
+=========================================================================================================
+## How to store the password in database
+
+	Use https://www.npmjs.com/package/password-validator for password policy
+	use https://www.npmjs.com/package/argon2 to generate the hash digest for password
+
+
+
+=========================================================================================================
+## OAuth vs Auth0:
+
+	OAuth 2.0 is a protocol that allows a user to grant limited access to their resources on one site, to another site, without having to expose their credentials.
+
+	Auth0 is an organisation, who manages Universal Identity Platform for web, mobile and IoT can handle any of them — B2C, B2B, B2E, or a combination.
+
+=========================================================================================================
+## The Twelve Factors
+
+https://12factor.net/
+
+	I. Codebase
+		One codebase tracked in revision control, many deploys
+	II. Dependencies
+		Explicitly declare and isolate dependencies
+	III. Config
+		Store config in the environment
+	IV. Backing services
+		Treat backing services as attached resources
+	V. Build, release, run
+		Strictly separate build and run stages
+	VI. Processes
+		Execute the app as one or more stateless processes
+	VII. Port binding
+		Export services via port binding
+	VIII. Concurrency
+		Scale out via the process model
+	IX. Disposability
+		Maximize robustness with fast startup and graceful shutdown
+	X. Dev/prod parity
+		Keep development, staging, and production as similar as possible
+	XI. Logs
+		Treat logs as event streams
+	XII. Admin processes
+		Run admin/management tasks as one-off processes
+		
+=========================================================================================================
+
+https://www.quora.com/Should-I-use-ORM-like-sequelize-for-PostgreSQL-Node-js
+
+## Kubernetes - container orchestration
+
+## Docker -
+
+## Docker compose : 
+	
+	Using the Compose command line tool you can create and start one or more containers for each dependency with a single command ( docker-compose up ).
+	
+	The Compose file provides a way to document and configure all of the application"s service dependencies (databases, queues, caches, web service APIs, etc).
+	
+=================================================================================================
+
+## Module - 
+
+1. CommonJs 
+
+	// add.js
+	function add (a, b) {
+	  return a + b
+	}
+	module.exports = add
+	
+	
+	// index.js
+	const add = require('./add')
+	console.log(add(4, 5))
+
+2. ES Module 
+	add below in package.json 
+	"type": "module",
+	 Run using : node --experimental-modules index.js
+	 
+	// add.js
+	const add = function (a, b) {
+	return a + b
+	}
+	export default add;
+	
+	// index.js
+	import add  from './add.mjs'
+	console.log(add(4, 5))
+
+	##Diff 
+	
+	ES6 modules are pre-parsed in order to resolve further imports before code is executed.
+	CommonJS modules load dependencies on demand while executing the code.
+
+=================================================================================================
+
+## Named Export vs Default Export 
+
+	##Named export: 
+	The name of imported module has to be the same as the name of the exported module.
+
+	// imports
+	// ex. importing a single named export
+	import { MyComponent } from "./MyComponent";
+	
+	// exports from ./MyComponent.js file
+	export const MyComponent = () => {}
+	
+	##Default Export
+	The naming of import is completely independent in default export and we can use any name we like.
+
+	// import
+	import MyDefaultComponent from "./MyDefaultExport";
+	
+	// export
+	const MyComponent = () => {}
+	export default MyComponent;
+	
+
+=================================================================================================
+## SIGINT (single interrupted) and SIGTERM (signle terminate)
+
+SIGINT is generated by the user pressing Ctrl+C and is an interrupt
+
+SIGTERM is a signal that is sent to request the process terminates. The kill command sends a SIGTERM and it's a terminate
+
+=================================================================================================
+## Encryption, Encoding and hashing
+
+Encoding:
+
+	Purpose: The purpose of encoding is to transform data so that it can be properly (and safely) consumed by a different type of system.
+	
+	Used for: Maintaining data usability i.e., to ensure that it is able to be properly consumed.
+	
+	Data Retrieval Mechanism: No key and can be easily reversed provided we know what algorithm was used in encoding.
+	
+	Algorithms Used: ASCII, Unicode, URL Encoding, Base64.
+	Example: Binary data being sent over email, or viewing special characters on a web page.
+
+Encryption:
+
+	Purpose: The purpose of encryption is to transform data in order to keep it secret from others.
+
+	Used for: Maintaining data confidentiality i.e., to ensure the data cannot be consumed by anyone other than the intended recipient(s).
+
+	Data Retrieval Mechanism: Original data can be obtained if we know the key and encryption algorithm used.
+
+	Algorithms Used: AES, Blowfish, RSA.
+
+	Example: Sending someone a secret letter that only they should be able to read, or securely sending a password over the Internet.
+
+-----------------------------------------------------------------------------------------------------
+
+- Encryption is a two-way function; what is encrypted can be decrypted with the proper key. 
+
+- Hashing, however, is a one-way function that scrambles plain text to produce a unique message digest. With a properly designed algorithm, there is no way to reverse the hashing process to reveal the original password
+
+JWT: 
+
+jwt.sign({ foo: 'bar' }, privateKey, { algorithm: 'RS256' }, function(err, token) {
+  console.log(token);
+});
+
+var decoded = jwt.verify(token, privateKey);
+console.log(decoded.foo) // bar
+=================================================================================================
+## Graceful shutdown : SIGINT (single interrupted) and SIGTERM (signle terminate)
+
+
+A graceful shutdown is when a computer is turned off by software function and the operating system (OS) is allowed to perform its tasks of safely shutting down processes and closing connections
+
+To avoid problems when deploying, closing, starting and restarting your app, its important to make sure that the existing requests complete and prevent anymore requests from hitting your server before the server shuts down. This is called graceful shutdown.
+
+
+Example Graceful Shutdown
+	process.on('SIGTERM', () => {
+	  debug('SIGTERM signal received: closing HTTP server')
+	  server.close(() => {
+		debug('HTTP server closed')
+	  })
+	})
+
+=================================================================================================
+
+appdynamics node js
+https://glowroot.org/
+
+=================================================================================================
+
+API Response code: 
+
+POST -> Create -> 201 (Created)
+GET  -> Read   -> 200 (OK)
+DELETE -> Delete -> 200 (OK) 
+PUT  -> Update/Replace -> PUT means replace the entire resource with given data -> 200 (OK)
+PATCH -> means replace only specified fields -> 200 (OK) 
+
+401 (Unauthorized)
+403 (Forbidden)
+404 (Not Found) 
+405 (Method Not Allowed)
+
+=================================================================================================
+
+## Read the large file in nodejs 
+
+https://stackoverflow.com/questions/16010915/parsing-huge-logfiles-in-node-js-read-in-line-by-line
+
+var fs = require('fs'),
+    readline = require('readline'),
+    stream = require('stream');
+
+var instream = fs.createReadStream('/path/to/file');
+var outstream = new stream;
+outstream.readable = true;
+outstream.writable = true;
+
+var rl = readline.createInterface({
+    input: instream,
+    output: outstream,
+    terminal: false
+});
+
+rl.on('line', function(line) {
+    console.log(line);
+    //Do your stuff ...
+    //Then write to outstream
+    rl.write(cubestuff);
+});
+
+=================================================================================================
+
+##data structure
+
+	A data structure is a particular way of organizing data in a computer so that it can be used effectively.
+
+#1. Linked List 
+
+	Linked List is an ordered collection of elements of the same type in which each element is connected to the next using pointers
+	
+	1 ----> 5 ----> ----8 ----> 10
+	
+	Each value represents as node 
+	Each node as link
+	First node in list called Head
+	Last node in list called Trail 
+	
+	Pros: 
+		Insertion and deletion of element - Easier, fast and efficient.
+	Cons: 
+		Accessing the element - Sequentially accessed, i.e., Traverse starting from the first node in the list by the pointer.
+
+#2. Array 
+	
+	An array is a collection of elements of a similar data type.
+	
+	[1,2,4,5,8,6]
+	
+	Pros
+		Accessing the element - Direct or randomly accessed, i.e., Specify the array index or subscript.
+	Cons 
+		Insertion and deletion of element - Slow relatively as shifting is required.
+		
+#3. Hash Table 
+	
+	A hash table, or a hash map, stores a collection of items in an associative array that plots keys to values.
+	
+	Pros: 
+		Insertion and deletion of element - Easier, fast and efficient.
+		Accessing the element - Direct
+	
+	Cons:
+		key collisions
+		
+#4. Stacks
+	- A stack stores a collection of items in the linear order that operations are applied. This order could be last in first out (LIFO) or first in first out (FIFO).
+	
+	- Depth First Search
+
+#5. Queues- 
+	A queue stores a collection of items similar to a stack; however, the operation order can only be first in first out
+	
+	Breadth-first search 
+	
+#6. Trees- A tree stores a collection of items in an abstract, hierarchical way. Each node is linked to other nodes and can have multiple sub-values, also known as children.
+	
+				parent
+				|    |
+				|    |
+			Child1  child2
+	
+	- Binary search 
+
+#7. Graphs- 
+	A graph stores a collection of items in a non-linear fashion. Graphs are made up of a finite set of nodes, also known as vertices, and lines that connect them, also known as edges. These are useful for representing real-life systems such as computer networks.
+
+	      
+		(node) ---> (node)
+			 |	   	|
+	(weights)|      | (weights)
+			  (node)
+			  
+	ex: distance between Gujarat and UP 
+	Here Gujarat and UP is node and distance is weights
+	
+	(gujarat) ------------------------ 500 -------------------------> (UP)
+	
+
+=========================================================================================================
+
+## Sort the array 
+
+	var numArray= [3,2,-1,1,5];
+	numArray.sort((a,b) => a-b);  // [-1, 1, 2, 3, 5]
+	
+	Firefox uses merge sort. Chrome, as of version 70, uses a hybrid of merge sort and insertion sort called Timsort.
+	
+	The time complexity of merge sort is O(n log n)
+	
+
+##. What is Tracing in Node.js?
+
+	Tracing provides a mechanism to collect tracing information generated by V8, Node core and userspace code in a log file. Tracing can be enabled by passing the --trace-events-enabled flag when starting a Node.js application.
+
+
+## what is the difference between asynchronous and non-blocking nodejs
+
+	- Blocking methods execute synchronously and 
+	- Non-blocking methods execute asynchronously.
+	
+	##Blocking:
+		const fs = require('fs');
+		const data = fs.readFileSync('/file.md'); // blocks here until file is read
+		console.log(data);
+		moreWork(); // will run after console.log
+	
+	##Non-blocking
+		const fs = require('fs');
+		fs.readFile('/file.md', (err, data) => {
+		  if (err) throw err;
+		  console.log(data);
+		});
+		moreWork(); // will run before console.log
+
+
+
+PeerDependencies
+
+	Peer dependencies are a special type of dependency that would only ever come up if you were publishing your own package.
+
+	Having a peer dependency means that your package needs a dependency that is the same exact dependency as the person installing your package. This is useful for packages like react that need to have a single copy of react-dom that is also used by the person installing it.
+	
+	Peer Dependencies express compatibility. 
+
+OptionalDependencies
+
+	Optional dependencies are just that: optional. If they fail to install, Yarn will still say the install process was successful.
+
+	This is useful for dependencies that won’t necessarily work on every machine and you have a fallback plan in case they are not installed (e.g. Watchman).
+	
+BundledDependencies
+
+	Array of package names that will be bundled when publishing the package.
+
+	Bundled dependencies should be inside your project. The functionality is basically the same as normal dependencies. They will also be packed when running yarn pack.
+
+	Normal dependencies are usually installed from the npm registry. Bundled dependencies are useful in cases normal dependencies are not sufficient:
+
+	When you want to re-use a third party library that doesn’t come from the npm registry or that was modified.
+	When you want to re-use your own projects as modules.
+	When you want to distribute some files with your module.
