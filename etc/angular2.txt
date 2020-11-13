@@ -1,8 +1,8 @@
 ## What is Angular 
 
 - Typescript based 
-- component/service based
-- open-source
+- Component/service based
+- Open-source
 - Front end framework 
 - Develop and maintain by Google
 
