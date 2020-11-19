@@ -1,0 +1,33 @@
+The build tool is Jenkins.
+-------------------------------------------------
+Code version / repository - Gitlab
+-------------------------------------------------
+Defer we can use to make sure that dom is loaded then Jquery load.
+-------------------------------------------------
+Async - it will load asynchronous while HTML is parsing.
+-------------------------------------------------
+Higher-order function - a function that other function as an argument it called HOC.
+-------------------------------------------------
+Temple string - black stick '${name}'
+-------------------------------------------------
+Class in JavaScript - using prototype we can, JavaScript is not object-oriented.
+-------------------------------------------------
+Promise - make synchronization execution
+Using ajax we can call/invoke web services/API.
+-------------------------------------------------
+Selector in Jquery - .class, #id
+-------------------------------------------------
+JavaScript design pattern - it common method to solve the problem/requirements - Do google it
+-------------------------------------------------
+You have to say no to your team members and request to do it own. In case really need help in code, I will do it, but not daily basis as it seems it not perform well.
+- Require to discuss with Manager.
+- Always call team members not employees
+-------------------------------------------------
+External people - Business analysts, Delivery manager, and the client to make sure user experience and design point of view
+Meeting - stand-up meeting, scrum planning, scrum story, retrospective meeting
+Always say that yes we have scrum master they will manage the team members for their task, I will help them
+-------------------------------------------------
+Accessibility issue - not idea
+Like Atm has a button for blind people
+-------------------------------------------------
+JavaScript testing - we can use jest npm
