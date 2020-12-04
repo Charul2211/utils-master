@@ -1,0 +1,75 @@
+- Differnce betweeen Angular & angular 4.  // javascript base - typescript base/  controller concept - Component based UI Approch. -Routing.when /@routeconfig for routing.
+- What is Angular - Signle page app. - Typescript based, open sourc framework, develop/maintained by google/ component/services based.
+- What is lazy loading? 
+- How would you optimize angular?
+- Angular Lifecycle hook
+- Promise & Observable
+- @viewchildren & @viewChild. :It provides a reference to elements or components in your view:
+- What is pipe?
+- What is event?
+- What is services? - allow you to define code that"s accessible and reusable throughout multiple components. / communicate with a backend of some sort to send and receive data
+- Differnce betweeen services & factory?
+- Tree shaking?
+- What is event Emitter? how it's works? used by components and directives to emit custom events
+- What is Traceur compiler? -Converted es66 into Javascript - Browser understand te javscript
+- Type Directive and Directives  - Structure Directive and Attribute directive -->  Directive is use to design re-usable components
+- What is custom directive?
+- What is Data binding?   - String Interpolation, Property Binding, Event Binding, and Two Way Data Binding.
+- Bilding blocks of angular.
+- Differnce betweeen Angular Expression and Javascript Expression. - They can write the inside tag- do not support loop exception. 
+- What is Route Outlet? directive from the router library.
+- What is Angular Universal?
+- How to Shared the Data between Component ? Using @Input and @output. @input --Parent to child using property binding, child to parent using custom event binding.
+- What is the Difference betweeen AOT and JIT. - produce Typescript code to Javascript code bind HTML form javascript run in brower, AOT- run time error compaile.
+- What is Ng-Content? tag as a placeholder for that dynamic content, then when the template is parsed Angular will replace that placeholder tag with your content
+- What is View Encapsulation? View encapsulation defines whether the template and styles defined within the component can affect the whole application or vice versa - Native / Emulated.
+- What is the observable, subscribe, Observer, Subject, oparator, Schedular
+		- Observable: Observable is a stream of events or data.
+		- subscribe : represents the execution of an Observable, is primarily useful for cancelling the execution.
+		- Observer: is a collection of callbacks that knows how to listen to values delivered by the Observable.
+		- Operators: are pure functions that enable a functional programming style of dealing with collections with operations like map, filter, concat, flatMap, etc.
+		- Subject: is the equivalent to an EventEmitter, and the only way of multicasting a value or event to multiple Observers.
+		- Schedulers: are centralized dispatchers to control concurrency, allowing us to coordinate when computation happens on e.g. setTimeout or requestAnimationFrame or others.
+- Ng Container / Ng Template / ngTemplateOutlet
+- Template Reference Variable and @viewChild.
+- Why Provide IN : Root? If it is never used it will not be contained in the build (tree shaked). / If the service is only used within a lazy loaded module it will be lazy loaded with that module
+- How to analyze the Bundle Size? : ng build --prod --stats-json / npm install webpack-bundle-analyzer -D
+
+- Difference betweeen CanActive / CanLoad. ==> canActivate is used to prevent an unauthorized user / canLoad is used to prevent the entire module of app
+
+- @Differnce Between @HostBinding / @HostEventLisner : @HostBinding: This decorator binds a class property to a property of the host element. @HostListener: This decorator binds a class method to an event of the host element.
+
+-----
+-- Dependency Injection /  Services Provider Scope  -> Software design pattern that Deal with how component get hold with their dependency. - > root , Any, Platform.
+-- Interceptor -  Interceptor c---------st. -  req - httprequest - request object to handle - next -nexthandle -any next interceptorin the chain, or no backend, if any remain interceptor in thechain. 	 	 
+-- Services & Fectory --- Services and factory is just the wrappper of the provider , Will get instance (this.keyword)-will get vlue that invoking of func(retrurn value in factor)
+-- Change Detection : changes detection means Updating the view (dom) when data has changed.
+-- Behavior Subject  : behavior subject is called hold need to change the value nd shred the other components. - cmponents subscribe to data which is simply return data be.su whiout 
+-- Cookies : Cookies: are assible and stored the session id from the server, session id will be sending during every api call.  4kb, security -> secure, httponly.
+-- Angular Universal: Some time upto content get load / Angular server side rendering module for application in various scenrios.
+-- Signleton? : a signleton is called to create signle instance of itself and to be created and give the access of created instance. two ways. application root / appmodule.
+-- Virtual DOM / Regular DOM. : 
+-- Promise And Observable : Promise object may be return signle value./ obesrable emit return multiple value over time.
+-- Lifecycle Hook Angular.: constructor() ngOnChange() ngOnInit() ngDoCheck() ngAfterContentInit() ngAfterContentChecked() ngAfterViewInit() ngAfterViewChecked() ngOnDestroy()
+-- httpClientModules : Provides types request and response objects. / intercept request response/ support observable API. / support striming error handling.
+-- Angular Security? : 
+-- angular module and javascript module
+-- Tuple? Datatype 
+
+ includes two set of value of different data types.
+- Differnce betweeen Template Driven and ReactiveForm.
+
+
+Try catch --- if facing error then skip move into another function show the error in console.
+
+try{
+} catch{
+}
+
+GlobalErrorHandler --> for common error handle.  -- provide in : add.
+
+CanActive - only load with module and url - autorization
+CanLoad  - if return true then module load with url autorization.
+
+
+

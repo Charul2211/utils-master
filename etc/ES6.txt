@@ -1,0 +1,142 @@
+##let
+
+The let keyword allows you to declare a variable with block scope.
+
+var x = 10;
+// Here x is 10
+{
+  let x = 2;
+  // Here x is 2
+}
+// Here x is 10
+
+-----------------------------------------------------------------------------
+
+##const
+
+-	The const keyword allows you to declare a constant (a JavaScript variable with a constant value).
+-   Constants are similar to let variables, except that the value cannot be changed.
+
+var x = 10;
+// Here x is 10
+{
+  const x = 2;
+  // Here x is 2
+}
+// Here x is 10
+
+-----------------------------------------------------------------------------
+
+JavaScript Arrow Functions
+
+Arrow functions allows a short syntax for writing function expressions.
+
+You don't need the function keyword, the return keyword, and the curly brackets.
+
+Arrow functions do not have their own this. They are not well suited for defining object methods.
+
+Using "const" is safer than using "var", because a function expression is always a constant value.
+
+// ES5
+var x = function(x, y) {
+   return x * y;
+}
+
+// ES6
+const x = (x, y) => x * y;
+
+-----------------------------------------------------------------------------
+
+##JavaScript Class
+
+JavaScript Classes are templates for JavaScript Objects.
+
+Use the keyword class to create a class.
+
+Always add a method named constructor():
+
+Syntax:
+
+class ClassName {
+  constructor() { ... }
+}
+
+-----------------------------------------------------------------------------
+
+##JavaScript Promise
+
+A Promise is a JavaScript object that links "Producing Code" and "Consuming Code".
+
+"Producing Code" can take some time and "Consuming Code" must wait for the result.
+
+Syntax:
+
+	let myPromise = new Promise(function(myResolve, myReject) {
+	// "Producing Code" (May take some time)
+
+	  myResolve(); // when successful
+	  myReject();  // when error
+	});
+
+	// "Consuming Code" (Must wait for a fulfilled Promise).
+	myPromise.then(
+	  function(value) { /* code if successful */ },
+	  function(error) { /* code if some error */ }
+	);
+
+-----------------------------------------------------------------------------
+
+##JavaScript Symbol
+
+A JavaScript Symbol is a primitive datatype just like Number, String, or Boolean.
+Using Symbol() to create a unique identifiers, solves this problem:
+
+Symbols are always unique.
+
+let id = Symbol('id');
+
+
+-----------------------------------------------------------------------------
+
+
+Default Parameter Values
+
+ES6 allows function parameters to have default values.
+
+function myFunction(x, y = 10) {
+  // y is 10 if not passed or undefined
+  return x + y;
+}
+myFunction(5); // will return 15
+
+-----------------------------------------------------------------------------
+
+##Function Rest Parameter
+
+The rest parameter (...) allows a function to treat an indefinite number of arguments as an array:
+
+function sum(...args) {
+  let sum = 0;
+  for (let arg of args) sum += arg;
+  return sum;
+}
+
+let x = sum(4, 9, 16, 25, 29, 100, 66, 77);
+
+document.getElementById("demo").innerHTML = x;
+
+-----------------------------------------------------------------------------
+
+##Array.find()
+
+The find() method returns the value of the first array element that passes a test function.
+
+var first = numbers.find(myFunction);
+
+-----------------------------------------------------------------------------
+
+Array.findIndex()
+
+The find() method returns the index of the first array element that passes a test function.
+
+var first = numbers.findIndex(myFunction);

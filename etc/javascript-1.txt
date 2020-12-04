@@ -1,0 +1,431 @@
+
+	- Before ES2015, JavaScript had only two types of scope: Global Scope and Function Scope. 
+
+	#Global Scope
+		- Variables declared Globally (outside any function) have Global Scope.
+		- Global variables can be accessed from anywhere in a JavaScript program.
+	  
+		  Example : var carName = "Volvo";
+		  
+		  // code here can use carName
+		  
+		  function myFunction() {
+		  // code here can also use carName
+		   }
+		   
+	#Function Scope
+		- Variables declared Locally (inside a function) have Function Scope.
+		- Local variables can only be accessed from inside the function where they are declared.
+		
+		Example:
+		// code here can NOT use carName
+
+		function myFunction() {
+		  var carName = "Volvo";
+		  // code here CAN use carName
+		}
+
+		// code here can NOT use carName
+
+-------------------------------------------------------------------------------------		
+	
+##let:
+	- ES2015 introduced two important new JavaScript keywords: let and const.
+	- These two keywords provide Block Scope variables (and constants) in JavaScript.
+	
+	- Variables declared with the let keyword can have Block Scope.
+	- Variables declared inside a block {} cannot be accessed from outside the block:
+
+	- Redeclaring a variable using the let keyword can solve this problem.
+	
+	Example:
+	
+		var x = 10;
+		// Here x is 10
+		{
+			let x = 2;
+			// Here x is 2
+		}
+		// Here x is 10
+		
+-------------------------------------------------------------------------------------		
+
+##Const:
+
+	- Variables defined with const behave like let variables, except they cannot be reassigned:
+	
+	Example :
+		
+		const PI = 3.141592653589793;
+		PI = 3.14;      // This will give an error
+		PI = PI + 10;   // This will also give an error
+
+
+-----------------------------------------------------------------------------		
+
+##Arrow Function :
+
+	- Arrow functions allow us to write shorter function syntax:
+	- If the function has only one statement, and the statement returns a value, you can remove the brackets and the return keyword
+	  Example : 
+				hello = () => "Hello World!";
+				
+				hello = () => {
+				  return "Hello World!";
+				}
+				
+	In fact, if you have only one parameter, you can skip the parentheses as well:
+				
+				hello = val => "Hello " + val;
+									
+					
+		 Note:  ==> With regular function "this" represents the object that calls the function.
+				==> With arrow function "this" represens the owner of the function.												
+				
+-----------------------------------------------------------------------------
+
+##Class
+
+    - Use the keyword class to create a class.								
+	- Always add a method named constructor().
+	
+	Example:
+	
+	class ClassName {
+		constructor() { ... }
+	}
+
+-----------------------------------------------------------------------------
+
+The Constructor Method
+
+The constructor method is a special method:
+
+It has to have the exact name "constructor"
+It is executed automatically when a new object is created
+It is used to initialize object properties
+It if you do not define a constructor method, JavaScript will add an empty constructor method.
+
+Note: ==> The constructor method is called automatically when a new object is created.
+
+-----------------------------------------------------------------------------
+
+##Don't Use new Object()
+
+Use {} instead of new Object()
+Use "" instead of new String()
+Use 0 instead of new Number()
+Use false instead of new Boolean()
+Use [] instead of new Array()
+Use /()/ instead of new RegExp()
+Use function (){} instead of new Function()
+
+-----------------------------------------------------------------------------
+
+Use === Comparison
+The == comparison operator always converts (to matching types) before comparison.
+
+The === operator forces comparison of values and type:
+
+-----------------------------------------------------------------------------
+##What Is a Regular Expression?
+
+	- A regular expression is a sequence of characters that forms a search pattern.
+	- A regular expression can be a single character, or a more complicated pattern.
+
+-----------------------------------------------------------------------------
+
+##event.stopPropagation()
+Stops the bubbling of an event to parent elements, preventing any parent handlers from being notified of the event.
+The stopPropagation() method allows you to prevent propagation of the current event.
+
+===========================================================
+
+##event.preventDefault()
+- e.preventDefault() will prevent the default event from occuring.
+
+===========================================================
+
+## What is javascript
+
+- JavaScript is a very powerful client-side scripting language.
+- JavaScript is used mainly for enhancing the interaction of a user with the webpage.
+
+## JavaScript is always synchronous
+## JavaScript is only asynchronous in the sense that it can make, for example, Ajax calls, timers
+
+=========================================================================================================
+
+## scripting language 
+A script or scripting language is a computer language with a series of commands within a file that is capable of being executed without being compiled.
+
+=========================================================================================================
+
+## advantages of JavaScript?
+
+- Less server interaction − You can validate user input before sending the page off to the server. This saves server traffic, which means less load on your server.
+
+- Immediate feedback to the visitors − They don’t have to wait for a page reload to see if they have forgotten to enter something.
+
+- Increased interactivity − You can create interfaces that react when the user hovers over them with a mouse or activates them via the keyboard.
+
+- Richer interfaces − You can use JavaScript to include such items as drag-and-drop components and sliders to give a Rich Interface to your site visitors.
+
+
+========================================================================
+
+##closure closure-
+- While you create the JavaScript function within another function and the inner function freely access all the variable of outer function i.e.
+
+- Usage of closures is to provide information-hiding, which is helpful in bringing some kind of encapsulation to the language
+
+
+- In below example, inner function have access of param of outer function, multiple time. This is real use case of closure.
+
+
+
+function greet(name){
+  return function(data){
+    return "Hello " + name +" "+ data
+  }
+}
+
+var data = greet("John");
+console.log(data("Sam"));
+console.log(data("July"));
+
+// "Hello John Sam"
+// "Hello John July"
+
+
+function foo(outer_arg) { 
+  
+    function inner(inner_arg) { 
+        return outer_arg + inner_arg; 
+    } 
+    return inner; 
+}
+ 
+var get_func_inner = foo(5); 
+  
+console.log(get_func_inner(4)); // 9
+console.log(get_func_inner(3)); // 8
+
+
+Things to remember:
+
+A closure is an inner function which has access to the outer function scope
+Every call of the outer function creates a new closure
+Every call of the closure interacts with the same outer scope – which is persistent
+
+========================================================================
+
+##Diff localStorage vs SessionStorage 
+
+sessionStorage.setItem("key", "value");
+Session Storage store the value, but as long as the browser is open.
+
+localStorage.setItem("key", "value");
+Local Storage store the value, but persists even when the browser is closed and reopened.
+
+cookies
+
+- Cookies are bits of information either sent by the server or set on the client that are saved locally on the user’s browser. They are automatically attached to every request.
+
+- Cookies are saved in name-value pairs like
+i.e  document.cookie = "username=John Doe";
+
+=================================================================
+
+##function expression and function declaration
+
+myfun();  // function declaration  - it allow to call
+x();      // Error - x is not defined
+ 
+function myfun(){
+	console.log("function declaration");
+}
+
+let x = function(){
+	console.log("function expression");
+}
+
+=================================================================
+
+##Arrow Function Fat Arraow: arrow-
+
+Benefits : 
+
+//ES6 style
+el.onclick = () => this.doSomething()
+
+1-. The syntax allows an implicit return when there is no body block, resulting in shorter and simpler code in some cases
+
+//ES5 style
+var users = [{name: "bhavesh"}, {name: "bhavin"}];
+var result = users.filter(function(data){
+  return data.name == "bhavin";
+})
+ 
+//ES6 style
+var result1 = users.filter( data => data.name == "bhavin")
+
+2-. => is shorter and simpler than function, although stylistic issues are often subjective
+
+
+	var name = "global";
+	var person = {
+		name: "jason",
+
+		shout: function () {
+			console.log("my name is ", this.name);
+		},
+		shout2: () => {
+			console.log("my name is ", this.name);
+		},
+		// Shorter syntax
+		shout3() {
+			console.log("my name is ", this.name);
+		}
+	};
+
+	person.shout();  // "jason"
+	person.shout2(); // "global"
+	person.shout3(); // "jason"
+
+
+Arrow functions should NOT be used: 
+
+- When we want function hoisting as arrow functions are anonymous.
+- When we want to use this/arguments in a function as arrow functions do not have this/arguments of their own, they depend upon their outer context.
+
+- When we want to use function as a constructor as arrow functions do not have their own this.
+- When we want to add function as a property in object literal and use object in it
+as we can not access this (which should be object itself).
+
+======================================================================
+
+#6. Destructuring: 
+
+let a, b, rest;
+[a, b, ...rest] = [10, 20, 30, 40, 50];
+console.log(a); // 10
+console.log(b); // 20
+console.log(rest); // [30, 40, 50]
+
+======================================================================
+
+## Promise .finally
+	
+	A Promise call chain either successfully reaches the last. then(), or fails to trigger. catch(). In some cases, you want to run the same code no matter whether Promise runs successfully or fails, such as clearing, deleting conversations, closing database connections, etc.
+	
+	function doSomething() {
+	  doSomething1()
+	  .then(doSomething2)
+	  .then(doSomething3)
+	  .catch(err => {
+		console.log(err);
+	  })
+	  .finally(() => {
+		// finish here!
+	  });
+	}
+
+
+Function overloading - functions with same name, but different number of arguments
+
+Function overriding - concept of inheritance. Functions with same name and same number of arguments. Here the second function is said to have overridden the first
+
+
+https://www.youtube.com/watch?v=sxvcFR9plWE
+
+////////////////////JavaScript does not support overloading.
+
+======================================================================
+
+OverRidding:
+
+var emp = function(name){
+  this.name = name;
+}
+
+//Here we have override the function 
+ emp.prototype.getName = function(){
+  return this.name.toUpperCase();
+}
+
+
+var empObj = new emp("Mark");
+console.log(empObj.getName());
+
+
+//This code is written in external js file
+emp.prototype.getName = function(){
+  return this.name;
+}
+
+========================================================================
+
+map v/s reduces
+
+Map takes a callback and run it against every element on the array but whats makes it unique is it generate a new array based on your existing array.
+
+var arr = [1, 2, 3];
+var mapped = arr.map(function(elem) {
+    return elem * 10;
+})
+console.log(mapped)  // it genrate new array => [10,20,30]
+
+
+Reduce method of the array object is used to reduce the array to one single value.
+
+var arr = [1, 2, 3];
+
+var sum = arr.reduce(function(sum, elem){
+    return sum + elem;
+})
+
+console.log(sum) // reduce the array to one single value => 6
+
+========================================================================================================
+
+## What is a first class function?
+
+- a function can be passed as an argument to other functions, can be returned by another function and can be assigned as a value to a variable. 
+
+- For example, in the below example, handler functions assigned to a listener
+
+const handler = () => console.log ("This is a click handler function");
+document.addEventListener ("click", handler);
+
+========================================================================================================
+
+========================================================================================================
+
+## What is a first order function?
+
+- First-order function is a function that doesn’t accept other function as an argument and doesn’t return a function as its return value.
+
+const firstOrder = () => console.log ("Iam a first order functionn!");
+
+========================================================================================================
+
+Higher-Order Functions
+
+- A Higher-Order function is a function that receives a function as an argument or returns the function as output.
+
+- One of the great advantages of using higher order functions when we can is composition.
+
+- We can create smaller functions that only take care of one piece of logic. Then, we compose more complex functions by using different smaller functions.
+
+- Array.prototype.map, Array.prototype.filter and Array.prototype.reduce are some of the Higher-Order functions built into the language.
+
+
+const numbers = [12,324,213,4,2,3,45,4234];
+const isEven = (x) => x % 2 === 0
+const evenNumbers = numbers.filter(isEven);
+console.log(evenNumbers);
+
+
+==========================================================================
+

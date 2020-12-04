@@ -1,0 +1,141 @@
+##ES5: 2009
+
+
+#"use strict":
+
+"use strict" defines that the JavaScript code should be executed in "strict mode".
+
+-----------------------------------------------------------------------------
+##String.trim()  :  
+
+	String.trim() removes whitespace from both sides of a string.
+	Example:var str = "       Hello World!        ";
+			alert(str.trim());
+-----------------------------------------------------------------------------
+
+##Array.isArray() :
+
+	The isArray() method checks whether an object is an array.
+	
+	function myFunction() {
+		  var fruits = ["Banana", "Orange", "Apple", "Mango"];
+		  var x = document.getElementById("demo");
+		  x.innerHTML = Array.isArray(fruits);
+	}
+
+-----------------------------------------------------------------------------
+
+##Array.forEach():
+
+The forEach() method calls a function once for each array element.
+The forEach() method calls a function (a callback function) once for each array element.
+
+numbers.forEach(myFunction);
+
+-----------------------------------------------------------------------------
+
+##Array.map()
+
+This example multiplies each array value by 2:
+
+Creates a new array by performing a function on each array element
+
+var numbers1 = [45, 4, 9, 16, 25];
+var numbers2 = numbers1.map(myFunction);
+
+function myFunction(value) {
+  return value * 2;
+}
+
+-----------------------------------------------------------------------------
+
+##Array.filter()
+
+The filter() method creates a new array with array elements that passes a test.
+
+var over18 = numbers.filter(myFunction);
+
+-----------------------------------------------------------------------------
+
+##Array.reduce()
+
+The reduce() method runs a function on each array element to produce (reduce it to) a single value.
+The reduce() method works from left-to-right in the array. See also reduceRight().
+
+var sum = numbers1.reduce(myFunction);
+
+-----------------------------------------------------------------------------
+
+##Array.reduceRight()
+
+The reduce() method runs a function on each array element to produce (reduce it to) a single value.
+The reduce() method works from right-to-left in the array. See also reduceRight().
+
+-----------------------------------------------------------------------------
+
+##Array.every()
+
+The every() method check if all array values pass a test.
+
+var allOver18 = numbers.every(myFunction);
+
+-----------------------------------------------------------------------------
+
+##Array.some()
+
+The some() method check if some array values pass a test.
+var someOver18 = numbers.some(myFunction);
+
+-----------------------------------------------------------------------------
+
+Array.indexOf()
+
+The indexOf() method searches an array for an element value and returns its position.
+
+Array.indexOf() returns -1 if the item is not found.
+
+var a = fruits.indexOf("Apple");
+
+-----------------------------------------------------------------------------
+
+## Array.lastIndexOf():
+
+Array.lastIndexOf() is the same as Array.indexOf(), but searches from the end of the array.
+
+var a = fruits.lastIndexOf("Apple");
+
+-----------------------------------------------------------------------------
+
+##JSON.parse()
+
+--	A common use of JSON is to receive data from a web server.
+--	Imagine you received this text string from a web server:
+
+--	The JavaScript function JSON.parse() is used to convert the text into a JavaScript object:
+
+var obj = JSON.parse('{"name":"John", "age":30, "city":"New York"}');
+
+-----------------------------------------------------------------------------
+
+##JSON.stringify()
+
+--	A common use of JSON is to send data to a web server.
+--  When sending data to a web server, the data has to be a string.
+
+var obj = {name:"John", age:30, city:"New York"};
+
+Use the JavaScript function JSON.stringify() to convert it into a string.
+
+-----------------------------------------------------------------------------
+##Date.now():
+
+Date.now() returns the same as getTime() performed on a Date object.
+
+var timInMSs = Date.now();
+
+
+
+
+
+
+
