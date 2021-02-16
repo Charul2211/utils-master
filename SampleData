@@ -1,0 +1,47 @@
+// CharactersOnlyDirective
+
+export class CharactersOnlyDirective {
+
+constructor(private \_el: ElementRef) { }
+
+@HostListener('keypress', ['$event']) onInputChange(event) {
+const pattern = /[a-zA-Z]/g;
+const patternMatch = pattern.test(event.key);
+
+    if (!patternMatch) {
+      event.stopPropagation();
+      event.preventDefault();
+    }
+
+}
+}
+
+// NumbersOnly --------------------------------
+
+export class NumbersOnlyDirective {
+constructor(private \_el: ElementRef) {}
+
+    @HostListener('input', ['$event']) onInputChange(event) {
+        const initalValue = this._el.nativeElement.value;
+
+        this._el.nativeElement.value = initalValue.replace(/[^0-9]*/g, '');
+        if (initalValue !== this._el.nativeElement.value) {
+            event.stopPropagation();
+        }
+    }
+
+}
+
+// DataAutoFocus  --------------------------------
+
+export class AutoFocusDirective {
+@Input()
+public set datoAutoFocus(value) {
+if (!!value) {
+this.host.nativeElement.focus();
+}
+}
+
+    public constructor(private host: ElementRef) {}
+
+}
