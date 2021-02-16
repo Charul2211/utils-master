@@ -45,3 +45,22 @@ this.host.nativeElement.focus();
     public constructor(private host: ElementRef) {}
 
 }
+
+
+// No Right Click  --------------------------------
+
+
+@Directive({
+  selector: 'Wrapper'
+})
+export class NoRightClickDirective {
+
+  @HostListener('contextmenu', ['$event'])
+  onRightClick(event) {
+    event.preventDefault();
+  }
+
+  constructor() { }
+
+}
+
