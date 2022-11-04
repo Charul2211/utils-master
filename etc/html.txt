@@ -1,0 +1,270 @@
+## HTML Semantic Elements
+<article>
+<aside>
+<details>
+<figcaption>
+<figure>
+<footer>
+<header>
+<main>
+<mark>
+<nav>
+<section>
+<summary>
+<time>
+
+## non-semantic elements: <div> and <span>
+
+-----------------------------------------------------------------------------
+
+## different HTML5 elements which are used to define the different parts of a webpage.
+
+    <header>: It is used to define a header for a document or a section.
+    <nav>: It is used to define a container for navigation links
+    <section>: It is used to define a section in a document
+    <article>: It is used to define an independent, self-contained article
+    <aside>: It is used to define content aside from the content (like a sidebar)
+    <footer>: It is used to define a footer for a document or a section
+
+-----------------------------------------------------------------------------
+
+# iframe
+    -- An iframe is used to display a web page within a web page.
+
+-----------------------------------------------------------------------------
+
+# <!DOCTYPE html> tag is a HTML tag?
+
+No, the <!DOCTYPE html> declaration is not an HTML tag. 
+There are many type of HTML e.g. HTML 4.01 Strict, HTML 4.01 Transitional, HTML 4.01 Frameset, XHTML 1.0 Strict, XHTML 1.0 Transitional, XHTML 1.0 Frameset, XHTML 1.1 etc. So, <!DOCTYPE html> is used to instruct the web browser about the HTML page.
+
+-----------------------------------------------------------------------------
+
+## What are the different new form element types in HTML 5
+
+Color
+Date
+Datetime-local
+Email
+Time
+Url
+Range
+Telephone
+Number
+Search
+
+-----------------------------------------------------------------------------
+
+## Which type of video formats are supported by HTML5?
+mp4
+WebM
+Ogg
+
+-----------------------------------------------------------------------------
+
+## audio tag supported in HTML 5?
+mp3
+WAV
+Ogg
+
+-----------------------------------------------------------------------------
+
+What is SVG?
+SVG stands for Scalable Vector Graphics
+SVG is used to define graphics for the Web
+SVG is a W3C recommendation
+
+Exm:
+<svg width="100" height="100">
+  <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" />
+</svg>
+
+-----------------------------------------------------------------------------
+
+## What is HTML Canvas?
+
+-- The HTML <canvas> element is used to draw graphics, on the fly, via JavaScript.
+-- The <canvas> element is only a container for graphics. You must use JavaScript to actually   draw the graphics.
+- Canvas has several methods for drawing paths, boxes, circles, text, and adding images.
+
+exp : <canvas id="myCanvas" width="200" height="100"></canvas>
+
+-----------------------------------------------------------------------------
+
+The HTML <form> Elements
+<input>
+<label>
+<select>
+<textarea>
+<button>
+<fieldset>
+<legend>
+<datalist>
+<output>
+<option>
+<optgroup>
+
+----------------------------------------------------------------------------
+
+## HTML Input Types
+-- Here are the different input types you can use in HTML:
+
+<input type="button">
+<input type="checkbox">
+<input type="color">
+<input type="date">
+<input type="datetime-local">
+<input type="email">
+<input type="file">
+<input type="hidden">
+<input type="image">
+<input type="month">
+<input type="number">
+<input type="password">
+<input type="radio">
+<input type="range">
+<input type="reset">
+<input type="search">
+<input type="submit">
+<input type="tel">
+<input type="text">
+<input type="time">
+<input type="url">
+<input type="week">
+
+----------------------------------------------------------------------------
+
+## HTML Layout Techniques
+There are four different techniques to create multicolumn layouts. Each technique has its pros and cons:
+
+CSS framework
+CSS float property
+CSS flexbox
+CSS grid
+
+----------------------------------------------------------------------------
+
+What is Responsive Web Design?
+-- Responsive Web Design is about using HTML and CSS to automatically resize, hide, shrink,
+   or enlarge, a website, to make it look good on all devices (desktops, tablets, and phones)
+
+Ex : <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+----------------------------------------------------------------------------
+
+## Meta - viewport
+
+To display an HTML page correctly, a web browser must know which character set to use.
+
+EX : <meta charset="UTF-8">
+
+----------------------------------------------------------------------------
+
+## The HTML <meta> Element
+
+Define the character set used:
+<meta charset="UTF-8">
+
+Define keywords for search engines:
+<meta name="keywords" content="HTML, CSS, JavaScript">
+
+Define a description of your web page:
+<meta name="description" content="Free Web tutorials">
+
+Define the author of a page:
+<meta name="author" content="John Doe">
+
+Refresh document every 30 seconds:
+<meta http-equiv="refresh" content="30">
+
+Setting the viewport to make your website look good on all devices:
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+----------------------------------------------------------------------------
+
+## HTML Geolocation
+
+The getCurrentPosition() method is used to return the user's position.
+
+<script>
+var x = document.getElementById("demo");
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+  x.innerHTML = "Latitude: " + position.coords.latitude +
+  "<br>Longitude: " + position.coords.longitude;
+}
+</script>
+
+----------------------------------------------------------------------------
+
+## What is HTML Web Storage?
+
+    With web storage, web applications can store data locally within the user's browser.
+
+    -- window.localStorage - stores data with no expiration date
+    -- window.sessionStorage - stores data for one session (data is lost when the browser tab is closed)
+
+----------------------------------------------------------------------------
+
+## What is a Web Worker?
+
+-- A web worker is a JavaScript running in the background, without affecting the performance of the page.
+-- When executing scripts in an HTML page, the page becomes unresponsive until the script is finished.
+
+Ex : 
+if (typeof(w) == "undefined") {
+  w = new Worker("demo_workers.js");
+}
+
+w.terminate();
+w = undefined;
+
+----------------------------------------------------------------------------
+
+# Web Workers and the DOM
+--  Since web workers are in external files, they do not have access to the following JavaScript objects:
+
+The window object
+The document object
+The parent object
+
+----------------------------------------------------------------------------
+
+# SSE -  Server Sent Events
+
+-- Server-Sent Events (SSE) allow a web page to get updates from a server.
+-- A server-sent event is when a web page automatically gets updates from a server.
+
+Examples: Facebook/Twitter updates, stock price updates, news feeds, sport results, etc.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
